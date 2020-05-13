@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sounds/rain.ogg" type="AudioStream" id=1]
+[ext_resource path="res://scenes/challenges/challenge3/RainSound.gd" type="Script" id=2]
+
+
+[node name="RainSound" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -24.0
+autoplay = true
+bus = "Rain"
+script = ExtResource( 2 )
+[connection signal="finished" from="." to="." method="_on_RainSound_finished"]

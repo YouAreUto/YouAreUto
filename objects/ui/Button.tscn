@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/RedButtonCornerStyle.tres" type="StyleBox" id=1]
+[ext_resource path="res://resources/Button/Pressed.tres" type="StyleBox" id=2]
+[ext_resource path="res://resources/ButtonFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://objects/ui/Button.gd" type="Script" id=4]
+
+[node name="Button" type="Button"]
+margin_right = 482.0
+margin_bottom = 94.0
+focus_mode = 0
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.717647, 0.141176, 0.141176, 1 )
+custom_colors/font_color_hover = Color( 0.717647, 0.141176, 0.141176, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.968627, 0.972549, 1 )
+enabled_focus_mode = 0
+text = "GO TO NEXT CHALLENGE"
+script = ExtResource( 4 )
+
+[node name="DecorationLeft" type="TextureRect" parent="."]
+anchor_bottom = 1.0
+margin_left = 6.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 4

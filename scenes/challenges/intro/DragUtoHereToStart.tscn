@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/challenges/intro/DragUtoHereToStart.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/line-draghereuto.png" type="Texture" id=2]
+[ext_resource path="res://resources/DragUtoHereFont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 387, 52 )
+
+[node name="StartArea" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="RedLine" type="Sprite" parent="."]
+position = Vector2( 0, 1000 )
+scale = Vector2( 782.5, 1 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Label" type="Label" parent="."]
+margin_left = 140.0
+margin_top = 1177.0
+margin_right = 686.0
+margin_bottom = 1236.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.631373, 0.101961, 0.101961, 1 )
+text = "DRAG UTO HERE TO START"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="Label"]
+position = Vector2( 245, 41 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Delay" type="Timer" parent="Label/Area2D"]
+wait_time = 0.25
+[connection signal="body_entered" from="Label/Area2D" to="." method="_on_Area2D_body_entered"]

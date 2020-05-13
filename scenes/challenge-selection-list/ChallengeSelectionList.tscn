@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/challenge-selection-list/ChallengeSelectionList.gd" type="Script" id=1]
+[ext_resource path="res://scenes/challenge-selection-list/ChallengeItem/ChallengeItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/characters/char-emperor.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/characters/char-castle.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/characters/char-poet.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/characters/char-ch4-goal.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/challenges/5-black-path/char-chest.png" type="Texture" id=12]
+
+
+
+
+
+
+[node name="ChallengeSelectionList" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 32
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChallengeItem" parent="." instance=ExtResource( 2 )]
+margin_right = 750.0
+margin_bottom = 117.0
+selectionTexture = ExtResource( 3 )
+
+[node name="ChallengeItem2" parent="." instance=ExtResource( 2 )]
+margin_top = 149.0
+margin_right = 750.0
+margin_bottom = 266.0
+selectionTexture = ExtResource( 5 )
+challengeName = "Standard Identities"
+challengeNumber = 2
+
+[node name="ChallengeItem3" parent="." instance=ExtResource( 2 )]
+margin_top = 298.0
+margin_right = 750.0
+margin_bottom = 415.0
+selectionTexture = ExtResource( 7 )
+challengeName = "At All Times"
+challengeNumber = 3
+
+[node name="ChallengeItem4" parent="." instance=ExtResource( 2 )]
+margin_top = 447.0
+margin_right = 750.0
+margin_bottom = 564.0
+selectionTexture = ExtResource( 11 )
+challengeName = "Game Is On"
+challengeNumber = 4
+
+[node name="ChallengeItem5" parent="." instance=ExtResource( 2 )]
+margin_top = 596.0
+margin_right = 750.0
+margin_bottom = 713.0
+selectionTexture = ExtResource( 12 )
+challengeName = "Black Path"
+challengeNumber = 5

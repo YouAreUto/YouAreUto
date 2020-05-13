@@ -1,0 +1,278 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/challenges/settings/SettingsScreen.gd" type="Script" id=1]
+[ext_resource path="res://resources/VictoryScreen/VictoryTextFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/ChallengeRuleFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://objects/ui/ToggleButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/challenges/settings/GuardSpeed.gd" type="Script" id=6]
+[ext_resource path="res://scenes/challenges/settings/RangeControl.gd" type="Script" id=7]
+[ext_resource path="res://resources/guard-speed-gui/GuardSpeedButtonLeft.tres" type="StyleBox" id=8]
+[ext_resource path="res://resources/guard-speed-gui/GuardSpeedButtonLeftPressed.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/ui/left-btn-icon.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/left-btn-speed-pressed.png" type="Texture" id=11]
+[ext_resource path="res://resources/ButtonFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://resources/guard-speed-gui/GuardSpeedButtonRight.tres" type="StyleBox" id=13]
+[ext_resource path="res://resources/guard-speed-gui/GuardSpeedButtonRightPressed.tres" type="StyleBox" id=14]
+[ext_resource path="res://assets/ui/right-btn-icon.png" type="Texture" id=15]
+[ext_resource path="res://assets/ui/right-btn-icon-pressed.png" type="Texture" id=16]
+[ext_resource path="res://objects/ui/Button.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/shaders/GrayScaleShader.tscn" type="PackedScene" id=18]
+
+[node name="SettingsScreen" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Bg" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color( 0.976471, 0.968627, 0.972549, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Container" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YouAreYou" type="Label" parent="CanvasLayer/Container"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -465.5
+margin_bottom = -394.5
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "YOU ARE YOU."
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Container"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -313.0
+margin_top = -306.0
+margin_right = 313.0
+margin_bottom = -34.0
+custom_constants/separation = 14
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sound" type="HBoxContainer" parent="CanvasLayer/Container/VBoxContainer"]
+margin_right = 626.0
+margin_bottom = 78.0
+size_flags_horizontal = 9
+size_flags_stretch_ratio = 0.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Container/VBoxContainer/Sound"]
+margin_top = 18.0
+margin_right = 272.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "SOUND:"
+
+[node name="ToggleButton" parent="CanvasLayer/Container/VBoxContainer/Sound" instance=ExtResource( 5 )]
+margin_left = 276.0
+margin_right = 626.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 350, 0 )
+
+[node name="Color" type="HBoxContainer" parent="CanvasLayer/Container/VBoxContainer"]
+margin_top = 92.0
+margin_right = 626.0
+margin_bottom = 170.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Container/VBoxContainer/Color"]
+margin_top = 18.0
+margin_right = 272.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "COLOR:"
+
+[node name="Button2" parent="CanvasLayer/Container/VBoxContainer/Color" instance=ExtResource( 5 )]
+margin_left = 276.0
+margin_right = 626.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 350, 0 )
+
+[node name="GuardSpeed" type="HBoxContainer" parent="CanvasLayer/Container/VBoxContainer"]
+margin_top = 184.0
+margin_right = 626.0
+margin_bottom = 264.0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed"]
+margin_top = 19.0
+margin_right = 272.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "GUARD SPEED:"
+
+[node name="RangeControl" type="HBoxContainer" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed"]
+margin_left = 276.0
+margin_right = 626.0
+margin_bottom = 80.0
+grow_horizontal = 0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+custom_constants/separation = 0
+script = ExtResource( 7 )
+
+[node name="Left" type="Button" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl"]
+margin_right = 70.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 70, 80 )
+focus_mode = 0
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/normal = ExtResource( 8 )
+enabled_focus_mode = 0
+
+[node name="left-btn-icon" type="TextureRect" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Left"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.5
+margin_top = -13.0
+margin_right = 13.5
+margin_bottom = 13.0
+texture = ExtResource( 10 )
+
+[node name="left-btn-icon2" type="TextureRect" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Left"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.5
+margin_top = -13.0
+margin_right = 13.5
+margin_bottom = 13.0
+texture = ExtResource( 11 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl"]
+margin_left = 70.0
+margin_right = 280.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+color = Color( 0.941176, 0.87451, 0.882353, 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -95.5
+margin_top = -35.0
+margin_right = 95.5
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.631373, 0.101961, 0.101961, 1 )
+text = "1.0"
+align = 1
+valign = 1
+
+[node name="Right" type="Button" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl"]
+margin_left = 280.0
+margin_right = 350.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 70, 0 )
+focus_mode = 0
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/normal = ExtResource( 13 )
+enabled_focus_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Right"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.5
+margin_top = -13.0
+margin_right = 13.5
+margin_bottom = 13.0
+texture = ExtResource( 15 )
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Right"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.5
+margin_top = -13.0
+margin_right = 13.5
+margin_bottom = 13.0
+texture = ExtResource( 16 )
+
+[node name="SettingsActions" type="VBoxContainer" parent="CanvasLayer/Container"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -315.0
+margin_top = 85.0
+margin_right = 325.0
+margin_bottom = 371.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" parent="CanvasLayer/Container/SettingsActions" instance=ExtResource( 17 )]
+margin_right = 640.0
+margin_bottom = 78.0
+text = "GO BACK"
+decorationTexture = null
+customMargin = false
+customLeftMargin = 0
+
+[node name="Restart" parent="CanvasLayer/Container/SettingsActions" instance=ExtResource( 17 )]
+margin_top = 98.0
+margin_right = 640.0
+margin_bottom = 176.0
+text = "RESTART"
+decorationTexture = null
+customMargin = false
+customLeftMargin = 0
+
+[node name="Quit" parent="CanvasLayer/Container/SettingsActions" instance=ExtResource( 17 )]
+margin_top = 196.0
+margin_right = 640.0
+margin_bottom = 274.0
+text = "QUIT"
+decorationTexture = null
+customMargin = false
+customLeftMargin = 0
+
+[node name="GrayScaleShader" parent="CanvasLayer/Container" instance=ExtResource( 18 )]
+visible = false
+mouse_filter = 2
+[connection signal="button_up" from="CanvasLayer/Container/VBoxContainer/Sound/ToggleButton" to="." method="_on_ToggleButton_button_up"]
+[connection signal="button_up" from="CanvasLayer/Container/VBoxContainer/Color/Button2" to="." method="_on_Button2_button_up"]
+[connection signal="button_down" from="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Left" to="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl" method="_on_Left_button_down"]
+[connection signal="button_up" from="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Left" to="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl" method="_on_Left_button_up"]
+[connection signal="pressed" from="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Left" to="CanvasLayer/Container/VBoxContainer/GuardSpeed" method="_on_Left_pressed"]
+[connection signal="button_down" from="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Right" to="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl" method="_on_Right_button_down"]
+[connection signal="button_up" from="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Right" to="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl" method="_on_Right_button_up"]
+[connection signal="pressed" from="CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/Right" to="CanvasLayer/Container/VBoxContainer/GuardSpeed" method="_on_Right_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/SettingsActions/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/SettingsActions/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/SettingsActions/Quit" to="." method="_on_Quit_pressed"]

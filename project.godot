@@ -1,0 +1,83 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Guard",
+"language": "GDScript",
+"path": "res://objects/Guard.gd"
+}, {
+"base": "Node2D",
+"class": "Key",
+"language": "GDScript",
+"path": "res://objects/Key.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Uto",
+"language": "GDScript",
+"path": "res://objects/UTO.gd"
+} ]
+_global_script_class_icons={
+"Guard": "",
+"Key": "",
+"Uto": ""
+}
+
+[android]
+
+modules="org/godotengine/godot/Flashlight"
+
+[application]
+
+config/name="YouAreUto"
+run/main_scene="res://scenes/Main.tscn"
+boot_splash/image="res://assets/sprites/splash-img.png"
+boot_splash/bg_color=Color( 0.941176, 0.941176, 0.941176, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://scenes/Global.gd"
+SceneManager="*res://scenes/SceneManager.gd"
+
+[display]
+
+window/size/width=750
+window/size/height=1334
+window/size/test_width=375
+window/size/test_height=600
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[importer_defaults]
+
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
+}
+
+[input]
+
+ui_select={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+quality/2d/use_pixel_snap=true
