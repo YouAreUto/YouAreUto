@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/Components/UtoVictoryArea/UtoVictoryArea.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 134.0
+
+[node name="UtoVictoryArea" type="Area2D" groups=[
+"victory",
+]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_UtoVictoryArea_body_entered"]

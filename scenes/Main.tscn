@@ -157,6 +157,9 @@ margin_top = 188.0
 margin_right = 694.0
 margin_bottom = 266.0
 text = "EXIT"
+decorationTexture = null
+customMargin = false
+customLeftMargin = 0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -193,8 +196,8 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "THINK OUTSIDE THE GAME.
 CHANGE THE RULES TO WIN."
 align = 1
-[connection signal="challengeSelected" from="BG/ChallengesCenterContainer/ChallengeSelectionList" to="." method="_on_ChallengeSelectionList_challengeSelected"]
 [connection signal="challengeSelected" from="BG/ChallengesCenterContainer/ChallengeSelectionList" to="BG/ChallengesCenterContainer/ChallengeNameSound" method="_on_ChallengeSelectionList_challengeSelected"]
+[connection signal="challengeSelected" from="BG/ChallengesCenterContainer/ChallengeSelectionList" to="." method="_on_ChallengeSelectionList_challengeSelected"]
 [connection signal="pressed" from="BG/Buttons/PlayButton" to="BG/Buttons/PlayButton" method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="BG/Buttons/SupportButton" to="BG/Buttons/SupportButton" method="_on_SupportButton_pressed"]
 [connection signal="pressed" from="BG/Buttons/ExitButton" to="." method="_on_Button3_pressed"]

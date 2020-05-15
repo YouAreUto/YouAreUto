@@ -13,9 +13,6 @@
 [ext_resource path="res://scenes/challenges/challenge1/EnemiesMovement.gd" type="Script" id=11]
 [ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=12]
 
-
-
-
 [sub_resource type="Animation" id=1]
 length = 0.8
 tracks/0/type = "value"
@@ -254,7 +251,7 @@ anims/hide_rule = SubResource( 1 )
 [node name="Overlay" parent="." instance=ExtResource( 4 )]
 
 [node name="ColorRect" parent="Overlay" index="0"]
-color = Color( 1, 1, 1, 0 )
+color = Color( 1, 1, 1, 1 )
 
 [node name="GrayScaleShader" parent="Overlay" instance=ExtResource( 5 )]
 visible = false
@@ -412,9 +409,9 @@ position = Vector2( 370, 590 )
 scale = Vector2( 0.5, 0.5 )
 [connection signal="animation_finished" from="Overlay/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]
-[connection signal="hit" from="UTO" to="Bg" method="_on_UTO_hit"]
-[connection signal="hit" from="UTO" to="SwordPath5" method="_on_UTO_hit"]
 [connection signal="hit" from="UTO" to="SwordPath7" method="_on_UTO_hit"]
+[connection signal="hit" from="UTO" to="SwordPath5" method="_on_UTO_hit"]
+[connection signal="hit" from="UTO" to="Bg" method="_on_UTO_hit"]
 [connection signal="killed" from="UTO" to="Overlay" method="_on_UTO_killed"]
 [connection signal="killed" from="UTO" to="." method="_on_UTO_killed"]
 [connection signal="kingKilled" from="UTO" to="." method="_on_UTO_kingKilled"]

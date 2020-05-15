@@ -7,14 +7,17 @@ signal kingKilled
 
 # customizable parameters
 
-var speed = 20
 # var mouse_drag_treshold = 22
 onready var detectionRadiusForDrag = 100
 onready var dragThresholdForMovement = 26
+onready var utoSize := getUtoSize()
+onready var vwSize = get_viewport_rect().size
+
 export var enemiesInteractionEnabled := true # set to false when Uto is used in a menu and you don't want him to kill or be killed
 export var showOutline := true
 
 # state variables
+var speed = 20
 var velocity := Vector2()
 var target_position := Vector2()  # target position in global coordinates
 var followMouse = false
@@ -23,9 +26,7 @@ var hovering = false  # true when mouse is on Uto, false otherwise (for mouse in
 var holding = false  # true when drag start from  Uto, false otherwise (for touch input)
 var heraldKilled = false
 var alive = true # true if UTO is alive
-onready var utoSize := getUtoSize()
 var activateDrag = false
-
 
 func _ready():
 	$Trail.emitting = true
@@ -101,7 +102,6 @@ func getUtoSize() -> Vector2:
 	)
 
 func clampPositionInsideTheScreen():
-	var vwSize = get_viewport_rect().size
 	# clamp Uto inside the viewport
 	if position.x < utoSize.x:
 		position.x = utoSize.x

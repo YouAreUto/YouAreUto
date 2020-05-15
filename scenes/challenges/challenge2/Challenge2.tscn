@@ -16,7 +16,6 @@
 [ext_resource path="res://objects/shaders/GrayScaleShader.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/sounds/BellSound.tscn" type="PackedScene" id=16]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 30 )
 

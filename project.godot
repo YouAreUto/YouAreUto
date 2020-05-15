@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Challenge",
+"language": "GDScript",
+"path": "res://scenes/Challenge.gd"
+}, {
 "base": "Node2D",
 "class": "Guard",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://objects/UTO.gd"
 } ]
 _global_script_class_icons={
+"Challenge": "",
 "Guard": "",
 "Key": "",
 "Uto": ""

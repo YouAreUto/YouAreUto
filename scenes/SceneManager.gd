@@ -1,6 +1,7 @@
 extends Node
 
 var current_scene: Node = null
+var current_challenge: Challenge
 
 
 func _ready():
@@ -28,7 +29,7 @@ func _deferred_goto_scene(path: String, params = null):
 	if s == null:
 		print("Error: path '%s' does not contain any Scene" % path)
 		print("Forcing CTA")
-		s = ResourceLoader.load("res://scenes/cta2/CTA.tscn")
+		s = ResourceLoader.load("res://scenes/cta/CTA.tscn")
 
 	# Instance the new scene.
 	current_scene = s.instance()

@@ -69,7 +69,7 @@ func getChallengePath(index: int) -> Dictionary:
 			"challenge": "res://scenes/challenges/challenge5/Challenge5.tscn",
 		},
 		{
-			"intro": "res://scenes/cta2/CTA2.tscn",
+			"intro": "res://scenes/cta/CTA.tscn",
 		},
 	]
 	return challengesOrder[index - 1]

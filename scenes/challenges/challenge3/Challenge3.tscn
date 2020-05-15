@@ -38,7 +38,6 @@
 [ext_resource path="res://assets/sprites/objects/rainproof-roof.png" type="Texture" id=37]
 [ext_resource path="res://objects/overlay/Overlay.tscn" type="PackedScene" id=38]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 113.645, 22 )
 
@@ -268,6 +267,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
+trigger = false
 
 [node name="ch5-hour-1" type="Sprite" parent="Text/Hours"]
 position = Vector2( -283.597, 60.7913 )
