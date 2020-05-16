@@ -22,10 +22,9 @@ __meta__ = {
 
 [node name="UTO" parent="." instance=ExtResource( 2 )]
 position = Vector2( 367.08, 290.667 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="UtoVictoryArea" parent="." instance=ExtResource( 5 )]
-position = Vector2( 171.363, 1030.6 )
+position = Vector2( 168.928, 1069.56 )
 
 [node name="Label" type="Label" parent="UtoVictoryArea"]
 margin_left = -72.0
@@ -40,7 +39,7 @@ __meta__ = {
 }
 
 [node name="UtoGameoverArea" parent="." instance=ExtResource( 4 )]
-position = Vector2( 593.23, 1018.85 )
+position = Vector2( 595.665, 1055.38 )
 
 [node name="Label" type="Label" parent="UtoGameoverArea"]
 margin_left = -93.0

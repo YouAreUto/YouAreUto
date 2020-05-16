@@ -295,7 +295,6 @@ anims/patrol = SubResource( 10 )
 
 [node name="UTO" parent="ChallengeEntities" instance=ExtResource( 12 )]
 position = Vector2( 393.773, 648.107 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="Challenge2Behaviour" type="Node" parent="ChallengeEntities/UTO"]
 script = ExtResource( 13 )
@@ -313,8 +312,8 @@ visible = false
 
 [node name="UtoBecomeServantSound" parent="." instance=ExtResource( 16 )]
 [connection signal="body_entered" from="BG/ObjectiveArea" to="." method="_on_ObjectiveArea_body_entered"]
-[connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="." method="_on_Definitely_UtoBecameACastleServant"]
 [connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="ChallengeEntities/UTO/Challenge2Behaviour" method="_on_Definitely_UtoBecameACastleServant"]
+[connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="." method="_on_Definitely_UtoBecameACastleServant"]
 [connection signal="body_entered" from="BG/Sprite/Definitely/UtoDetector" to="BG/Sprite/Definitely" method="_on_UtoDetector_body_entered"]
 [connection signal="body_exited" from="BG/Sprite/Definitely/UtoDetector" to="BG/Sprite/Definitely" method="_on_UtoDetector_body_exited"]
 [connection signal="body_entered" from="BG/Sprite/Definitely/YouDetector" to="BG/Sprite/Definitely" method="_on_YouDetector_body_entered"]

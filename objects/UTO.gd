@@ -1,32 +1,30 @@
-extends KinematicBody2D
 class_name Uto
+extends KinematicBody2D
 
 signal killed
 signal hit
 signal kingKilled
 
-# customizable parameters
-
-# var mouse_drag_treshold = 22
-onready var detectionRadiusForDrag = 100
-onready var dragThresholdForMovement = 26
-onready var utoSize := getUtoSize()
+onready var _bounds = $_bounds
 onready var vwSize = get_viewport_rect().size
+onready var utoSize := getUtoSize()
 
-export var enemiesInteractionEnabled := true # set to false when Uto is used in a menu and you don't want him to kill or be killed
+export var enemiesInteractionEnabled := true # set it to false when Uto is
+# used in a menu and you don't want him to kill or be killed
 export var showOutline := true
 
-# state variables
 var speed = 20
 var velocity := Vector2()
 var target_position := Vector2()  # target position in global coordinates
-var followMouse = false
 var colliding = false
-var hovering = false  # true when mouse is on Uto, false otherwise (for mouse input)
-var holding = false  # true when drag start from  Uto, false otherwise (for touch input)
+var holding = false  # true when drag start from  Uto,
+# false otherwise
 var heraldKilled = false
 var alive = true # true if UTO is alive
-var activateDrag = false
+
+const detectionRadiusForDrag = 100
+const dragThresholdForMovement = 26
+
 
 func _ready():
 	$Trail.emitting = true
@@ -34,72 +32,44 @@ func _ready():
 
 
 func _physics_process(delta):
+	if not alive:
+		return
 	# if user is not giving input
 	if not holding:
 		# don't move UTO
 		target_position = global_position
-		activateDrag = false
 		return
-
-	# if uto is dead
-	if !alive:
-		# don't move it
-		return
-
-	# position = target_position
 	if (target_position - position).length() > dragThresholdForMovement:
-		activateDrag = true
-
-	if activateDrag:
 		move_and_slide(speed * (target_position - position))
 		clampPositionInsideTheScreen()
 
 
-func _input(event):
+func _unhandled_input(event):
 	if not alive:
 		return
-
-	if event is InputEventScreenDrag or event is InputEventScreenTouch:
-		handle_touch_input(event)
-	if event is InputEventMouseMotion or event is InputEventMouseButton:
-		return
-		handle_mouse_input(event)
-
-
-func handle_mouse_input(event):
-	var previousPos = global_position
-
-	if event is InputEventMouseMotion:
-		if followMouse:
-			velocity = get_local_mouse_position().normalized() * speed
-
-	if hovering:
-		if event.is_action_pressed("ui_select"):
-			followMouse = true
-
-	if event.is_action_released("ui_select"):
-		followMouse = false
-		velocity = Vector2()
-
-
-func handle_touch_input(event):
 	if event is InputEventScreenDrag:
-		# uto movement
-		target_position = event.position
-
+		handle_drag(event)
 	if event is InputEventScreenTouch:
-		if event.pressed and event.position.distance_to(global_position) < detectionRadiusForDrag:
-			holding = true
+		handle_touch(event)
 
-		if !event.pressed	:
-			holding = false
+
+func handle_drag(event: InputEventScreenDrag):
+	target_position = event.position
+
+
+func handle_touch(event: InputEventScreenTouch):
+	if event.pressed and event.position.distance_to(global_position) < detectionRadiusForDrag:
+		holding = true
+	if not event.pressed:
+		holding = false
 
 
 func getUtoSize() -> Vector2:
 	return Vector2(
-		$_bounds.shape.extents.x * scale.x,
-		$_bounds.shape.extents.y * scale.y
+		_bounds.shape.extents.x * scale.x,
+		_bounds.shape.extents.y * scale.y
 	)
+
 
 func clampPositionInsideTheScreen():
 	# clamp Uto inside the viewport
@@ -133,10 +103,3 @@ func _on_HitArea_area_entered(area: Area2D):
 func killUto():
 	alive = false
 	emit_signal("killed")
-
-
-func _on_InputArea_mouse_entered():
-	hovering = true
-
-func _on_InputArea_mouse_exited():
-	hovering = false
