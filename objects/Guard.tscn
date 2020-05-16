@@ -5,7 +5,6 @@
 [ext_resource path="res://objects/Guard.gd" type="Script" id=3]
 [ext_resource path="res://objects/Components/UtoGameoverArea/UtoGameoverArea.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 134, 134 )
 
@@ -20,7 +19,9 @@ texture = ExtResource( 1 )
 scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 2 )
 
-[node name="Area2D" parent="." instance=ExtResource( 4 )]
+[node name="Area2D" parent="." groups=[
+"enemy",
+] instance=ExtResource( 4 )]
 
 [node name="Bounds" type="Area2D" parent="."]
 

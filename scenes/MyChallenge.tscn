@@ -1,12 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/MyChallenge.gd" type="Script" id=1]
 [ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=2]
-[ext_resource path="res://resources/ChallengeNumberFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://objects/Components/UtoGameoverArea/UtoGameoverArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/Components/UtoVictoryArea/UtoVictoryArea.tscn" type="PackedScene" id=5]
 
-[node name="MyChallenge" type="Node2D"]
+[node name="MyChallenge" type="Node"]
 script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -15,41 +14,17 @@ layer = -1
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.976471, 0.968627, 0.972549, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="UTO" parent="." instance=ExtResource( 2 )]
-position = Vector2( 367.08, 290.667 )
+position = Vector2( 377.63, 314.691 )
 
 [node name="UtoVictoryArea" parent="." instance=ExtResource( 5 )]
-position = Vector2( 168.928, 1069.56 )
-
-[node name="Label" type="Label" parent="UtoVictoryArea"]
-margin_left = -72.0
-margin_top = -26.0
-margin_right = 78.0
-margin_bottom = 20.0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "VICTORY"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+position = Vector2( 589.633, 1010.33 )
 
 [node name="UtoGameoverArea" parent="." instance=ExtResource( 4 )]
-position = Vector2( 595.665, 1055.38 )
-
-[node name="Label" type="Label" parent="UtoGameoverArea"]
-margin_left = -93.0
-margin_top = -21.0
-margin_right = 103.0
-margin_bottom = 25.0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "GAMEOVER"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="killed" from="UTO" to="." method="_on_UTO_killed"]
+position = Vector2( 188.815, 990.45 )

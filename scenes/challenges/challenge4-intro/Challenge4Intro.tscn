@@ -21,9 +21,6 @@
 [ext_resource path="res://objects/shaders/GrayScaleShader.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/overlay/Overlay.tscn" type="PackedScene" id=20]
 
-
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 62
 font_data = ExtResource( 4 )
@@ -73,6 +70,7 @@ stream = ExtResource( 1 )
 [node name="Control" type="Control" parent="BG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -431,9 +429,9 @@ visible = false
 
 [node name="Overlay" parent="." instance=ExtResource( 20 )]
 [connection signal="gameover" from="." to="." method="_on_Challenge4Intro_gameover"]
-[connection signal="red_text_pushable" from="." to="BG/Control/RedText" method="_on_Challenge4Intro_red_text_pushable"]
 [connection signal="red_text_pushable" from="." to="BG/Control/ToWin" method="_on_Challenge4Intro_red_text_pushable"]
-[connection signal="victory" from="." to="." method="_on_Challenge4Intro_victory"]
+[connection signal="red_text_pushable" from="." to="BG/Control/RedText" method="_on_Challenge4Intro_red_text_pushable"]
 [connection signal="victory" from="." to="BG/Control/DragUtoHereLabel" method="_on_Challenge4Intro_victory"]
+[connection signal="victory" from="." to="." method="_on_Challenge4Intro_victory"]
 [connection signal="area_entered" from="BG/Control/BlueTextCanBePushed/Area2D" to="." method="_on_BlueTextCanBePushed_Area2D_area_entered"]
 [connection signal="body_entered" from="BG/Control/SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]

@@ -86,7 +86,7 @@ func clampPositionInsideTheScreen():
 
 func _on_HitArea_area_entered(area: Area2D):
 	if !enemiesInteractionEnabled: return
-	# UTO dies on enemy collision
+	# UTO dies on enemy collision (this is a legacy check for challenge 1 to 5)
 	if area.is_in_group("enemy") and !Global.challengeData.get("UtoIsAServant"):
 		killUto()
 	# UTO kills on Herald collision

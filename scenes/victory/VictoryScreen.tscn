@@ -62,6 +62,9 @@ __meta__ = {
 margin_right = 631.0
 margin_bottom = 78.0
 text = "NEXT CHALLENGE"
+decorationTexture = null
+customMargin = false
+customLeftMargin = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/Next"]
 visible = false
@@ -73,12 +76,18 @@ margin_top = 94.0
 margin_right = 631.0
 margin_bottom = 172.0
 text = "RESTART"
+decorationTexture = null
+customMargin = false
+customLeftMargin = 0
 
 [node name="Quit" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 188.0
 margin_right = 631.0
 margin_bottom = 266.0
 text = "QUIT"
+decorationTexture = null
+customMargin = false
+customLeftMargin = 0
 
 [node name="Node2D" type="Node2D" parent="."]
 __meta__ = {

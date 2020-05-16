@@ -10,15 +10,13 @@
 [ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/overlay/Overlay.tscn" type="PackedScene" id=9]
 
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 728.289, 34.5837 )
 
 [node name="Challenge5Intro" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -133,6 +131,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -580.0
+mouse_filter = 2
 color = Color( 0.145098, 0.137255, 0.141176, 1 )
 __meta__ = {
 "_edit_lock_": true,
@@ -149,7 +148,6 @@ shape = SubResource( 1 )
 
 [node name="UTO" parent="." instance=ExtResource( 8 )]
 position = Vector2( 386.11, 899.639 )
-scale = Vector2( 0.5, 0.5 )
 showOutline = false
 
 [node name="Overlay" parent="." instance=ExtResource( 9 )]

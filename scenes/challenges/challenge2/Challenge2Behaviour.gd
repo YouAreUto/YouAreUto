@@ -4,6 +4,7 @@ onready var uto: Uto = get_parent()
 
 export(Texture) var servant_texture
 
+
 func becomeAServant():
 	uto.get_node("Sprite").texture = load("res://assets/sprites/characters/char-servant.png")
 	changeTrailColor()

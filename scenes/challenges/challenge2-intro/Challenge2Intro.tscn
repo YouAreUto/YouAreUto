@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/challenges/challenge2-intro/Challenge2Intro.gd" type="Script" id=1]
+[ext_resource path="res://scenes/WhiteBackground/BG.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/challenges/challenge2-intro/IntroNodes.gd" type="Script" id=3]
 [ext_resource path="res://assets/sprites/logo-in-game-black.png" type="Texture" id=4]
 [ext_resource path="res://resources/ChallengeNumberFont.tres" type="DynamicFont" id=5]
@@ -11,7 +12,6 @@
 [ext_resource path="res://objects/Castle.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/challenges/intro/DragUtoHereToStart.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=12]
-
 
 [sub_resource type="DynamicFont" id=1]
 size = 62
@@ -49,16 +49,7 @@ tracks/0/keys = {
 [node name="Challenge2Intro" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="BGLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="BG" type="ColorRect" parent="BGLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.976471, 0.968627, 0.972549, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="BG" parent="." instance=ExtResource( 2 )]
 
 [node name="IntroNodes" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -150,7 +141,6 @@ align = 1
 
 [node name="UTO" parent="IntroNodes" instance=ExtResource( 12 )]
 position = Vector2( 260, 490 )
-scale = Vector2( 0.5, 0.5 )
 enemiesInteractionEnabled = false
 
 [node name="Overlay" type="CanvasLayer" parent="."]
@@ -158,6 +148,7 @@ enemiesInteractionEnabled = false
 [node name="ColorRect" type="ColorRect" parent="Overlay"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_lock_": true

@@ -1,13 +1,21 @@
 extends Area2D
 
-signal victory_area_touched
-
-
-func _on_UtoVictoryArea_body_entered(body):
-	if body is Uto:
-		emit_signal("victory_area_touched")
+signal uto_touched_victory_area
 
 
 func _enter_tree():
-	connect("victory_area_touched", SceneManager.current_challenge, "_on_uto_victory_area_touched")
+	connect(
+		"body_entered",
+		self,
+		"_on_body_entered"
+	)
+	connect(
+		"uto_touched_victory_area",
+		SceneManager.current_challenge,
+		"_on_uto_touched_victory_area"
+	)
 
+
+func _on_body_entered(body):
+	if body is Uto:
+		emit_signal("uto_touched_victory_area")

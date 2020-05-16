@@ -16,11 +16,11 @@ func _ready():
 	assert(title != "")
 
 
-func _on_uto_gameover_area_touched():
+func _on_uto_touched_gameover_area():
 	emit_signal("game_over")
 	SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn")
 
 
-func _on_uto_victory_area_touched():
+func _on_uto_touched_victory_area():
 	emit_signal("victory")
 	SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn")

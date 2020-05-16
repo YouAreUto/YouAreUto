@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/challenges/challenge2/Challenge2.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/C2.ogg" type="AudioStream" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/sprites/challenges/2-standard-identities/ch2-text.png" type="Texture" id=5]
 [ext_resource path="res://scenes/challenges/challenge2/Definitely.gd" type="Script" id=6]
 [ext_resource path="res://assets/sprites/challenges/2-standard-identities/ch2-text-definitely.png" type="Texture" id=7]
+[ext_resource path="res://scenes/WhiteBackground/BG.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/SettingsIcon.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/challenges/challenge2/ChallengeEntities.gd" type="Script" id=10]
 [ext_resource path="res://objects/Guard.tscn" type="PackedScene" id=11]
@@ -93,16 +94,7 @@ tracks/0/keys = {
 [node name="Challenge2" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="BG" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="BG"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.976471, 0.968627, 0.972549, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="BG" parent="." instance=ExtResource( 8 )]
 
 [node name="ObjectiveArea" type="Area2D" parent="BG"]
 position = Vector2( 390, 182 )
@@ -307,8 +299,7 @@ anims/appear = SubResource( 11 )
 
 [node name="GrayScaleShader" parent="Overlay" instance=ExtResource( 15 )]
 visible = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+mouse_filter = 2
 
 [node name="UtoBecomeServantSound" parent="." instance=ExtResource( 16 )]
 [connection signal="body_entered" from="BG/ObjectiveArea" to="." method="_on_ObjectiveArea_body_entered"]
@@ -318,8 +309,8 @@ visible = false
 [connection signal="body_exited" from="BG/Sprite/Definitely/UtoDetector" to="BG/Sprite/Definitely" method="_on_UtoDetector_body_exited"]
 [connection signal="body_entered" from="BG/Sprite/Definitely/YouDetector" to="BG/Sprite/Definitely" method="_on_YouDetector_body_entered"]
 [connection signal="body_entered" from="BG/ui-settings" to="." method="_on_uisettings_body_entered"]
-[connection signal="killed" from="ChallengeEntities/UTO" to="." method="_on_UTO_killed"]
 [connection signal="killed" from="ChallengeEntities/UTO" to="Overlay" method="_on_UTO_killed"]
+[connection signal="killed" from="ChallengeEntities/UTO" to="." method="_on_UTO_killed"]
 [connection signal="animation_finished" from="Overlay/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Overlay"]

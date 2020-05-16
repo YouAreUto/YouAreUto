@@ -11,7 +11,7 @@ func fadeIn():
 
 func fadeToDark():
 	$AnimationPlayer.play("fadeToDark")
-	
-	
+
+
 func fadeFromDark():
 	$AnimationPlayer.play("fadeFromDark")
