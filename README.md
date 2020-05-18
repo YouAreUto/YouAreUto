@@ -90,7 +90,7 @@ Remember to:
   - dispatch the `game_over` signal
 - Create a Pull Request to submit your challenge 🎉
 
-### Official challenge
+### Official Challenge
 
 When a challenge is fully developed and tested the admins make it an 
 Official Challenge and add it to the official app. 
