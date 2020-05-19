@@ -35,8 +35,8 @@ Here you can get in touch to discuss anything about YouAreUto.
 
 ## Challenge submission process
 
-> Idea -> Prospect -> Official
-> 
+![challenge flow](https://user-images.githubusercontent.com/6860637/82320094-03da2a80-99d3-11ea-913a-9c219329214c.png)
+ 
 ### Challenge Idea
 
 New challenges can be proposed by any member of the community.
@@ -72,6 +72,14 @@ they can ask for help to the community for the design and development.
 
 Community members cannot independently take over other members’ ideas.
 
+### Official Challenge
+
+When a challenge is fully developed and tested the admins make it an 
+Official Challenge and add it to the official app. 
+
+Each Official Challenge gets a progressive number (i.e. the first 
+Official Challenge after the MVP will get number 6). 
+
 ### Challenge Development
 
 > :warning: This guide is a reference, we are currently working on a refactoring
@@ -90,13 +98,8 @@ Remember to:
   - dispatch the `game_over` signal
 - Create a Pull Request to submit your challenge 🎉
 
-### Official Challenge
-
-When a challenge is fully developed and tested the admins make it an 
-Official Challenge and add it to the official app. 
-
-Each Official Challenge gets a progressive number (i.e. the first 
-Official Challenge after the MVP will get number 6). 
+You don't need to create the challenge title audio (eg: [C1.ogg](https://github.com/YouAreUto/YouAreUto/blob/master/assets/sounds/C1.ogg)).  
+Admins will create it and integrate it in the game.
 
 ### Support us
 
