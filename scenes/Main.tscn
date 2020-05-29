@@ -1,75 +1,39 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
-[ext_resource path="res://scenes/WhiteBackground/BG.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://scenes/challenge-selection-list/ChallengeSelectionList.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/challenge-selection-list/ChallengeNameSound.gd" type="Script" id=6]
-[ext_resource path="res://objects/ui/Button.tscn" type="PackedScene" id=7]
-[ext_resource path="res://resources/RedButtonCornerStyle.tres" type="StyleBox" id=8]
-[ext_resource path="res://scenes/challenge-selection-list/PlayButton.gd" type="Script" id=9]
-[ext_resource path="res://scenes/Main/SupportButton.gd" type="Script" id=11]
-[ext_resource path="res://assets/sprites/uto-logo.png" type="Texture" id=12]
+[ext_resource path="res://scenes/Main/MainMenu.tscn" type="PackedScene" id=2]
 
-[sub_resource type="DynamicFont" id=1]
-size = 55
-use_filter = true
-font_data = ExtResource( 4 )
-
-[sub_resource type="Animation" id=2]
-length = 6.0
+[sub_resource type="Animation" id=1]
+resource_name = "hide_overlay"
+length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 3, 3.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 1, 2.9, 3.9 ),
-"transitions": PoolRealArray( 0.450625, 0.554784, 1, -2, 1 ),
-"update": 0,
-"values": [ Vector2( 0.1, 0.1 ), Vector2( 0.27, 0.27 ), Vector2( 0.25, 0.25 ), Vector2( 0.27, 0.27 ), Vector2( 0.3, 0.3 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../ColorRect:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 3.8, 4.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../Label:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.6, 2.9, 3.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=3]
-size = 38
-font_data = ExtResource( 4 )
+[sub_resource type="Animation" id=2]
+resource_name = "show_overlay"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -78,90 +42,13 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="BG" parent="." instance=ExtResource( 3 )]
+[node name="CurrentScene" type="Node" parent="."]
 
-[node name="YouAreYouLabel" type="Label" parent="BG"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -157.0
-margin_top = 132.0
-margin_right = 157.0
-margin_bottom = 198.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "YOU ARE YOU."
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Node" parent="CurrentScene" instance=ExtResource( 2 )]
 
-[node name="ChallengesCenterContainer" type="CenterContainer" parent="BG"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -260.0
-margin_top = -407.5
-margin_right = 260.0
-margin_bottom = 305.5
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="Transition" type="CanvasLayer" parent="."]
 
-[node name="ChallengeSelectionList" parent="BG/ChallengesCenterContainer" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 520.0
-margin_bottom = 713.0
-
-[node name="ChallengeNameSound" type="AudioStreamPlayer" parent="BG/ChallengesCenterContainer"]
-script = ExtResource( 6 )
-
-[node name="Buttons" type="VBoxContainer" parent="BG"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 28.0
-margin_top = -294.0
-margin_right = -28.0
-margin_bottom = -28.0
-custom_constants/separation = 16
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="PlayButton" parent="BG/Buttons" instance=ExtResource( 7 )]
-modulate = Color( 1, 1, 1, 0.501961 )
-margin_right = 694.0
-margin_bottom = 78.0
-custom_styles/disabled = ExtResource( 8 )
-custom_colors/font_color_disabled = Color( 0.717647, 0.141176, 0.141176, 1 )
-disabled = true
-text = "PLAY THIS CHALLENGE"
-script = ExtResource( 9 )
-challengeSelectionListPath = NodePath("../../ChallengesCenterContainer/ChallengeSelectionList")
-challengeSoundPlayerPath = NodePath("../../ChallengesCenterContainer/ChallengeNameSound")
-
-[node name="SupportButton" parent="BG/Buttons" instance=ExtResource( 7 )]
-margin_top = 94.0
-margin_right = 694.0
-margin_bottom = 172.0
-text = "EXTRA"
-script = ExtResource( 11 )
-
-[node name="ExitButton" parent="BG/Buttons" instance=ExtResource( 7 )]
-margin_top = 188.0
-margin_right = 694.0
-margin_bottom = 266.0
-text = "EXIT"
-decorationTexture = null
-customMargin = false
-customLeftMargin = 0
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Transition"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -169,35 +56,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 12 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Logo"]
-autoplay = "disappear"
-anims/disappear = SubResource( 2 )
-
-[node name="Label" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -223.0
-margin_top = 262.5
-margin_right = 223.0
-margin_bottom = 357.5
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "THINK OUTSIDE THE GAME.
-CHANGE THE RULES TO WIN."
-align = 1
-[connection signal="challengeSelected" from="BG/ChallengesCenterContainer/ChallengeSelectionList" to="BG/ChallengesCenterContainer/ChallengeNameSound" method="_on_ChallengeSelectionList_challengeSelected"]
-[connection signal="challengeSelected" from="BG/ChallengesCenterContainer/ChallengeSelectionList" to="." method="_on_ChallengeSelectionList_challengeSelected"]
-[connection signal="pressed" from="BG/Buttons/PlayButton" to="BG/Buttons/PlayButton" method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="BG/Buttons/SupportButton" to="BG/Buttons/SupportButton" method="_on_SupportButton_pressed"]
-[connection signal="pressed" from="BG/Buttons/ExitButton" to="." method="_on_Button3_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+anims/hide_overlay = SubResource( 1 )
+anims/show_overlay = SubResource( 2 )

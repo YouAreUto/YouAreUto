@@ -19,3 +19,8 @@ func _on_PlayButton_pressed() -> void:
 		startChallenge(challenge)
 	else:
 		print("Invalid challenge selected:", challenge)
+
+
+func _on_ChallengeSelectionList_challengeSelected(challenge_id) -> void:
+	modulate.a = 1
+	disabled = false

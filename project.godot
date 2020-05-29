@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://objects/Key.gd"
 }, {
+"base": "Node",
+"class": "Main",
+"language": "GDScript",
+"path": "res://scenes/Main.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Uto",
 "language": "GDScript",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "Challenge": "",
 "Guard": "",
 "Key": "",
+"Main": "",
 "Uto": ""
 }
 

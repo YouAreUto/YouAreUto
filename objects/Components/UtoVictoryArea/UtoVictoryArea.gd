@@ -18,4 +18,5 @@ func _enter_tree():
 
 func _on_body_entered(body):
 	if body is Uto:
+		body.set_physics_process(false)
 		emit_signal("uto_touched_victory_area")

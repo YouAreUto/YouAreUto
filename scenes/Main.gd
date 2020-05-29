@@ -1,12 +1,21 @@
+class_name Main
 extends Node
 
+onready var anim: AnimationPlayer = $Transition/AnimationPlayer
+onready var current_scene := $CurrentScene
 
 
 func _ready():
-	var view_size = get_viewport().get_visible_rect().size
-	$Logo.position.x = view_size.x / 2
-	$Logo.position.y = view_size.y / 2
+	hide_overlay()
 #	SceneManager.goto_scene("res://scenes/challenges/challenge2/Challenge2.tscn")
+
+
+func show_overlay():
+	anim.play("show_overlay")
+
+
+func hide_overlay():
+	anim.play("hide_overlay")
 
 
 func _on_Button3_pressed() -> void:
