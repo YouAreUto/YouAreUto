@@ -1,7 +1,6 @@
 extends Node2D
 
 onready var overlayAnims = get_parent().get_node("Overlay/AnimationPlayer")
-onready var challengeNodes = get_parent().get_node("ChallengeNodes")
 
 
 func _on_Area2D_body_entered(body):

@@ -3,7 +3,7 @@ extends Node2D
 
 # dependencies
 onready var challenge = $Node2D/Challenge
-onready var title = $Node2D/Title
+onready var title_label = $Node2D/Title
 onready var logo = $Node2D/Logo
 onready var herald = $Node2D/Herald
 onready var heraldText = $Node2D/HeraldText
@@ -12,7 +12,11 @@ onready var utoText = $Node2D/UtoText
 onready var king = $Node2D/King
 onready var kingText = $Node2D/KingText
 
-
+#
+#func _init():
+#	title = "Royal Rules"
+#
+	
 func _ready():
 	Global.data["currentChallenge"] = 1
 	get_viewport().connect("size_changed", self, "on_screen_resized")
@@ -42,8 +46,8 @@ func positionObjects():
 	# challenge is a label ("Challenge 1")
 	challenge.rect_position.x = vwCenterX - challenge.rect_size.x / 2
 	challenge.rect_position.y = newSize.y * 0.05 - challenge.rect_size.y / 2
-	title.rect_position.x = vwCenterX - title.rect_size.x / 2
-	title.rect_position.y = (challenge.rect_position.y + challenge.rect_size.y)
+	title_label.rect_position.x = vwCenterX - title_label.rect_size.x / 2
+	title_label.rect_position.y = (challenge.rect_position.y + challenge.rect_size.y)
 
 	# uto
 	var utoSize = uto.get_node("Sprite").texture.get_size()

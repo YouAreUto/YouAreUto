@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/UTO.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/vfx/white-circle.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/characters/char-outline-uto.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/characters/char-uto.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/characters/char-siluette-neutral.png" type="Texture" id=5]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.714286, 1 )
@@ -33,7 +32,7 @@ color_ramp = SubResource( 2 )
 [sub_resource type="CircleShape2D" id=6]
 radius = 110.0
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 132, 133 )
 
 [node name="UTO" type="KinematicBody2D"]
@@ -56,11 +55,6 @@ texture = ExtResource( 3 )
 scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 4 )
 
-[node name="Bg" type="Sprite" parent="."]
-visible = false
-self_modulate = Color( 0.756863, 0, 0, 1 )
-texture = ExtResource( 5 )
-
 [node name="KinematicCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 6 )
 __meta__ = {
@@ -75,7 +69,8 @@ shape = SubResource( 6 )
 
 [node name="_bounds" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 8 )
+shape = SubResource( 7 )
+disabled = true
 __meta__ = {
 "_editor_description_": "Used for getUtoSize function"
 }

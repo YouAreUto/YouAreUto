@@ -5,9 +5,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 134.0
 
-[node name="UtoVictoryArea" type="Area2D" groups=[
-"victory",
-]]
+[node name="UtoVictoryArea" type="Area2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

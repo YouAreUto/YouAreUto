@@ -11,8 +11,7 @@ func _ready():
 
 
 func goto_scene(path: String, params = null):
-	# full documentation here: http://docs.godotengine.org/en/3.0/getting_started/step_by_step/singletons_autoload.html
-	main_scene.show_overlay()
+	main_scene.anim.play("show_overlay")
 	yield(main_scene.anim, "animation_finished")
 	call_deferred("_deferred_goto_scene", path, params)
 
@@ -25,7 +24,7 @@ func _deferred_goto_scene(path: String, params = null):
 	var new_scene = _instance_scene_by_path(path)
 	# load it into the SceneTree
 	main_scene.current_scene.add_child(new_scene)
-	main_scene.hide_overlay()
+	main_scene.anim.play("hide_overlay")
 	if params:
 		new_scene.init(params)
 

@@ -3,7 +3,6 @@ extends Node2D
 # shortcuts to inner nodes
 
 onready var text := $CanvasLayer/Text
-onready var nextChallengeBtn := $Node2D/NextChallengeButton
 
 
 func _ready():

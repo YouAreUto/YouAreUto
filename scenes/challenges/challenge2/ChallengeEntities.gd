@@ -1,17 +1,18 @@
 extends Node2D
 
 # the 3 horizontally aligned guards in front of the castle
-export(NodePath) var servantNode # left
-export(NodePath) var servant2Node # center
-export(NodePath) var servant3Node # right
+onready var servant = $Servant
+onready var servant2 = $Servant2
+onready var servant3 = $Servant3
 
-onready var servant = get_node(servantNode)
-onready var servant2 = get_node(servant2Node)
-onready var servant3 = get_node(servant3Node)
-
-
-func _ready():
-	pass
+onready var servants = [
+	servant, 
+	servant2,
+	servant3,
+	$ServantLeftPath/PathFollow2D/Servant4,
+	$ServantCenterPath/PathFollow2D/Servant4,
+	$ServantRightPath/PathFollow2D/Servant4
+]
 
 
 func setServantPaths():
@@ -43,3 +44,8 @@ func setServantPaths():
 
 #	for point in range(servantLeftPath.curve.get_point_count()):
 #		print(point, servantLeftPath.curve.get_point_position(point))
+
+
+func _on_Definitely_UtoBecameACastleServant():
+	for servant in servants:
+		servant.get_node("UtoGameoverArea").monitoring = false

@@ -16,11 +16,11 @@ size = 55
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 38
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -141,13 +141,16 @@ margin_top = 188.0
 margin_right = 694.0
 margin_bottom = 266.0
 text = "EXIT"
+decorationTexture = null
+customMargin = false
+customLeftMargin = 0
 
 [node name="Label" type="Label" parent="Buttons"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 282.0
 margin_right = 694.0
 margin_bottom = 377.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "THINK OUTSIDE THE GAME.
 CHANGE THE RULES TO WIN."
@@ -174,8 +177,9 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Logo"]
 autoplay = "disappear"
-anims/disappear = SubResource( 2 )
-[connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="Buttons/PlayButton" method="_on_ChallengeSelectionList_challengeSelected"]
+playback_speed = 10.0
+anims/disappear = SubResource( 3 )
 [connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="ChallengesCenterContainer/ChallengeNameSound" method="_on_ChallengeSelectionList_challengeSelected"]
+[connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="Buttons/PlayButton" method="_on_ChallengeSelectionList_challengeSelected"]
 [connection signal="pressed" from="Buttons/PlayButton" to="Buttons/PlayButton" method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Buttons/SupportButton" to="Buttons/SupportButton" method="_on_SupportButton_pressed"]

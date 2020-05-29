@@ -1,10 +1,9 @@
-extends Node2D
+extends Challenge
 
-var vwSize := Vector2() # viewport size, updated on resize
-var originalVwSize := Vector2()
-
+onready var uto: Uto = $UTO
+onready var king = $King
 onready var characters = [
-	$King,
+	king,
 	$HeraldPath,
 	$SwordPath,
 	$SwordPath2,
@@ -15,37 +14,34 @@ onready var characters = [
 	$SwordPath7
 ]
 
-onready var settingsIcon = $SettingsIcon
+var viewport_size := Vector2() # viewport size, updated on resize
 
+
+func _init():
+	title = "Royal Rules"
+	
 
 func _ready():
 	Global.data["currentChallenge"] = 1
-
-	# setGuardSpeed()
-
+	# set_guard_speed()
 	$Overlay/GrayScaleShader.visible = Global.challengeData.get("monochrome", false)
-
-	vwSize = get_viewport_rect().size
-	originalVwSize = vwSize
-
-	positionObjects()
-	get_viewport().connect("size_changed", self, "_on_size_changed")
+	viewport_size = get_viewport_rect().size
+	set_positions()
+	# useful for development (eg: if you resize the game window)
+	get_viewport().connect("size_changed", self, "_on_viewport_size_changed")
 
 
-func setGuardSpeed():
-	var animationsSpeed = Global.challengeData.get("guardSpeed")
-	if animationsSpeed != null:
+func set_guard_speed():
+	var animations_speed = Global.challengeData.get("guardSpeed")
+	if animations_speed != null:
 		for ap in get_tree().get_nodes_in_group("enemyAnimationPlayers"):
 			var a: AnimationPlayer = ap
-			a.playback_speed = a.playback_speed * pow(animationsSpeed, 1.3)
-
-func positionObjects():
-	setPositions()
+			a.playback_speed = a.playback_speed * pow(animations_speed, 1.3)
 
 
-func setPositions():
+func set_positions():
 	"""Positions UTO, NPCs, sprites, enemies. Note: calling this during gameplay can break the gameplay"""
-	$UTO.position = Vector2(vwSize.x / 2, vwSize.y / 2)
+	uto.position = Vector2(viewport_size.x / 2, viewport_size.y / 2)
 
 	var margin = {
 		"king": {
@@ -55,10 +51,11 @@ func setPositions():
 			"h": 110,
 		}
 	}
-	$King.position = Vector2(vwSize.x / 2, margin.king.top + $King/Sprite.texture.get_height() / 2 * $King/Sprite.scale.y * $King.scale.y)
+	var king_sprite = king.get_node("Sprite")
+	king.position = Vector2(viewport_size.x / 2, margin.king.top + king_sprite.texture.get_height() / 2 * king_sprite.scale.y * king.scale.y)
 	# herald
-	$HeraldPath.position.x = $King.position.x
-	$HeraldPath.position.y = vwSize.y - 200
+	$HeraldPath.position.x = king.position.x
+	$HeraldPath.position.y = viewport_size.y - 200
 	# herald left minions
 	$SwordPath.position.x = $HeraldPath.position.x - margin.heraldMinions.h
 	$SwordPath3.position.x = $HeraldPath.position.x - margin.heraldMinions.h - 10
@@ -72,55 +69,37 @@ func setPositions():
 	$SwordPath4.position.y = $HeraldPath.position.y + margin.heraldMinions.h
 
 	# king minions
-	$SwordPath6.position.x = $King.position.x
-	$SwordPath6.position.y = $King.position.y + 150
-	$SwordPath5.position.x = $King.position.x - 190
-	$SwordPath5.position.y = $King.position.y + 50
-	$SwordPath7.position.x = $King.position.x + 190
-	$SwordPath7.position.y = $King.position.y + 50
+	$SwordPath6.position.x = king.position.x
+	$SwordPath6.position.y = king.position.y + 150
+	$SwordPath5.position.x = king.position.x - 190
+	$SwordPath5.position.y = king.position.y + 50
+	$SwordPath7.position.x = king.position.x + 190
+	$SwordPath7.position.y = king.position.y + 50
 
-	settingsIcon.position = Vector2(
-		vwSize.x - 100,
-		vwSize.y - 100
+	$SettingsIcon.position = Vector2(
+		viewport_size.x - 100,
+		viewport_size.y - 100
 	)
 
-func stopMinions():
+func stop_enemies():
 	$EnemiesMovement.stop()
 	$SwordPath5/AnimationPlayer.stop()
 	$SwordPath7/AnimationPlayer.stop()
+	#	for c in get_tree().get_nodes_in_group("enemyAnimationPlayers"):
+	#		c.stop()
 
 # signals
 
-func _on_UTO_kingKilled():
-	$King.kill()
-	for c in get_tree().get_nodes_in_group("enemyAnimationPlayers"):
-		c.stop()
-	$UTO.set_physics_process(false)
-	yield($King/KilledSound, "finished")
-	$Overlay/AnimationPlayer.play("gloria")
-	stopMinions()
-	$UTO.set_process_input(false)
-
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "gloria":
-		Global.data.solved.challenge1 = true
-		SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn")
-	if anim_name == "blink":
-		SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn")
-
-
-func _on_size_changed():
-	# update member variable
-	vwSize = get_viewport_rect().size
-	positionObjects()
-
-
-func _on_SettingsIcon_body_entered(body: PhysicsBody2D) -> void:
-	if body is Uto:
-		Global.challengeData["utoEnteredSettings"] = true
-		SceneManager.goto_scene("res://scenes/challenges/settings/SettingsScreen.tscn")
-
-
 func _on_UTO_killed() -> void:
-	stopMinions()
+	stop_enemies()
+
+
+func _on_viewport_size_changed():
+	viewport_size = get_viewport_rect().size
+	set_positions()
+
+
+func _on_Challenge1_victory():
+	# Stop game objects
+	stop_enemies()
+	uto.set_physics_process(false)

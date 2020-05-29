@@ -209,6 +209,9 @@ theme = ExtResource( 7 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Royal Rules"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UTO" parent="Node2D" instance=ExtResource( 9 )]
 position = Vector2( 371, 407 )

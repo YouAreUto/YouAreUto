@@ -3,14 +3,17 @@ extends KinematicBody2D
 
 signal killed
 signal hit
-signal kingKilled
+
+#signal kingKilled
 
 onready var _bounds = $_bounds
 onready var vwSize = get_viewport_rect().size
 onready var utoSize := getUtoSize()
 
-export var enemiesInteractionEnabled := true # set it to false when Uto is
+# NOTE: this should be removed. Kill/victory logic should not be handled by Uto. Look at UtoGameoverArea.gd
+# set it to false when Uto is
 # used in a menu and you don't want him to kill or be killed
+export var enemiesInteractionEnabled := true 
 export var showOutline := true
 
 var speed = 20
@@ -84,22 +87,25 @@ func clampPositionInsideTheScreen():
 
 # signal bindings
 
+
 func _on_HitArea_area_entered(area: Area2D):
+	# LEGACY method for classic challenged from 1 to 5. This should be removed
+	# and refactored in the future.
 	if !enemiesInteractionEnabled: return
 	# UTO dies on enemy collision (this is a legacy check for challenge 1 to 5)
 	if area.is_in_group("enemy") and !Global.challengeData.get("UtoIsAServant"):
-		killUto()
+		kill()
 	# UTO kills on Herald collision
 	if area.is_in_group("herald") and !heraldKilled:
 		heraldKilled = true
 		var herald = area.get_parent()
 		herald.kill()
 		emit_signal("hit")
-	# UTO kills on King collision
-	if area.is_in_group("king") and heraldKilled:
-		emit_signal("kingKilled")
+#	if area.is_in_group("king") and heraldKilled:
+#		emit_signal("kingKilled")
 
 
-func killUto():
+func kill():
 	alive = false
+	set_physics_process(false)
 	emit_signal("killed")

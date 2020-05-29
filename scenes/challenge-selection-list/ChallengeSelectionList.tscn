@@ -8,11 +8,6 @@
 [ext_resource path="res://assets/sprites/characters/char-ch4-goal.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/challenges/5-black-path/char-chest.png" type="Texture" id=12]
 
-
-
-
-
-
 [node name="ChallengeSelectionList" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -26,6 +21,7 @@ __meta__ = {
 margin_right = 750.0
 margin_bottom = 117.0
 selectionTexture = ExtResource( 3 )
+disabled = false
 
 [node name="ChallengeItem2" parent="." instance=ExtResource( 2 )]
 margin_top = 149.0
@@ -34,6 +30,7 @@ margin_bottom = 266.0
 selectionTexture = ExtResource( 5 )
 challengeName = "Standard Identities"
 challengeNumber = 2
+disabled = false
 
 [node name="ChallengeItem3" parent="." instance=ExtResource( 2 )]
 margin_top = 298.0
@@ -42,6 +39,7 @@ margin_bottom = 415.0
 selectionTexture = ExtResource( 7 )
 challengeName = "At All Times"
 challengeNumber = 3
+disabled = false
 
 [node name="ChallengeItem4" parent="." instance=ExtResource( 2 )]
 margin_top = 447.0
@@ -50,6 +48,7 @@ margin_bottom = 564.0
 selectionTexture = ExtResource( 11 )
 challengeName = "Game Is On"
 challengeNumber = 4
+disabled = false
 
 [node name="ChallengeItem5" parent="." instance=ExtResource( 2 )]
 margin_top = 596.0
@@ -58,3 +57,4 @@ margin_bottom = 713.0
 selectionTexture = ExtResource( 12 )
 challengeName = "Black Path"
 challengeNumber = 5
+disabled = false

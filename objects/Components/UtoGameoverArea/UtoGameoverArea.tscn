@@ -3,11 +3,9 @@
 [ext_resource path="res://objects/Components/UtoGameoverArea/UtoGameoverArea.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 134.0
+radius = 130.0
 
-[node name="UtoGameoverArea" type="Area2D" groups=[
-"gameover",
-]]
+[node name="UtoGameoverArea" type="Area2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

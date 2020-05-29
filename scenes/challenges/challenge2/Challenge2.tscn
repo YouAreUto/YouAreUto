@@ -209,19 +209,16 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
-servantNode = NodePath("Sword")
-servant2Node = NodePath("Sword2")
-servant3Node = NodePath("Sword3")
 
-[node name="Sword" parent="ChallengeEntities" instance=ExtResource( 11 )]
+[node name="Servant" parent="ChallengeEntities" instance=ExtResource( 11 )]
 position = Vector2( 170.416, 335.44 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="Sword2" parent="ChallengeEntities" instance=ExtResource( 11 )]
+[node name="Servant2" parent="ChallengeEntities" instance=ExtResource( 11 )]
 position = Vector2( 389.84, 334.615 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="Sword3" parent="ChallengeEntities" instance=ExtResource( 11 )]
+[node name="Servant3" parent="ChallengeEntities" instance=ExtResource( 11 )]
 position = Vector2( 619.605, 330.265 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -305,6 +302,7 @@ mouse_filter = 2
 [connection signal="body_entered" from="BG/ObjectiveArea" to="." method="_on_ObjectiveArea_body_entered"]
 [connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="ChallengeEntities/UTO/Challenge2Behaviour" method="_on_Definitely_UtoBecameACastleServant"]
 [connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="." method="_on_Definitely_UtoBecameACastleServant"]
+[connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="ChallengeEntities" method="_on_Definitely_UtoBecameACastleServant"]
 [connection signal="body_entered" from="BG/Sprite/Definitely/UtoDetector" to="BG/Sprite/Definitely" method="_on_UtoDetector_body_entered"]
 [connection signal="body_exited" from="BG/Sprite/Definitely/UtoDetector" to="BG/Sprite/Definitely" method="_on_UtoDetector_body_exited"]
 [connection signal="body_entered" from="BG/Sprite/Definitely/YouDetector" to="BG/Sprite/Definitely" method="_on_YouDetector_body_entered"]

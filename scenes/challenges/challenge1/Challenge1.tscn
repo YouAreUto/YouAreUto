@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/challenges/challenge1/Challenge1.gd" type="Script" id=1]
 [ext_resource path="res://scenes/challenges/challenge1/Bg.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://scenes/challenges/challenge1/SwordPath5.gd" type="Script" id=10]
 [ext_resource path="res://scenes/challenges/challenge1/EnemiesMovement.gd" type="Script" id=11]
 [ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/Components/UtoVictoryArea/UtoVictoryArea.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/sounds/C1.ogg" type="AudioStream" id=14]
 
 [sub_resource type="Animation" id=1]
 length = 0.8
@@ -217,6 +219,7 @@ tracks/4/keys = {
 
 [node name="Challenge1" type="Node2D"]
 script = ExtResource( 1 )
+challenge_title_sound = ExtResource( 14 )
 
 [node name="Bg" type="CanvasLayer" parent="."]
 layer = -1
@@ -251,7 +254,7 @@ anims/hide_rule = SubResource( 1 )
 [node name="Overlay" parent="." instance=ExtResource( 4 )]
 
 [node name="ColorRect" parent="Overlay" index="0"]
-color = Color( 1, 1, 1, 1 )
+color = Color( 1, 1, 1, 0 )
 
 [node name="GrayScaleShader" parent="Overlay" instance=ExtResource( 5 )]
 visible = false
@@ -265,6 +268,8 @@ monitoring = false
 position = Vector2( 375, 122 )
 scale = Vector2( 0.5, 0.5 )
 
+[node name="UtoVictoryArea" parent="King" instance=ExtResource( 13 )]
+
 [node name="HeraldPath" type="Path2D" parent="."]
 position = Vector2( 370, 1066 )
 curve = SubResource( 2 )
@@ -273,7 +278,8 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HeraldPath"]
-position = Vector2( 6, -1 )
+position = Vector2( 6, -50.0631 )
+offset = 49.0796
 rotate = false
 
 [node name="Herald" parent="HeraldPath/PathFollow2D" instance=ExtResource( 8 )]
@@ -287,7 +293,8 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SwordPath"]
-position = Vector2( -3, 1 )
+position = Vector2( -3, -46.0631 )
+offset = 47.0436
 rotate = false
 
 [node name="SwordIcon" parent="SwordPath/PathFollow2D" instance=ExtResource( 9 )]
@@ -301,7 +308,8 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SwordPath2"]
-position = Vector2( 10, 1 )
+position = Vector2( 10, -45.9081 )
+offset = 46.8896
 rotate = false
 
 [node name="SwordIcon" parent="SwordPath2/PathFollow2D" instance=ExtResource( 9 )]
@@ -315,7 +323,8 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SwordPath3"]
-position = Vector2( 6, -1 )
+position = Vector2( 6, -50.0631 )
+offset = 49.0796
 rotate = false
 
 [node name="SwordIcon" parent="SwordPath3/PathFollow2D" instance=ExtResource( 9 )]
@@ -329,7 +338,8 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SwordPath4"]
-position = Vector2( 6, -1 )
+position = Vector2( 6, -50.0631 )
+offset = 49.0796
 rotate = false
 
 [node name="SwordIcon" parent="SwordPath4/PathFollow2D" instance=ExtResource( 9 )]
@@ -406,13 +416,12 @@ script = ExtResource( 11 )
 
 [node name="UTO" parent="." instance=ExtResource( 12 )]
 position = Vector2( 370, 590 )
-[connection signal="animation_finished" from="Overlay/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="victory" from="." to="." method="_on_Challenge1_victory"]
 [connection signal="body_entered" from="SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]
-[connection signal="hit" from="UTO" to="SwordPath5" method="_on_UTO_hit"]
 [connection signal="hit" from="UTO" to="Bg" method="_on_UTO_hit"]
 [connection signal="hit" from="UTO" to="SwordPath7" method="_on_UTO_hit"]
-[connection signal="killed" from="UTO" to="." method="_on_UTO_killed"]
+[connection signal="hit" from="UTO" to="SwordPath5" method="_on_UTO_hit"]
 [connection signal="killed" from="UTO" to="Overlay" method="_on_UTO_killed"]
-[connection signal="kingKilled" from="UTO" to="." method="_on_UTO_kingKilled"]
+[connection signal="killed" from="UTO" to="." method="_on_UTO_killed"]
 
 [editable path="Overlay"]

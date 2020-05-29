@@ -116,4 +116,3 @@ anims/disappear = SubResource( 2 )
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Next" to="CanvasLayer/VBoxContainer/Next" method="_on_Next_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="animation_finished" from="Node2D/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

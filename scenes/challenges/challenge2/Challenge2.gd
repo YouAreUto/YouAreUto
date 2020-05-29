@@ -5,9 +5,9 @@ extends Node2D
 onready var uto: Uto = $ChallengeEntities/UTO
 onready var utoBehaviour: Uto = $ChallengeEntities/UTO/Challenge2Behaviour
 onready var definitely := $BG/Sprite/Definitely
-onready var servant := $ChallengeEntities/Sword
-onready var servant2 := $ChallengeEntities/Sword2
-onready var servant3 := $ChallengeEntities/Sword3
+onready var servant := $ChallengeEntities/Servant
+onready var servant2 := $ChallengeEntities/Servant2
+onready var servant3 := $ChallengeEntities/Servant3
 onready var background := $BG/Sprite
 onready var castle = $BG/ObjectiveArea
 onready var textBarrier = $BG/Sprite/Collisions/TextBarrier
@@ -38,6 +38,7 @@ func _ready():
 	else:
 		# if Uto is a servant
 		if Global.challengeData["UtoIsAServant"]:
+			$ChallengeEntities._on_Definitely_UtoBecameACastleServant()
 			utoBehaviour.becomeAServant()
 			definitely.position = Global.challengeData["definitelyTextPosition"]
 		if Global.challengeData["utoEnteredSettings"]:

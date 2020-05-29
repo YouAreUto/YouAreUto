@@ -44,7 +44,7 @@ __meta__ = {
 
 [node name="CurrentScene" type="Node" parent="."]
 
-[node name="Node" parent="CurrentScene" instance=ExtResource( 2 )]
+[node name="MainMenu" parent="CurrentScene" instance=ExtResource( 2 )]
 
 [node name="Transition" type="CanvasLayer" parent="."]
 

@@ -9,11 +9,14 @@ func _enter_tree():
 		self,
 		"_on_body_entered"
 	)
-	connect(
-		"uto_touched_victory_area",
-		SceneManager.current_challenge,
-		"_on_uto_touched_victory_area"
-	)
+	if SceneManager.current_challenge:
+		connect(
+			"uto_touched_victory_area",
+			SceneManager.current_challenge,
+			"_on_uto_touched_victory_area"
+		)
+	else:
+		printerr("UtoVictoryArea ERROR: 'SceneManager.current_challenge' is null")
 
 
 func _on_body_entered(body):

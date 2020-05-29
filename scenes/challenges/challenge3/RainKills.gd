@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	if uto_is_covered:
 		pass
 	else:
-		uto.killUto()
+		uto.kill()
 		set_process(false)
 
 

@@ -8,7 +8,7 @@ export(Texture) var servant_texture
 func becomeAServant():
 	uto.get_node("Sprite").texture = load("res://assets/sprites/characters/char-servant.png")
 	changeTrailColor()
-	uto.enemiesInteractionEnabled = false
+#	uto.enemiesInteractionEnabled = false
 
 
 func changeTrailColor():
