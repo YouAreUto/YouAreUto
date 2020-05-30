@@ -13,7 +13,7 @@ onready var utoSize := getUtoSize()
 # NOTE: this should be removed. Kill/victory logic should not be handled by Uto. Look at UtoGameoverArea.gd
 # set it to false when Uto is
 # used in a menu and you don't want him to kill or be killed
-export var enemiesInteractionEnabled := true 
+export var enemiesInteractionEnabled := true
 export var showOutline := true
 
 var speed = 20
@@ -26,7 +26,7 @@ var heraldKilled = false
 var alive = true # true if UTO is alive
 
 const detectionRadiusForDrag = 100
-const dragThresholdForMovement = 26
+const dragThresholdForMovement = 3
 
 
 func _ready():

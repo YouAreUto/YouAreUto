@@ -43,7 +43,7 @@ func _on_challenge_completed():
 func failed():
 	emit_signal("game_over")
 	SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn")
-	
+
 # signal callbacks
 
 func _on_uto_touched_gameover_area():
@@ -52,4 +52,4 @@ func _on_uto_touched_gameover_area():
 
 func _on_uto_touched_victory_area():
 	completed()
-	
+

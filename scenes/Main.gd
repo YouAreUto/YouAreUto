@@ -5,18 +5,10 @@ onready var anim: AnimationPlayer = $Transition/AnimationPlayer
 onready var current_scene := $CurrentScene
 
 
+func _init():
+	SceneManager.main_node = self
+
+
 func _ready():
+	SceneManager.on_main_node_ready()
 	anim.play("hide_overlay")
-	
-#	SceneManager.goto_scene("res://scenes/challenges/challenge2/Challenge2.tscn")
-
-
-func _on_Button3_pressed() -> void:
-	get_tree().quit()
-
-
-func _on_ChallengeSelectionList_challengeSelected(id) -> void:
-	var playBtn = $BG/Buttons/PlayButton
-	playBtn.disabled = false
-	playBtn.modulate.a = 1
-

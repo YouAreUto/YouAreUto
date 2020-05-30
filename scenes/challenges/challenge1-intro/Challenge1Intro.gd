@@ -16,7 +16,7 @@ onready var kingText = $Node2D/KingText
 #func _init():
 #	title = "Royal Rules"
 #
-	
+
 func _ready():
 	Global.data["currentChallenge"] = 1
 	get_viewport().connect("size_changed", self, "on_screen_resized")

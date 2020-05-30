@@ -1,25 +1,72 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://objects/ui/Button.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/challenge-selection-list/ChallengeSelectionList.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Main/MainMenu.gd" type="Script" id=3]
-[ext_resource path="res://assets/sprites/uto-logo.png" type="Texture" id=4]
-[ext_resource path="res://assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://scenes/WhiteBackground/BG.tscn" type="PackedScene" id=6]
-[ext_resource path="res://resources/RedButtonCornerStyle.tres" type="StyleBox" id=7]
-[ext_resource path="res://scenes/Main/SupportButton.gd" type="Script" id=9]
-[ext_resource path="res://scenes/MainMenu/PlayButton.gd" type="Script" id=10]
-[ext_resource path="res://scenes/challenge-selection-list/ChallengeNameSound.gd" type="Script" id=12]
-
+[ext_resource path="res://scenes/MainMenu/SupportButton.gd" type="Script" id=2]
+[ext_resource path="res://scenes/MainMenu/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://scenes/WhiteBackground/BG.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/uto-logo.png" type="Texture" id=5]
+[ext_resource path="res://scenes/challenge-selection-list/ChallengeSelectionList.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/MainMenu/PlayButton.gd" type="Script" id=7]
+[ext_resource path="res://scenes/challenge-selection-list/ChallengeNameSound.gd" type="Script" id=8]
+[ext_resource path="res://resources/RedButtonCornerStyle.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://scenes/MainMenu/ExitButton.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 38
-font_data = ExtResource( 5 )
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.450625 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Tagline:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 6.0
@@ -59,11 +106,41 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Tagline:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 2.8, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "activate_input"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 38
+font_data = ExtResource( 10 )
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 3 )
 
-[node name="BG" parent="." instance=ExtResource( 6 )]
+[node name="BG" parent="." instance=ExtResource( 4 )]
 
 [node name="YouAreYouLabel" type="Label" parent="."]
 anchor_left = 0.5
@@ -95,14 +172,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChallengeSelectionList" parent="ChallengesCenterContainer" instance=ExtResource( 2 )]
+[node name="ChallengeSelectionList" parent="ChallengesCenterContainer" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 520.0
 margin_bottom = 713.0
 
 [node name="ChallengeNameSound" type="AudioStreamPlayer" parent="ChallengesCenterContainer"]
-script = ExtResource( 12 )
+script = ExtResource( 8 )
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 anchor_top = 1.0
@@ -122,11 +199,11 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0.501961 )
 margin_right = 694.0
 margin_bottom = 78.0
-custom_styles/disabled = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 9 )
 custom_colors/font_color_disabled = Color( 0.717647, 0.141176, 0.141176, 1 )
 disabled = true
 text = "PLAY THIS CHALLENGE"
-script = ExtResource( 10 )
+script = ExtResource( 7 )
 challengeSelectionListPath = NodePath("../../ChallengesCenterContainer/ChallengeSelectionList")
 challengeSoundPlayerPath = NodePath("../../ChallengesCenterContainer/ChallengeNameSound")
 
@@ -135,23 +212,41 @@ margin_top = 94.0
 margin_right = 694.0
 margin_bottom = 172.0
 text = "EXTRA"
-script = ExtResource( 9 )
+script = ExtResource( 2 )
 
 [node name="ExitButton" parent="Buttons" instance=ExtResource( 1 )]
 margin_top = 188.0
 margin_right = 694.0
 margin_bottom = 266.0
 text = "EXIT"
-decorationTexture = null
-customMargin = false
-customLeftMargin = 0
+script = ExtResource( 11 )
 
-[node name="Label" type="Label" parent="Buttons"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 282.0
-margin_right = 694.0
-margin_bottom = 377.0
-custom_fonts/font = SubResource( 2 )
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.888889 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="Sprite" parent="."]
+scale = Vector2( 0.2706, 0.2706 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Logo"]
+anims/default = SubResource( 2 )
+anims/disappear = SubResource( 3 )
+
+[node name="Tagline" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.75 )
+margin_left = -128.0
+margin_top = 265.0
+margin_right = 318.0
+margin_bottom = 360.0
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "THINK OUTSIDE THE GAME.
 CHANGE THE RULES TO WIN."
@@ -159,27 +254,9 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Logo" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Logo"]
-autoplay = "disappear"
-anims/disappear = SubResource( 3 )
 [connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="Buttons/PlayButton" method="_on_ChallengeSelectionList_challengeSelected"]
 [connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="ChallengesCenterContainer/ChallengeNameSound" method="_on_ChallengeSelectionList_challengeSelected"]
 [connection signal="pressed" from="Buttons/PlayButton" to="Buttons/PlayButton" method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Buttons/SupportButton" to="Buttons/SupportButton" method="_on_SupportButton_pressed"]
+[connection signal="pressed" from="Buttons/ExitButton" to="Buttons/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="animation_finished" from="Logo/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

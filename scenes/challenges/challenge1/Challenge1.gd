@@ -19,7 +19,7 @@ var viewport_size := Vector2() # viewport size, updated on resize
 
 func _init():
 	title = "Royal Rules"
-	
+
 
 func _ready():
 	Global.data["currentChallenge"] = 1

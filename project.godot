@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "Reference",
 "class": "Challenge",
 "language": "GDScript",
 "path": "res://scenes/Challenge.gd"
@@ -89,7 +89,3 @@ ui_select={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
-
-[rendering]
-
-quality/2d/use_pixel_snap=true
