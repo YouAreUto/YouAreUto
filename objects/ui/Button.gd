@@ -14,3 +14,7 @@ func _ready() -> void:
 
 func _on_Next_pressed() -> void:
 	Global.goToNextChallenge(true)
+
+
+func _on_ExitButton_pressed():
+	get_tree().quit()

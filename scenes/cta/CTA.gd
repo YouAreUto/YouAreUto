@@ -19,4 +19,4 @@ func _on_UtoShop_pressed() -> void:
 
 func _on_ChallengeSelection_pressed() -> void:
 	Global.challengeData = {}
-	SceneManager.goto_scene("res://scenes/Main.tscn")
+	SceneManager.goto_scene("res://scenes/MainMenu/MainMenu.tscn")

@@ -222,7 +222,7 @@ text = "EXIT"
 script = ExtResource( 11 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0.888889 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -230,7 +230,7 @@ __meta__ = {
 }
 
 [node name="Logo" type="Sprite" parent="."]
-scale = Vector2( 0.2706, 0.2706 )
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
@@ -241,7 +241,7 @@ anims/default = SubResource( 2 )
 anims/disappear = SubResource( 3 )
 
 [node name="Tagline" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0.75 )
+modulate = Color( 1, 1, 1, 0 )
 margin_left = -128.0
 margin_top = 265.0
 margin_right = 318.0
@@ -254,9 +254,8 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="Buttons/PlayButton" method="_on_ChallengeSelectionList_challengeSelected"]
 [connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="ChallengesCenterContainer/ChallengeNameSound" method="_on_ChallengeSelectionList_challengeSelected"]
+[connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="Buttons/PlayButton" method="_on_ChallengeSelectionList_challengeSelected"]
 [connection signal="pressed" from="Buttons/PlayButton" to="Buttons/PlayButton" method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Buttons/SupportButton" to="Buttons/SupportButton" method="_on_SupportButton_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="Buttons/ExitButton" method="_on_ExitButton_pressed"]
-[connection signal="animation_finished" from="Logo/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

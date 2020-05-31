@@ -44,7 +44,7 @@ func setPositions():
 
 func _on_Quit_pressed():
 	Global.challengeData = {}
-	SceneManager.goto_scene("res://scenes/Main.tscn")
+	SceneManager.goto_scene("res://scenes/MainMenu/MainMenu.tscn")
 
 
 func _on_Confirm_pressed():

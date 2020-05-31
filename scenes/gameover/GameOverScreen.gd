@@ -22,7 +22,7 @@ func setPositions():
 
 
 func _on_QuitButton_pressed():
-	SceneManager.goto_scene("res://scenes/Main.tscn")
+	SceneManager.goto_scene("res://scenes/MainMenu/MainMenu.tscn")
 
 
 func _on_RestartButton_pressed():

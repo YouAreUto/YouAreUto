@@ -38,8 +38,9 @@ func isFlashlightOn(mockFlashlight = false, mockedState = false):
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		print(data)
-		print(challengeData)
+		print(SceneManager.main_node.current_scene.name, SceneManager.main_node.current_scene)
+#		print(data)
+#		print(challengeData)
 
 
 func get_global_data() -> Dictionary:

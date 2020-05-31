@@ -9,17 +9,17 @@ func _ready():
 	# get the root node
 	var root = get_tree().get_root()
 	if main_node == null:
-		# need call_deferred because it's not possible 
+		# need call_deferred because it's not possible
 		# to modify the tree in notification callbacks
 		call_deferred("_apply_fix_for_play_scene")
 
 
 func on_main_node_ready():
 	pass
-	
+
 
 func _apply_fix_for_play_scene():
-	""" Needed when starting a specific scene with Play Scene with F6, 
+	""" Needed when starting a specific scene with Play Scene with F6,
 	instead of running the whole game"""
 	# prepare vars
 	var played_scene = get_tree().current_scene
@@ -32,7 +32,7 @@ func _apply_fix_for_play_scene():
 	root.remove_child(played_scene)
 	main_node.current_scene.get_child(0).queue_free()
 	main_node.current_scene.add_child(played_scene)
-	
+
 
 func goto_scene(path: String, params = null):
 	main_node.anim.play("show_overlay")
@@ -53,7 +53,7 @@ func _deferred_goto_scene(path: String, params = null):
 		new_scene.init(params)
 
 
-func _instance_scene_by_path(path):
+func _instance_scene_by_path(path) -> Node:
 	var s = load(path)
 	if s == null:
 		print("Error: path '%s' does not contain any Scene" % path)

@@ -25,4 +25,4 @@ func _on_Restart_pressed() -> void:
 
 
 func _on_Quit_pressed() -> void:
-	SceneManager.goto_scene("res://scenes/Main.tscn")
+	SceneManager.goto_scene("res://scenes/MainMenu/MainMenu.tscn")
