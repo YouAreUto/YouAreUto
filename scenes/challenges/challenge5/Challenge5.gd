@@ -10,7 +10,7 @@ var checkFlashEvery = 0.6 # ms
 var flashTimer = 0
 
 onready var uto = $Bg/UTO
-onready var settingsIcon = $SettingsIcon
+onready var settingsIcon = $Bg/SettingsIcon
 onready var bgSprite = $Bg/Background1
 onready var bgSprite2 = $Bg/Background2
 onready var guardSpawner := $Bg/GuardSpawner
@@ -172,9 +172,9 @@ func _setPositions():
 	uto.position.x = vs.x - uto.getUtoSize().x - 30
 	uto.global_position.y = $Bg/Background1/Position2D.global_position.y
 
-	if $Bg/Key:
+	if $Bg.find_node("Key"):
 		$Bg/Key.position = Vector2(settingsIcon.position.x, vs.y - 90)
-	if $Bg/Chest:
+	if $Bg.find_node("Chest"):
 		$Bg/Chest.position = Vector2(uto.position.x, settingsIcon.position.y)
 
 	guardSpawner.global_position.y = $Bg/Background2/Position2D.global_position.y
@@ -184,16 +184,16 @@ func _setPositions():
 		# if the room was lit before entering the settings
 		if Global.challengeData.get("roomIsLit"):
 			# position uto to the top left corner
-			uto.position = $SettingsIcon.position + Vector2(
+			uto.position = settingsIcon.position + Vector2(
 				0,
-				($SettingsIcon.get_node("Sprite").texture.get_size() * $SettingsIcon.scale).y + uto.getUtoSize().y / 2
+				(settingsIcon.get_node("Sprite").texture.get_size() * settingsIcon.scale).y + uto.getUtoSize().y / 2
 			)
 		else: # room was not lit
 			if keyTaken:
 				# position uto to the top left corner
-				uto.position = $SettingsIcon.position + Vector2(
+				uto.position = settingsIcon.position + Vector2(
 					0,
-					($SettingsIcon.get_node("Sprite").texture.get_size() * $SettingsIcon.scale).y + uto.getUtoSize().y / 2
+					(settingsIcon.get_node("Sprite").texture.get_size() * settingsIcon.scale).y + uto.getUtoSize().y / 2
 				)
 	$Bg/GuardsWhenSpeedIsZero.position.x = vs.x - 250
 	$Bg/GuardsWhenSpeedIsZero.position.y = guardSpawner.position.y

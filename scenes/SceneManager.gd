@@ -1,14 +1,15 @@
 extends Node
 
 var current_challenge: Challenge
-# Registered in Main.gd:_init(), null if running a single scene
+# Registered in Main.gd:_init(), will be populated by this script if running a single scene
 var main_node: Main
 
 
 func _ready():
-	# get the root node
-	var root = get_tree().get_root()
 	if main_node == null:
+		# if loading a challenge
+		if get_tree().current_scene is Challenge:
+			current_challenge = get_tree().current_scene
 		# need call_deferred because it's not possible
 		# to modify the tree in notification callbacks
 		call_deferred("_apply_fix_for_play_scene")
@@ -26,10 +27,9 @@ func _apply_fix_for_play_scene():
 	var root = get_node("/root")
 	# load Main.tscn
 	main_node = load("res://scenes/Main.tscn").instance()
-	# add it
+	root.remove_child(played_scene)
 	root.add_child(main_node)
 	# reparent played scene under main_node
-	root.remove_child(played_scene)
 	main_node.current_scene.get_child(0).queue_free()
 	main_node.current_scene.add_child(played_scene)
 
@@ -46,6 +46,10 @@ func _deferred_goto_scene(path: String, params = null):
 		node.queue_free()
 	# instance the new scene
 	var new_scene = _instance_scene_by_path(path)
+	if new_scene is Challenge:
+		current_challenge = new_scene
+	else:
+		current_challenge = null
 	# load it into the SceneTree
 	main_node.current_scene.add_child(new_scene)
 	main_node.anim.play("hide_overlay")

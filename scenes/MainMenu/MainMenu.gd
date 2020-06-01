@@ -13,7 +13,7 @@ func _ready() -> void:
 	tagline.rect_position.x = view_size.x / 2 - tagline.rect_size.x / 2
 	tagline.rect_position.y = (view_size.y / 2 +
 		logo.scale.y * logo.texture.get_size().y / 2 +
-		120)
+		180)
 	anims.play("disappear")
 
 

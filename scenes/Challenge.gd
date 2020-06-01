@@ -9,8 +9,9 @@ signal game_over
 var title: String = ""
 var audio_player: AudioStreamPlayer
 
+
 func _init():
-	SceneManager.current_challenge = self
+	pass
 
 
 func _ready():

@@ -418,10 +418,10 @@ script = ExtResource( 11 )
 position = Vector2( 370, 590 )
 [connection signal="victory" from="." to="." method="_on_Challenge1_victory"]
 [connection signal="body_entered" from="SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]
-[connection signal="hit" from="UTO" to="SwordPath5" method="_on_UTO_hit"]
 [connection signal="hit" from="UTO" to="Bg" method="_on_UTO_hit"]
 [connection signal="hit" from="UTO" to="SwordPath7" method="_on_UTO_hit"]
-[connection signal="killed" from="UTO" to="Overlay" method="_on_UTO_killed"]
+[connection signal="hit" from="UTO" to="SwordPath5" method="_on_UTO_hit"]
 [connection signal="killed" from="UTO" to="." method="_on_UTO_killed"]
+[connection signal="killed" from="UTO" to="Overlay" method="_on_UTO_killed"]
 
 [editable path="Overlay"]

@@ -12,3 +12,4 @@ func _init():
 func _ready():
 	SceneManager.on_main_node_ready()
 	anim.play("hide_overlay")
+

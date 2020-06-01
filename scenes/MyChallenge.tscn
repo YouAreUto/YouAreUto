@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/MyChallenge.gd" type="Script" id=1]
 [ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://objects/Components/UtoGameoverArea/UtoGameoverArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/Components/UtoVictoryArea/UtoVictoryArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/WhiteBackground/BG.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sounds/C1.ogg" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 200, 100 )
@@ -15,6 +16,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+challenge_title_sound = ExtResource( 7 )
 
 [node name="BG" parent="." instance=ExtResource( 6 )]
 

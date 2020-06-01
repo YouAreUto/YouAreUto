@@ -4,7 +4,7 @@ tool
 export var trigger = false
 
 onready var text: Sprite = get_parent()
-onready var debug_time = get_node("/root/Challenge3").debug_time
+onready var debug_time = get_node("../../../Challenge3").debug_time
 onready var hour_spr = get_node("ch5-hour-0")
 
 

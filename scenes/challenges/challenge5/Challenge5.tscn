@@ -85,6 +85,9 @@ scale = Vector2( 1.175, 1.175 )
 [node name="Position2D" type="Position2D" parent="Bg/Background2"]
 position = Vector2( 0, -47.6595 )
 
+[node name="SettingsIcon" parent="Bg" instance=ExtResource( 7 )]
+position = Vector2( 68.1622, 77.2506 )
+
 [node name="GuardsWhenSpeedIsZero" type="Node2D" parent="Bg"]
 visible = false
 position = Vector2( 529, 563 )
@@ -121,10 +124,8 @@ position = Vector2( 670, 92 )
 [node name="UTO" parent="Bg" instance=ExtResource( 8 )]
 position = Vector2( 650, 1177 )
 scale = Vector2( 0.42, 0.42 )
+z_index = 2
 showOutline = false
-
-[node name="SettingsIcon" parent="." instance=ExtResource( 7 )]
-position = Vector2( 68.1622, 77.2506 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -145,14 +146,14 @@ __meta__ = {
 autoplay = "fadeIn"
 anims/fadeIn = SubResource( 1 )
 anims/victory = SubResource( 2 )
-[connection signal="torch_activated" from="." to="Bg/GuardsWhenSpeedIsZero" method="_on_Challenge5_torch_activated"]
 [connection signal="torch_activated" from="." to="Bg/GuardSpawner" method="_on_Challenge5_torch_activated"]
-[connection signal="torch_disabled" from="." to="Bg/GuardsWhenSpeedIsZero" method="_on_Challenge5_torch_disabled"]
+[connection signal="torch_activated" from="." to="Bg/GuardsWhenSpeedIsZero" method="_on_Challenge5_torch_activated"]
 [connection signal="torch_disabled" from="." to="Bg/GuardSpawner" method="_on_Challenge5_torch_disabled"]
+[connection signal="torch_disabled" from="." to="Bg/GuardsWhenSpeedIsZero" method="_on_Challenge5_torch_disabled"]
+[connection signal="body_entered" from="Bg/SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]
 [connection signal="keyTaken" from="Bg/Key" to="." method="_on_Key_keyTaken"]
 [connection signal="chestTouched" from="Bg/Chest" to="." method="_on_Chest_chestTouched"]
 [connection signal="killed" from="Bg/UTO" to="." method="_on_UTO_killed"]
-[connection signal="body_entered" from="SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]
 
 [editable path="Bg/GuardsWhenSpeedIsZero/Guard"]
 

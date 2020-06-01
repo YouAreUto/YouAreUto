@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var centerNode := $"ch5-min-3"
-onready var debug_time = get_node("/root/Challenge3").debug_time
+onready var debug_time = get_node("../../../Challenge3").debug_time
 
 func _ready() -> void:
 	var current_minutes = OS.get_time().minute

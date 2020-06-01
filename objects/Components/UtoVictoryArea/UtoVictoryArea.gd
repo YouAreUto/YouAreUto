@@ -3,12 +3,13 @@ extends Area2D
 signal uto_touched_victory_area
 
 
-func _enter_tree():
+func _ready():
 	connect(
 		"body_entered",
 		self,
 		"_on_body_entered"
 	)
+
 	if SceneManager.current_challenge:
 		connect(
 			"uto_touched_victory_area",
@@ -16,7 +17,7 @@ func _enter_tree():
 			"_on_uto_touched_victory_area"
 		)
 	else:
-		printerr("UtoVictoryArea ERROR: 'SceneManager.current_challenge' is null")
+		print_debug("ERROR: 'SceneManager.current_challenge' is not a Challenge")
 
 
 func _on_body_entered(body):

@@ -3,7 +3,7 @@ extends Area2D
 signal uto_touched_gameover_area
 
 
-func _enter_tree():
+func _ready():
 	connect(
 		"body_entered",
 		self,
@@ -16,7 +16,7 @@ func _enter_tree():
 			"_on_uto_touched_gameover_area"
 		)
 	else:
-		printerr("UtoGameOverArea ERROR: 'SceneManager.current_challenge' is null")
+		print_debug("ERROR: 'SceneManager.current_challenge' is not a Challenge")
 
 
 func _on_body_entered(body):

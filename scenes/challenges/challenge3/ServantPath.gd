@@ -2,14 +2,14 @@ extends Path2D
 
 var monitorDirectionChange = false # this is activated only when in a specific area near the stop point
 var justRestarted = false
-onready var ch3 = get_node("/root/Challenge3")
+onready var ch3 = get_parent()
 
 var distance = null
 var previousDistance = null
 
 
 func _ready() -> void:
-	get_node("/root/Challenge3/Servant1StopPoint").monitoring = ch3.isPuzzleSolved()
+	ch3.find_node("Servant1StopPoint").monitoring = ch3.isPuzzleSolved()
 
 
 func _process(delta: float) -> void:

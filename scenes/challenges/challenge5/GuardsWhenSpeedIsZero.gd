@@ -1,24 +1,24 @@
 extends Node2D
 
 
-onready var challenge5 = get_node('/root/Challenge5')
+onready var challenge5 = get_node('../../../Challenge5')
 
 
 func _ready():
-	$Guard/Area2D/CollisionShape2D.disabled = true
-	$Guard2/Area2D/CollisionShape2D.disabled = true
+	$Guard/UtoGameoverArea.monitoring = false
+	$Guard2/UtoGameoverArea.monitoring = false
 
 
 func showAndActivate():
 	show()
-	$Guard/Area2D/CollisionShape2D.disabled = false
-	$Guard2/Area2D/CollisionShape2D.disabled = false
+	$Guard/UtoGameoverArea.monitoring = true
+	$Guard2/UtoGameoverArea.monitoring = true
 
 
 func _on_Challenge5_torch_disabled():
 	hide()
-	$Guard/Area2D/CollisionShape2D.disabled = true
-	$Guard2/Area2D/CollisionShape2D.disabled = true
+	$Guard/UtoGameoverArea.monitoring = false
+	$Guard2/UtoGameoverArea.monitoring = false
 
 
 func _on_Challenge5_torch_activated():
