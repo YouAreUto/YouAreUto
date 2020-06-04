@@ -1,0 +1,314 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://scenes/Challenges/challenge2/Challenge2.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/C2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/sprites/characters/char-castle.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/characters/char-servant.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/challenges/2-standard-identities/ch2-text.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Challenges/challenge2/Definitely.gd" type="Script" id=6]
+[ext_resource path="res://assets/sprites/challenges/2-standard-identities/ch2-text-definitely.png" type="Texture" id=7]
+[ext_resource path="res://objects/WhiteBackground/BG.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/SettingsIcon.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Challenges/challenge2/ChallengeEntities.gd" type="Script" id=10]
+[ext_resource path="res://objects/Guard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Challenges/challenge2/Challenge2Behaviour.gd" type="Script" id=13]
+[ext_resource path="res://objects/overlay/Overlay.tscn" type="PackedScene" id=14]
+[ext_resource path="res://objects/shaders/GrayScaleShader.tscn" type="PackedScene" id=15]
+[ext_resource path="res://objects/sounds/BellSound.tscn" type="PackedScene" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 30 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2620, 30 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 105, 22 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 44, 2000 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 107, 25.9569 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 95.0001, 20.0001 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 100, 7.95691 )
+
+[sub_resource type="Animation" id=8]
+length = 6.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.461, 1.0, 1.0, 0.461, 0.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 6.5
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.461, 1.0, 1.0, 0.461, 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 6.5
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.461, 1.0, 1.0, 0.461, 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+
+[node name="Challenge2" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="BG" parent="." instance=ExtResource( 8 )]
+
+[node name="ObjectiveArea" type="Area2D" parent="BG"]
+position = Vector2( 390, 182 )
+scale = Vector2( 0.999999, 0.999999 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Castle" type="Sprite" parent="BG/ObjectiveArea"]
+position = Vector2( 3.05176e-05, 10 )
+scale = Vector2( 1.4, 1.4 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/ObjectiveArea"]
+shape = SubResource( 1 )
+
+[node name="ChallengeSound" type="AudioStreamPlayer" parent="BG/ObjectiveArea"]
+stream = ExtResource( 2 )
+bus = "Challengese Femal Voice"
+
+[node name="Sprite" type="Sprite" parent="BG"]
+position = Vector2( 380, 630 )
+scale = Vector2( 1.175, 1.175 )
+texture = ExtResource( 5 )
+
+[node name="Collisions" type="Node2D" parent="BG/Sprite"]
+position = Vector2( -376.727, -613.038 )
+scale = Vector2( 0.999999, 0.999999 )
+
+[node name="TextBarrier" type="StaticBody2D" parent="BG/Sprite/Collisions"]
+position = Vector2( 360, 280 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Collisions/TextBarrier"]
+shape = SubResource( 2 )
+
+[node name="YouText" type="StaticBody2D" parent="BG/Sprite/Collisions"]
+position = Vector2( 204.731, 795.045 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Collisions/YouText"]
+position = Vector2( -22, 27 )
+shape = SubResource( 3 )
+
+[node name="LeftLimit" type="StaticBody2D" parent="BG/Sprite/Collisions"]
+visible = false
+position = Vector2( -43, 620 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Collisions/LeftLimit"]
+shape = SubResource( 4 )
+disabled = true
+
+[node name="RightLimit" type="StaticBody2D" parent="BG/Sprite/Collisions"]
+visible = false
+position = Vector2( 793.001, 620 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Collisions/RightLimit"]
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Definitely" type="StaticBody2D" parent="BG/Sprite"]
+position = Vector2( -190.996, 327.006 )
+scale = Vector2( 0.999999, 0.999999 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+utoPath = NodePath("../../../ChallengeEntities/UTO")
+movingSpeed = 2.0
+
+[node name="blue" type="Sprite" parent="BG/Sprite/Definitely"]
+position = Vector2( -0.742752, 8.04656 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Definitely"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="UtoDetector" type="Area2D" parent="BG/Sprite/Definitely"]
+position = Vector2( -1.52588e-05, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Definitely/UtoDetector"]
+shape = SubResource( 6 )
+
+[node name="YouDetector" type="Area2D" parent="BG/Sprite/Definitely"]
+position = Vector2( 0, -30.0001 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Definitely/YouDetector"]
+shape = SubResource( 7 )
+
+[node name="ui-settings" parent="BG" instance=ExtResource( 9 )]
+position = Vector2( 679.349, 1256.45 )
+
+[node name="ChallengeEntities" type="Node2D" parent="."]
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Servant" parent="ChallengeEntities" instance=ExtResource( 11 )]
+position = Vector2( 170.416, 335.44 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Servant2" parent="ChallengeEntities" instance=ExtResource( 11 )]
+position = Vector2( 389.84, 334.615 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Servant3" parent="ChallengeEntities" instance=ExtResource( 11 )]
+position = Vector2( 619.605, 330.265 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="ServantLeftPath" type="Path2D" parent="ChallengeEntities"]
+position = Vector2( -110, 810 )
+curve = null
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ChallengeEntities/ServantLeftPath"]
+rotation = -1.5708
+rotate = false
+loop = false
+
+[node name="Servant4" parent="ChallengeEntities/ServantLeftPath/PathFollow2D" instance=ExtResource( 11 )]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChallengeEntities/ServantLeftPath" groups=[
+"enemyAnimationPlayers",
+]]
+autoplay = "patrol"
+playback_speed = 0.4
+anims/patrol = SubResource( 8 )
+
+[node name="ServantRightPath" type="Path2D" parent="ChallengeEntities"]
+position = Vector2( 790, 820 )
+curve = null
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ChallengeEntities/ServantRightPath"]
+rotation = -1.5708
+rotate = false
+loop = false
+
+[node name="Servant4" parent="ChallengeEntities/ServantRightPath/PathFollow2D" instance=ExtResource( 11 )]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChallengeEntities/ServantRightPath" groups=[
+"enemyAnimationPlayers",
+]]
+autoplay = "patrol"
+playback_speed = 0.4
+anims/patrol = SubResource( 9 )
+
+[node name="ServantCenterPath" type="Path2D" parent="ChallengeEntities"]
+position = Vector2( 404.5, 1190 )
+curve = null
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ChallengeEntities/ServantCenterPath"]
+rotation = -1.5708
+rotate = false
+loop = false
+
+[node name="Servant4" parent="ChallengeEntities/ServantCenterPath/PathFollow2D" instance=ExtResource( 11 )]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChallengeEntities/ServantCenterPath" groups=[
+"enemyAnimationPlayers",
+]]
+autoplay = "patrol"
+playback_speed = 0.4
+anims/patrol = SubResource( 10 )
+
+[node name="UTO" parent="ChallengeEntities" instance=ExtResource( 12 )]
+position = Vector2( 393.773, 648.107 )
+
+[node name="Challenge2Behaviour" type="Node" parent="ChallengeEntities/UTO"]
+script = ExtResource( 13 )
+servant_texture = ExtResource( 4 )
+
+[node name="Overlay" parent="." instance=ExtResource( 14 )]
+
+[node name="AnimationPlayer" parent="Overlay" index="1"]
+anims/appear = SubResource( 11 )
+
+[node name="GrayScaleShader" parent="Overlay" instance=ExtResource( 15 )]
+visible = false
+mouse_filter = 2
+
+[node name="UtoBecomeServantSound" parent="." instance=ExtResource( 16 )]
+[connection signal="body_entered" from="BG/ObjectiveArea" to="." method="_on_ObjectiveArea_body_entered"]
+[connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="ChallengeEntities" method="_on_Definitely_UtoBecameACastleServant"]
+[connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="." method="_on_Definitely_UtoBecameACastleServant"]
+[connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="ChallengeEntities/UTO/Challenge2Behaviour" method="_on_Definitely_UtoBecameACastleServant"]
+[connection signal="body_entered" from="BG/Sprite/Definitely/UtoDetector" to="BG/Sprite/Definitely" method="_on_UtoDetector_body_entered"]
+[connection signal="body_exited" from="BG/Sprite/Definitely/UtoDetector" to="BG/Sprite/Definitely" method="_on_UtoDetector_body_exited"]
+[connection signal="body_entered" from="BG/Sprite/Definitely/YouDetector" to="BG/Sprite/Definitely" method="_on_YouDetector_body_entered"]
+[connection signal="body_entered" from="BG/ui-settings" to="." method="_on_uisettings_body_entered"]
+[connection signal="killed" from="ChallengeEntities/UTO" to="Overlay" method="_on_UTO_killed"]
+[connection signal="killed" from="ChallengeEntities/UTO" to="." method="_on_UTO_killed"]
+[connection signal="animation_finished" from="Overlay/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="Overlay"]

@@ -10,11 +10,3 @@ func _ready() -> void:
 	$DecorationLeft.texture = decorationTexture
 	if customMargin:
 		$DecorationLeft.margin_left = customLeftMargin
-
-
-func _on_Next_pressed() -> void:
-	Global.goToNextChallenge(true)
-
-
-func _on_ExitButton_pressed():
-	get_tree().quit()

@@ -56,8 +56,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://scenes/Global.gd"
-SceneManager="*res://scenes/SceneManager.gd"
+Global="*res://autoloads/Global.gd"
+SceneManager="*res://autoloads/SceneManager.gd"
 
 [debug]
 

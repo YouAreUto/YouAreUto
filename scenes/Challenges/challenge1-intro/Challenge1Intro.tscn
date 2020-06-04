@@ -1,0 +1,287 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scenes/Challenges/challenge1-intro/Challenge1Intro.gd" type="Script" id=1]
+[ext_resource path="res://objects/WhiteBackground/BG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Challenges/challenge1-intro/Control.gd" type="Script" id=4]
+[ext_resource path="res://assets/sprites/logo-in-game-black.png" type="Texture" id=5]
+[ext_resource path="res://resources/ChallengeNumberFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://resources/theme.tres" type="Theme" id=7]
+[ext_resource path="res://resources/ChallengeTitleFontData.tres" type="DynamicFontData" id=8]
+[ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=9]
+[ext_resource path="res://resources/ChallengeRuleFont.tres" type="DynamicFont" id=10]
+[ext_resource path="res://objects/Herald.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/King.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/DragUtoHereToStart/DragUtoHereToStart.tscn" type="PackedScene" id=13]
+
+
+
+
+
+
+[sub_resource type="DynamicFont" id=1]
+size = 62
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.3, 0.3 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 4.43828, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.3, 0.3 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 4.43828, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "activateUto"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 2.5
+tracks/0/type = "animation"
+tracks/0/path = NodePath("King/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "flip" ),
+"times": PoolRealArray( 0.4 )
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("Herald/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "flip" ),
+"times": PoolRealArray( 0.2 )
+}
+tracks/2/type = "animation"
+tracks/2/path = NodePath("UTO/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": PoolStringArray( "flip" ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "emitStartGameSignal"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.4, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Challenge1" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="BG" parent="." instance=ExtResource( 3 )]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Logo" type="Sprite" parent="Node2D"]
+visible = false
+position = Vector2( 31, 41 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Challenge" type="Label" parent="Node2D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 311.0
+margin_top = 130.0
+margin_right = 486.0
+margin_bottom = 176.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Challenge 1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Node2D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 231.0
+margin_top = 187.0
+margin_right = 564.0
+margin_bottom = 270.0
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Royal Rules"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UTO" parent="Node2D" instance=ExtResource( 9 )]
+position = Vector2( 371, 407 )
+z_index = 1
+enemiesInteractionEnabled = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/UTO"]
+anims/flip = SubResource( 2 )
+
+[node name="UtoText" type="Label" parent="Node2D"]
+anchor_right = 1.0
+margin_left = 71.9507
+margin_top = 467.0
+margin_right = 691.951
+margin_bottom = 596.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "YOU ARE UTO. UTO HAS A SWORD.
+UTO MUST KILL THE KING."
+align = 1
+autowrap = true
+
+[node name="Herald" parent="Node2D" instance=ExtResource( 11 )]
+position = Vector2( 377, 633 )
+scale = Vector2( 0.35, 0.35 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Herald"]
+anims/flip = SubResource( 3 )
+
+[node name="HeraldText" type="Label" parent="Node2D"]
+margin_left = 24.0
+margin_top = 704.0
+margin_right = 728.0
+margin_bottom = 833.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "THE HERALD SAYS: \"GUARDS 
+PROTECT THE KING AT ALL TIMES\".
+"
+align = 1
+autowrap = true
+
+[node name="King" parent="Node2D" instance=ExtResource( 12 )]
+position = Vector2( 375, 885 )
+scale = Vector2( 0.35, 0.35 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/King"]
+anims/flip = SubResource( 3 )
+anims/idle = SubResource( 4 )
+
+[node name="KingText" type="Label" parent="Node2D"]
+margin_left = 135.16
+margin_top = 963.24
+margin_right = 643.16
+margin_bottom = 1012.24
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "THE KING SAYS: \"GUARDS KILL\"."
+align = 1
+autowrap = true
+
+[node name="DragUtoHereToStart" parent="Node2D" instance=ExtResource( 13 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+autoplay = "appear"
+anims/appear = SubResource( 5 )
+anims/disappear = SubResource( 6 )
+[connection signal="uto_entered" from="Node2D/DragUtoHereToStart" to="." method="_on_DragUtoHereToStart_uto_entered"]

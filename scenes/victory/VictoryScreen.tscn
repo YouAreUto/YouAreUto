@@ -62,9 +62,6 @@ __meta__ = {
 margin_right = 631.0
 margin_bottom = 78.0
 text = "NEXT CHALLENGE"
-decorationTexture = null
-customMargin = false
-customLeftMargin = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/Next"]
 visible = false
@@ -76,18 +73,12 @@ margin_top = 94.0
 margin_right = 631.0
 margin_bottom = 172.0
 text = "RESTART"
-decorationTexture = null
-customMargin = false
-customLeftMargin = 0
 
 [node name="Quit" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 188.0
 margin_right = 631.0
 margin_bottom = 266.0
 text = "QUIT"
-decorationTexture = null
-customMargin = false
-customLeftMargin = 0
 
 [node name="Node2D" type="Node2D" parent="."]
 __meta__ = {
@@ -113,6 +104,6 @@ align = 1
 autoplay = "appear"
 anims/appear = SubResource( 1 )
 anims/disappear = SubResource( 2 )
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Next" to="CanvasLayer/VBoxContainer/Next" method="_on_Next_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Next" to="." method="_on_Next_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

@@ -19,6 +19,9 @@ custom_colors/font_color_pressed = Color( 0.976471, 0.968627, 0.972549, 1 )
 enabled_focus_mode = 0
 text = "GO TO NEXT CHALLENGE"
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DecorationLeft" type="TextureRect" parent="."]
 anchor_bottom = 1.0

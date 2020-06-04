@@ -1,8 +1,8 @@
 extends Node2D
 
-# shortcuts to inner nodes
-
 onready var text := $CanvasLayer/Text
+
+var use_legacy_code = true
 
 
 func _ready():
@@ -10,11 +10,14 @@ func _ready():
 	Global.challengeData = {}
 
 
-func init(param):
-	if param.text:
-		text.text = param.text
-	if param.hideQuitButton:
+func init(conf: Dictionary):
+	if conf.has("text"):
+		text.text = conf.text
+	if conf.has("hideQuitButton"):
 		$CanvasLayer/VBoxContainer/QuitButton.hide()
+	if conf.has("use_legacy_code"):
+		use_legacy_code = conf.get("use_legacy_code")
+
 
 
 func setPositions():
@@ -26,4 +29,7 @@ func _on_QuitButton_pressed():
 
 
 func _on_RestartButton_pressed():
-	SceneManager.goto_scene(Global.getChallengePath(Global.data.currentChallenge).intro)
+	if use_legacy_code:
+		SceneManager.goto_scene(Global.getChallengePath(Global.data.currentChallenge).intro)
+	else:
+		SceneManager.restart_challenge()

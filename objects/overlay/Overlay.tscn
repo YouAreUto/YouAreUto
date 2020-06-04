@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/challenges/challenge1/Overlay.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Challenges/challenge1/Overlay.gd" type="Script" id=1]
+
 
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"

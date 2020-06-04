@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scenes/Challenges/challenge5-intro/Challenge5Intro.gd" type="Script" id=1]
+[ext_resource path="res://objects/WhiteBackground/BG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/ChallengeNumberFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/ChallengeTitleFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://resources/ChallengeRuleFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/sprites/challenges/5-black-path/char-chest.png" type="Texture" id=6]
+[ext_resource path="res://objects/DragUtoHereToStart/DragUtoHereToStart.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/overlay/Overlay.tscn" type="PackedScene" id=9]
+
+
+
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 728.289, 34.5837 )
+
+[node name="Challenge5Intro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" parent="." instance=ExtResource( 2 )]
+
+[node name="Challenge5" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -91.5
+margin_top = 75.0
+margin_right = 91.5
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Challenge 5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlackPath" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -154.5
+margin_top = 120.0
+margin_right = 154.5
+margin_bottom = 203.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Black Path"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -202.5
+margin_top = 328.0
+margin_right = 202.5
+margin_bottom = 459.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+margin_right = 405.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "YOU ARE UTO."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+margin_top = 45.0
+margin_right = 405.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UTO WALKS ON BLACK."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+margin_top = 90.0
+margin_right = 405.0
+margin_bottom = 131.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UTO MUST OPEN THE CHEST."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chest" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -49.0
+margin_top = 487.0
+margin_right = 49.0
+margin_bottom = 585.0
+rect_scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -202.5
+margin_top = 606.0
+margin_right = 202.5
+margin_bottom = 647.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "OF COURSE GUARDS KILL."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlackArea" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -580.0
+mouse_filter = 2
+color = Color( 0.145098, 0.137255, 0.141176, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlackArea"]
+position = Vector2( 345, -35 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackArea/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="StartArea" parent="." instance=ExtResource( 7 )]
+
+[node name="UTO" parent="." instance=ExtResource( 8 )]
+position = Vector2( 386.11, 899.639 )
+showOutline = false
+
+[node name="Overlay" parent="." instance=ExtResource( 9 )]
+
+[node name="ColorRect" parent="Overlay" index="0"]
+color = Color( 1, 1, 1, 0 )
+[connection signal="uto_entered" from="StartArea" to="." method="_on_StartArea_uto_entered"]
+
+[editable path="Overlay"]

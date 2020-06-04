@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://objects/ChallengeSelectionList/ChallengeItem/ChallengeItem.gd" type="Script" id=1]
+[ext_resource path="res://resources/ChallengeSelectionList/ChallengeItemNameFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/ui/lvl-selection-exagon.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_right = 89.0
+margin_bottom = 98.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+challengeName = "Royal Rules"
+challengeNumber = 1
+textureScale = 1.2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 102.0
+margin_bottom = 117.6
+rect_min_size = Vector2( 102, 117.6 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="ChallengeNumber" type="Label" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.631373, 0.101961, 0.101961, 1 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="SelectedSprite" type="Sprite" parent="TextureRect"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -9, 0 )
+scale = Vector2( 1.2, 1.2 )
+centered = false
+
+[node name="VSeparator" type="Control" parent="."]
+margin_left = 106.0
+margin_right = 122.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 16, 0 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 126.0
+margin_right = 352.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Royal Rules"
+valign = 1
+[connection signal="gui_input" from="." to="." method="_on_HBoxContainer_gui_input"]
