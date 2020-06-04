@@ -59,14 +59,18 @@ config/icon="res://icon.png"
 Global="*res://scenes/Global.gd"
 SceneManager="*res://scenes/SceneManager.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=750
 window/size/height=1334
 window/size/test_width=375
-window/size/test_height=600
+window/size/test_height=667
 window/handheld/orientation="portrait"
-window/stretch/mode="2d"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [importer_defaults]
