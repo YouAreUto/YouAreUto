@@ -205,6 +205,7 @@ func _on_WinArea_body_entered(body: PhysicsBody2D) -> void:
 		Global.data.solved.challenge3 = true
 		$Overlay/AnimationPlayer.play("gloria")
 
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		get_node("/root/Challenge3/Overlay/AnimationPlayer").play("forward_time")

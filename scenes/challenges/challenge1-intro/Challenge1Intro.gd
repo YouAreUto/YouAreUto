@@ -28,7 +28,6 @@ func emitStartGameSignal():
 
 
 func positionObjects():
-	var distanceBetweenRows = 200
 	var verticalTextOffset = 26  # relative to the icon
 	var margins = {
 		"logo": {
