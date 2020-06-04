@@ -82,24 +82,28 @@ Official Challenge after the MVP will get number 6).
 
 ### Challenge Development
 
-> :warning: This guide is a reference, we are currently working on a refactoring
-to create a generic `Challenge.tscn` scene. See issue #1 https://github.com/YouAreUto/YouAreUto/issues/1
-
 To create a new challenge, follow these steps:
 
 - Fork the repository
 - Clone the project on your computer
 - Open the project with [Godot 3.2.1](https://godotengine.org/download)
-- Create a new inherited scene in `scenes/challenges/users/<your-username>/<your-challenge-title>`
-- Extends the `Challenge.tscn` scene for a base template
+- Create a new **Node2D** scene in `scenes/ChallengesProspects/<YourUsername>/<YourChallengeTitle>/<YourChallengeTitle>.tscn`
+- The Node2D root node needs to extend the `Challenge.gd` class:
+  - Add a script to your root Node2D
+  - Make sure it `extends Challenge`
+  - Set the `title` variable in `_init()`  (eg: `title = "My Challenge`)
+- Instance `objects/UTO.tscn`
 - Create your unique challenge!
-Remember to:
+- You can:
+  - include generic components found in `res://objects/Components`
   - dispatch the `victory` signal
   - dispatch the `game_over` signal
 - Create a Pull Request to submit your challenge 🎉
 
 You don't need to create the challenge title audio (eg: [C1.ogg](https://github.com/YouAreUto/YouAreUto/blob/master/assets/sounds/C1.ogg)).  
-Admins will create it and integrate it in the game.
+We will create it and integrate it in the game.
+
+You can find an example in [scenes/ChallengesProspects/ExampleChallenge/](./scenes/ChallengesProspects/ExampleChallenge/)
 
 ### Support us
 
