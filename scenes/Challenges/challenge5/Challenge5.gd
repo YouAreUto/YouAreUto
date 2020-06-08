@@ -226,7 +226,7 @@ func _on_SettingsIcon_body_entered(body):
 	if body is Uto:
 		Global.challengeData["utoEnteredSettings"] = true
 		Global.challengeData["roomIsLit"] = roomIsLit
-		SceneManager.goto_scene("res://scenes/Challenges/settings/SettingsScreen.tscn")
+		SceneManager.goto_scene("res://scenes/settings/SettingsScreen.tscn")
 
 
 func _on_UTO_killed():

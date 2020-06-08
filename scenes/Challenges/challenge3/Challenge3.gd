@@ -191,7 +191,7 @@ func _on_SettingsIcon_body_entered(body: PhysicsBody2D) -> void:
 #		if !body.alive:
 #			return
 		Global.challengeData["utoEnteredSettings"] = true
-		SceneManager.goto_scene("res://scenes/Challenges/settings/SettingsScreen.tscn")
+		SceneManager.goto_scene("res://scenes/settings/SettingsScreen.tscn")
 
 
 func _on_WinArea_body_entered(body: PhysicsBody2D) -> void:

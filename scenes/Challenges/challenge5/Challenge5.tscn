@@ -13,7 +13,6 @@
 [ext_resource path="res://objects/shaders/GrayScaleShader.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Challenges/challenge5/GuardsWhenSpeedIsZero.gd" type="Script" id=18]
 
-
 [sub_resource type="Animation" id=1]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -147,10 +146,10 @@ __meta__ = {
 autoplay = "fadeIn"
 anims/fadeIn = SubResource( 1 )
 anims/victory = SubResource( 2 )
-[connection signal="torch_activated" from="." to="Bg/GuardSpawner" method="_on_Challenge5_torch_activated"]
 [connection signal="torch_activated" from="." to="Bg/GuardsWhenSpeedIsZero" method="_on_Challenge5_torch_activated"]
-[connection signal="torch_disabled" from="." to="Bg/GuardSpawner" method="_on_Challenge5_torch_disabled"]
+[connection signal="torch_activated" from="." to="Bg/GuardSpawner" method="_on_Challenge5_torch_activated"]
 [connection signal="torch_disabled" from="." to="Bg/GuardsWhenSpeedIsZero" method="_on_Challenge5_torch_disabled"]
+[connection signal="torch_disabled" from="." to="Bg/GuardSpawner" method="_on_Challenge5_torch_disabled"]
 [connection signal="body_entered" from="Bg/SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]
 [connection signal="keyTaken" from="Bg/Key" to="." method="_on_Key_keyTaken"]
 [connection signal="chestTouched" from="Bg/Chest" to="." method="_on_Chest_chestTouched"]
