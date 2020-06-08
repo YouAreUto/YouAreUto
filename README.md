@@ -91,7 +91,7 @@ To create a new challenge, follow these steps:
 - The Node2D root node needs to extend the `Challenge.gd` class:
   - Add a script to your root Node2D
   - Make sure it `extends Challenge`
-  - Set the `title` variable in `_init()`  (eg: `title = "My Challenge`)
+  - Set the `title` variable in `_init()`  (eg: `title = "My Challenge"`)
 - Instance `objects/UTO.tscn`
 - Create your unique challenge!
 - You can:
