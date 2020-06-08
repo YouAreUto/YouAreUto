@@ -189,10 +189,10 @@ func _on_Challenge4Intro_gameover():
 
 func _onAnimationFinished(animName):
 	if animName == "gloria":
-		SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn")
+		SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn", { "use_legacy_code": true })
 
 	if animName == "blink":
 		SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn", {
 			"text": "YOU ARE YOU.\nGAME IS ALREADY ON!",
-			"hideQuitButton": true
+			"hideQuitButton": true,
 		})

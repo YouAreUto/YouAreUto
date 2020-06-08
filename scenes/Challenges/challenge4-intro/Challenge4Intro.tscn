@@ -64,6 +64,7 @@ textMovementSpeed = 6.0
 
 [node name="ChallengeVictorySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+bus = "Challenges Femal Voice"
 
 [node name="BG" parent="." instance=ExtResource( 2 )]
 

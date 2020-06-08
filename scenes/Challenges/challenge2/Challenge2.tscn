@@ -113,7 +113,7 @@ shape = SubResource( 1 )
 
 [node name="ChallengeSound" type="AudioStreamPlayer" parent="BG/ObjectiveArea"]
 stream = ExtResource( 2 )
-bus = "Challengese Femal Voice"
+bus = "Challenges Femal Voice"
 
 [node name="Sprite" type="Sprite" parent="BG"]
 position = Vector2( 380, 630 )

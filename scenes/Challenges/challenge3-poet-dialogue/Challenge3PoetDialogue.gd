@@ -28,7 +28,7 @@ func setLayout():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select") or event is InputEventScreenTouch:
-		SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn")
+		SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn", { "use_legacy_code": true })
 
 
 func onDialogueDisplayed():

@@ -59,6 +59,7 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+bus = "Challenges Femal Voice"
 
 [node name="Bg" type="CanvasLayer" parent="."]
 layer = -1

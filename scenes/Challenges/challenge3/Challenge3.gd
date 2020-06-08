@@ -16,7 +16,7 @@ var vs
 var textStartY
 var underText
 var debug_time = { # solution: 3:33
-	"enabled": false,
+	"enabled": true,
 	"hour": 3,
 	"minute": 33
 }
@@ -181,7 +181,7 @@ func patrolPathForPuzzleNotSolved(vs):
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "blink":
-		SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn")
+		SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn", { "use_legacy_code": true })
 	if anim_name == "gloria":
 		SceneManager.goto_scene("res://scenes/Challenges/challenge3-poet-dialogue/Challenge3PoetDialogue.tscn")
 

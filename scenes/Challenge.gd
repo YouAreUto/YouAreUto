@@ -30,6 +30,7 @@ func _ready():
 	else:
 		# init audio node
 		audio_player = AudioStreamPlayer.new()
+		audio_player.bus = "Challenges Femal Voice"
 		add_child(audio_player)
 		audio_player.stream = challenge_title_sound
 

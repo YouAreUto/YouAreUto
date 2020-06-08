@@ -86,9 +86,9 @@ func _on_Definitely_UtoBecameACastleServant():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "blink":
-		SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn")
+		SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn", { "use_legacy_code": true })
 	if anim_name == "gloria":
-		SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn")
+		SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn", { "use_legacy_code": true })
 
 
 func _on_ObjectiveArea_body_entered(body):

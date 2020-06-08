@@ -219,7 +219,7 @@ func _on_Chest_chestTouched():
 			yield($AudioStreamPlayer, "finished")
 		$CanvasLayer/AnimationPlayer.play("victory")
 		yield($CanvasLayer/AnimationPlayer, "animation_finished")
-		SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn")
+		SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn", { "use_legacy_code": true })
 
 
 func _on_SettingsIcon_body_entered(body):
@@ -233,4 +233,4 @@ func _on_UTO_killed():
 	$Bg/GuardSpawner.stopGuards()
 	$CanvasLayer/AnimationPlayer.play("victory")
 	yield($CanvasLayer/AnimationPlayer, "animation_finished")
-	SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn")
+	SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn", { "use_legacy_code": true })
