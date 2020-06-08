@@ -87,7 +87,7 @@ To create a new challenge, follow these steps:
 - Fork the repository
 - Clone the project on your computer
 - Open the project with [Godot 3.2.1](https://godotengine.org/download)
-- Create a new **Node2D** scene in `scenes/ChallengesProspects/<YourUsername>/<YourChallengeTitle>/<YourChallengeTitle>.tscn`
+- Create a new **Node2D** scene in `scenes/ChallengesProspects/<Username>-<ChallengeTitle>/<ChallengeTitle>.tscn`
 - The Node2D root node needs to extend the `Challenge.gd` class:
   - Add a script to your root Node2D
   - Make sure it `extends Challenge`
