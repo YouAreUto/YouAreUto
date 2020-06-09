@@ -24,7 +24,7 @@ The game is developed with [Godot Engine v3.2.1](https://godotengine.org/downloa
 - Itch: https://uto-games.itch.io/youareuto
 - FDroid: wip
 
-Currently YouAreUto is available only on Android.
+Currently YouAreUto is available on Android and Itch.
 
 ## Contribute and create your challenge
 
