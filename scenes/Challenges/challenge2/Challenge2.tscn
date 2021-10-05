@@ -299,16 +299,17 @@ visible = false
 mouse_filter = 2
 
 [node name="UtoBecomeServantSound" parent="." instance=ExtResource( 16 )]
+
 [connection signal="body_entered" from="BG/ObjectiveArea" to="." method="_on_ObjectiveArea_body_entered"]
-[connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="ChallengeEntities" method="_on_Definitely_UtoBecameACastleServant"]
 [connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="." method="_on_Definitely_UtoBecameACastleServant"]
+[connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="ChallengeEntities" method="_on_Definitely_UtoBecameACastleServant"]
 [connection signal="UtoBecameACastleServant" from="BG/Sprite/Definitely" to="ChallengeEntities/UTO/Challenge2Behaviour" method="_on_Definitely_UtoBecameACastleServant"]
 [connection signal="body_entered" from="BG/Sprite/Definitely/UtoDetector" to="BG/Sprite/Definitely" method="_on_UtoDetector_body_entered"]
 [connection signal="body_exited" from="BG/Sprite/Definitely/UtoDetector" to="BG/Sprite/Definitely" method="_on_UtoDetector_body_exited"]
 [connection signal="body_entered" from="BG/Sprite/Definitely/YouDetector" to="BG/Sprite/Definitely" method="_on_YouDetector_body_entered"]
 [connection signal="body_entered" from="BG/ui-settings" to="." method="_on_uisettings_body_entered"]
-[connection signal="killed" from="ChallengeEntities/UTO" to="Overlay" method="_on_UTO_killed"]
 [connection signal="killed" from="ChallengeEntities/UTO" to="." method="_on_UTO_killed"]
+[connection signal="killed" from="ChallengeEntities/UTO" to="Overlay" method="_on_UTO_killed"]
 [connection signal="animation_finished" from="Overlay/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Overlay"]

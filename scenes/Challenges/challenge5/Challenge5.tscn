@@ -147,6 +147,7 @@ __meta__ = {
 autoplay = "fadeIn"
 anims/fadeIn = SubResource( 1 )
 anims/victory = SubResource( 2 )
+
 [connection signal="torch_activated" from="." to="Bg/GuardsWhenSpeedIsZero" method="_on_Challenge5_torch_activated"]
 [connection signal="torch_activated" from="." to="Bg/GuardSpawner" method="_on_Challenge5_torch_activated"]
 [connection signal="torch_disabled" from="." to="Bg/GuardsWhenSpeedIsZero" method="_on_Challenge5_torch_disabled"]
@@ -157,5 +158,6 @@ anims/victory = SubResource( 2 )
 [connection signal="killed" from="Bg/UTO" to="." method="_on_UTO_killed"]
 
 [editable path="Bg/GuardsWhenSpeedIsZero/Guard"]
-
+[editable path="Bg/GuardsWhenSpeedIsZero/Guard/UtoGameoverArea"]
 [editable path="Bg/GuardsWhenSpeedIsZero/Guard2"]
+[editable path="Bg/GuardsWhenSpeedIsZero/Guard2/UtoGameoverArea"]

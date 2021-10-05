@@ -3,7 +3,7 @@ extends Node2D
 # dependencies
 
 onready var uto: Uto = $ChallengeEntities/UTO
-onready var utoBehaviour: Uto = $ChallengeEntities/UTO/Challenge2Behaviour
+onready var utoBehaviour = $ChallengeEntities/UTO/Challenge2Behaviour
 onready var definitely := $BG/Sprite/Definitely
 onready var servant := $ChallengeEntities/Servant
 onready var servant2 := $ChallengeEntities/Servant2
