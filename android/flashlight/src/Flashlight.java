@@ -53,14 +53,14 @@ public class Flashlight extends Godot.SingletonBase {
         this.appContext = appActivity.getApplicationContext();
         // You might want to try initializing your singleton here, but android
         // threads are weird and this runs in another thread, so to interact with Godot you usually have to do.
-        this.activity = (Godot)p_activity;
-        this.activity.runOnUiThread(new Runnable() {
-                public void run() {
-                    // Useful way to get config info from "project.godot".
-                    String key = GodotLib.getGlobal("plugin/api_key");
-                    // SDK.initializeHere();
-                }
-        });
+        // this.activity = (Godot)p_activity;
+        // this.activity.runOnUiThread(new Runnable() {
+        //         public void run() {
+        //             // Useful way to get config info from "project.godot".
+        //             String key = GodotLib.getGlobal("plugin/api_key");
+        //             // SDK.initializeHere();
+        //         }
+        // });
         this.registerFlashlightState(this.appContext);
     }
 
