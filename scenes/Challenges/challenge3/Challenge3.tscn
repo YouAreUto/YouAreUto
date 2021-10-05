@@ -325,7 +325,6 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
-trigger = false
 
 [node name="ch5-hour-1" type="Sprite" parent="Text/Hours"]
 position = Vector2( -283.597, 60.7913 )
@@ -600,6 +599,7 @@ anims/forward_time = SubResource( 16 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
 [connection signal="body_entered" from="SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]
 [connection signal="timeout" from="ServantPath/Timer" to="ServantPath" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Servant1StopPoint" to="ServantPath" method="_on_Servant1StopPoint_area_entered"]

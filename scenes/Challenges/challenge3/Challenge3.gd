@@ -16,7 +16,7 @@ var vs
 var textStartY
 var underText
 var debug_time = { # solution: 3:33
-	"enabled": true,
+	"enabled": false,
 	"hour": 3,
 	"minute": 33
 }

@@ -254,6 +254,7 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="Buttons/PlayButton" method="_on_ChallengeSelectionList_challengeSelected"]
 [connection signal="challengeSelected" from="ChallengesCenterContainer/ChallengeSelectionList" to="ChallengesCenterContainer/ChallengeNameSound" method="_on_ChallengeSelectionList_challengeSelected"]
 [connection signal="pressed" from="Buttons/PlayButton" to="Buttons/PlayButton" method="_on_PlayButton_pressed"]
