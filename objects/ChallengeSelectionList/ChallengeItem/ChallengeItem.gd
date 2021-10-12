@@ -21,6 +21,8 @@ signal challengeItemPressed
 
 func _ready() -> void:
 	setSelected(false)
+	if challengeNumber == 5 and OS.get_name() == "iOS":
+		disabled = true
 	# scale the texture rect up
 	textureRect.expand = true
 	textureRect.rect_min_size = textureScale * textureRect.texture.get_size()

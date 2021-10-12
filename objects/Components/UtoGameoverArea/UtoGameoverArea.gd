@@ -15,8 +15,6 @@ func _ready():
 			SceneManager.current_challenge,
 			"_on_uto_touched_gameover_area"
 		)
-	else:
-		print_debug("'SceneManager.current_challenge' should extend Challenge type")
 
 
 func _on_body_entered(body):

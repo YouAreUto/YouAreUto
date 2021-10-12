@@ -21,7 +21,6 @@ __meta__ = {
 margin_right = 750.0
 margin_bottom = 117.0
 selectionTexture = ExtResource( 2 )
-disabled = false
 
 [node name="ChallengeItem2" parent="." instance=ExtResource( 1 )]
 margin_top = 149.0
@@ -30,7 +29,6 @@ margin_bottom = 266.0
 selectionTexture = ExtResource( 7 )
 challengeName = "Standard Identities"
 challengeNumber = 2
-disabled = false
 
 [node name="ChallengeItem3" parent="." instance=ExtResource( 1 )]
 margin_top = 298.0
@@ -39,7 +37,6 @@ margin_bottom = 415.0
 selectionTexture = ExtResource( 6 )
 challengeName = "At All Times"
 challengeNumber = 3
-disabled = false
 
 [node name="ChallengeItem4" parent="." instance=ExtResource( 1 )]
 margin_top = 447.0
@@ -48,7 +45,6 @@ margin_bottom = 564.0
 selectionTexture = ExtResource( 3 )
 challengeName = "Game Is On"
 challengeNumber = 4
-disabled = false
 
 [node name="ChallengeItem5" parent="." instance=ExtResource( 1 )]
 margin_top = 596.0
@@ -57,4 +53,3 @@ margin_bottom = 713.0
 selectionTexture = ExtResource( 4 )
 challengeName = "Black Path"
 challengeNumber = 5
-disabled = false
