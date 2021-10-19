@@ -49,8 +49,8 @@ func goto_scene(path: String, params = null):
 
 func restart_challenge():
 	goto_scene(last_challenge_path)
-	
-	
+
+
 func _deferred_goto_scene(path: String, params = null):
 	# free all nodes in the current scene
 	for node in main_node.current_scene.get_children():

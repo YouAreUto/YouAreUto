@@ -427,12 +427,14 @@ __meta__ = {
 
 [node name="GrayScaleShader" parent="BG" instance=ExtResource( 19 )]
 visible = false
+mouse_filter = 2
 
 [node name="Overlay" parent="." instance=ExtResource( 20 )]
+
 [connection signal="gameover" from="." to="." method="_on_Challenge4Intro_gameover"]
-[connection signal="red_text_pushable" from="." to="BG/Control/ToWin" method="_on_Challenge4Intro_red_text_pushable"]
 [connection signal="red_text_pushable" from="." to="BG/Control/RedText" method="_on_Challenge4Intro_red_text_pushable"]
-[connection signal="victory" from="." to="BG/Control/DragUtoHereLabel" method="_on_Challenge4Intro_victory"]
+[connection signal="red_text_pushable" from="." to="BG/Control/ToWin" method="_on_Challenge4Intro_red_text_pushable"]
 [connection signal="victory" from="." to="." method="_on_Challenge4Intro_victory"]
+[connection signal="victory" from="." to="BG/Control/DragUtoHereLabel" method="_on_Challenge4Intro_victory"]
 [connection signal="area_entered" from="BG/Control/BlueTextCanBePushed/Area2D" to="." method="_on_BlueTextCanBePushed_Area2D_area_entered"]
 [connection signal="body_entered" from="BG/Control/SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]
