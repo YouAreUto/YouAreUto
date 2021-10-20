@@ -104,6 +104,7 @@ align = 1
 autoplay = "appear"
 anims/appear = SubResource( 1 )
 anims/disappear = SubResource( 2 )
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Next" to="." method="_on_Next_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
