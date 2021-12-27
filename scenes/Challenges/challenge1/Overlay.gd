@@ -2,11 +2,23 @@ extends CanvasLayer
 
 
 func _on_UTO_killed():
+	gameover()
+
+
+func gameover():
 	$AnimationPlayer.play("blink")
 
 
-func fadeIn():
-	$AnimationPlayer.play("gloria")
+func victory():
+	fadeIn()
+
+
+func fadeIn(speed = 1):
+	$AnimationPlayer.play("gloria", -1, speed)
+
+
+func fadeOut(speed = 1):
+	$AnimationPlayer.play("disappear", -1, speed)
 
 
 func fadeToDark():

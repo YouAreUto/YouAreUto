@@ -4,15 +4,15 @@
 
 > _Let your name be traveler, first rains of spring._
 
-**YouAreUto** is an open source mobile game that pushes you to think outside the box and use your lateral thinking. 
+**YouAreUto** is an open source mobile game that pushes you to think outside the box and use your lateral thinking.
 
-The game is developed with [Godot Engine v3.2.1](https://godotengine.org/download/).
+The game is developed with [Godot Engine v3.4](https://godotengine.org/download/).
 
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 
 ## Principles
 
-- Free as in freedom 
+- Free as in freedom
 - No ads
 - Foster creativity
 - Bring enjoyment
@@ -21,9 +21,8 @@ The game is developed with [Godot Engine v3.2.1](https://godotengine.org/downloa
 ## Download
 
 - PlayStore: https://play.google.com/store/apps/details?id=com.youare.uto
+- AppStore: https://apps.apple.com/app/brain-game-teaser-youareuto/id1590561597
 - Itch: https://uto-games.itch.io/youareuto
-
-Currently YouAreUto is available on Android and Itch.
 
 ## Contribute and create your challenge
 
@@ -35,13 +34,13 @@ Here you can get in touch to discuss anything about YouAreUto.
 ## Challenge submission process
 
 ![challenge flow](https://user-images.githubusercontent.com/6860637/82320094-03da2a80-99d3-11ea-913a-9c219329214c.png)
- 
+
 ### Challenge Idea
 
 New challenges can be proposed by any member of the community.
 
 To propose a new **Challenge Idea** [open an issue](https://github.com/YouAreUto/YouAreUto/issues/new?assignees=&labels=challenge+proposal&template=new-challenge-idea.md&title=New+Challenge%3A+%3Ctitle%3E) describing:
- 
+
 1. Challenge name
 2. Rules (victory condition and constraints)
 3. Solution
@@ -53,15 +52,15 @@ Each challenge needs to follow these guidelines:
 1. Rules need to be displayed during the game
 2. At least one rule needs to be changed by the player in order to win
 
-The original author(s) of the challenge will be credited (if they so desire) 
+The original author(s) of the challenge will be credited (if they so desire)
 in a dedicated page of the official app (YouAreUto).
 
 ### Challenge Prospect
 
-Challenge Ideas that are interesting and are in accordance with YouAreUto’s criteria will be labeled as `prospect` by the admins. 
+Challenge Ideas that are interesting and are in accordance with YouAreUto’s criteria will be labeled as `prospect` by the admins.
 
-A **Challenge Prospect** could take inputs and ideas from any member of the 
-community with the aim to improve the challenge if possible. 
+A **Challenge Prospect** could take inputs and ideas from any member of the
+community with the aim to improve the challenge if possible.
 In any case the intent should be to preserve the original idea as much as possible.
 
 Only Prospects can eventually become Official Challenges.
@@ -73,11 +72,11 @@ Community members cannot independently take over other members’ ideas.
 
 ### Official Challenge
 
-When a challenge is fully developed and tested the admins make it an 
-Official Challenge and add it to the official app. 
+When a challenge is fully developed and tested the admins make it an
+Official Challenge and add it to the official app.
 
-Each Official Challenge gets a progressive number (i.e. the first 
-Official Challenge after the MVP will get number 6). 
+Each Official Challenge gets a progressive number (i.e. the first
+Official Challenge after the MVP will get number 6).
 
 ### Challenge Development
 
@@ -90,7 +89,7 @@ To create a new challenge, follow these steps:
 - The Node2D root node needs to extend the `Challenge.gd` class:
   - Add a script to your root Node2D
   - Make sure it `extends Challenge`
-  - Set the `title` variable in `_init()`  (eg: `title = "My Challenge"`)
+  - Set the `title` variable in `_init()` (eg: `title = "My Challenge"`)
 - Instance `objects/UTO.tscn`
 - Create your unique challenge!
 - You can:

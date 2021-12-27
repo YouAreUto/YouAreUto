@@ -4,9 +4,6 @@
 [ext_resource path="res://assets/ui/line-draghereuto.png" type="Texture" id=2]
 [ext_resource path="res://resources/DragUtoHereFont.tres" type="DynamicFont" id=3]
 
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 387, 52 )
 
@@ -24,8 +21,8 @@ margin_left = 140.0
 margin_top = 1177.0
 margin_right = 686.0
 margin_bottom = 1236.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.631373, 0.101961, 0.101961, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "DRAG UTO HERE TO START"
 align = 1
 autowrap = true
@@ -44,4 +41,5 @@ shape = SubResource( 1 )
 
 [node name="Delay" type="Timer" parent="Label/Area2D"]
 wait_time = 0.25
+
 [connection signal="body_entered" from="Label/Area2D" to="." method="_on_Area2D_body_entered"]

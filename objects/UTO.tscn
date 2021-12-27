@@ -74,4 +74,5 @@ disabled = true
 __meta__ = {
 "_editor_description_": "Used for getUtoSize function"
 }
+
 [connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]

@@ -9,11 +9,6 @@
 [ext_resource path="res://assets/sprites/characters/char-poet.png" type="Texture" id=8]
 [ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=9]
 
-
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 62
 font_data = ExtResource( 6 )
@@ -61,8 +56,8 @@ margin_left = -119.0
 margin_top = 88.0
 margin_right = 119.0
 margin_bottom = 134.0
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "Challenge 3"
 align = 1
 autowrap = true
@@ -79,8 +74,8 @@ margin_left = -181.0
 margin_top = -519.5
 margin_right = 181.0
 margin_bottom = -436.5
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "At All Times"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -95,9 +90,12 @@ margin_left = -99.5
 margin_top = -340.5
 margin_right = 99.5
 margin_bottom = -299.5
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "ARE YOU UTO?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RuleText2" type="Label" parent="BG"]
 anchor_left = 0.5
@@ -108,8 +106,8 @@ margin_left = -132.5
 margin_top = -102.5
 margin_right = 132.5
 margin_bottom = -61.5
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "TALK TO THE POET."
 
 [node name="RuleText3" type="Label" parent="BG"]
@@ -121,8 +119,8 @@ margin_left = -164.5
 margin_top = 114.5
 margin_right = 168.5
 margin_bottom = 331.5
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "BUT RAIN KILLS AND
 RED TEXT IS A BARRIER.
 1 2 03 3 4 5 6 7 8 9 10
@@ -153,5 +151,6 @@ __meta__ = {
 autoplay = "disappear"
 anims/appear = SubResource( 2 )
 anims/disappear = SubResource( 3 )
+
 [connection signal="uto_entered" from="BG/StartArea" to="." method="_on_StartArea_uto_entered"]
 [connection signal="animation_finished" from="Overlay/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

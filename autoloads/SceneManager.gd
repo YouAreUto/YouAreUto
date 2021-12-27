@@ -8,6 +8,10 @@ var current_challenge: Challenge
 # Registered in Main.gd:_init(), will be populated by this script if running a single scene
 var main_node: Main
 
+var last_goto_scene = {
+	path = "res://scenes/MainMenu/MainMenu.tscn",
+	params = null
+}
 
 func _ready():
 	if main_node == null:
@@ -15,7 +19,6 @@ func _ready():
 		if get_tree().current_scene is Challenge:
 			current_challenge = get_tree().current_scene
 			last_challenge_path = current_challenge.filename
-
 		# need call_deferred because it's not possible
 		# to modify the tree in notification callbacks
 		call_deferred("_apply_fix_for_play_scene")
@@ -38,13 +41,19 @@ func _apply_fix_for_play_scene():
 	# reparent played scene under main_node
 	main_node.current_scene.get_child(0).queue_free()
 	main_node.current_scene.add_child(played_scene)
+	last_goto_scene.path = played_scene.filename
 
 
 func goto_scene(path: String, params = null):
 	# print_debug(params)
 	main_node.anim.play("show_overlay")
+	last_goto_scene = {
+		"path": path,
+		"params": params
+	}
 	yield(main_node.anim, "animation_finished")
 	call_deferred("_deferred_goto_scene", path, params)
+
 
 
 func restart_challenge():
@@ -73,6 +82,9 @@ func _instance_scene_by_path(path) -> Node:
 	var s = load(path)
 	if s == null:
 		print_debug("Error: path '%s' does not contain any Scene" % path)
-		print("Forcing CTA")
 		s = load("res://scenes/CTA/CTA.tscn")
 	return s.instance()
+
+
+func reload_current_scene():
+	goto_scene(last_goto_scene.path, last_goto_scene.params)

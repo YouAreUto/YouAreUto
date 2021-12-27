@@ -13,13 +13,15 @@ var use_legacy_code = false
 func _ready():
 	Global.challengeData = {}
 	setPositions()
+	if Global.data.get("currentChallenge", -1) == 6:
+		nextChallengeBtn.hide()
 
 
 func init(conf: Dictionary):
 	if conf and conf.has("use_legacy_code"):
 		use_legacy_code = conf.get("use_legacy_code")
-	
-	
+
+
 func setPositions():
 	text.rect_position.x = get_viewport().get_visible_rect().size.x / 2 - text.rect_size.x / 2
 	nextChallengeBtn.rect_position.x = get_viewport().get_visible_rect().size.x / 2 - nextChallengeBtn.rect_size.x / 2
@@ -40,4 +42,3 @@ func _on_Quit_pressed() -> void:
 
 func _on_Next_pressed():
 	Global.goToNextChallenge(true)
-

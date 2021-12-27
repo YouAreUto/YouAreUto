@@ -4,8 +4,6 @@ extends KinematicBody2D
 signal killed
 signal hit
 
-#signal kingKilled
-
 onready var _bounds = $_bounds
 onready var vwSize = get_viewport_rect().size
 onready var utoSize := getUtoSize()
@@ -17,7 +15,6 @@ export var enemiesInteractionEnabled := true
 export var showOutline := true
 
 var speed = 20
-var velocity := Vector2()
 var target_position := Vector2()  # target position in global coordinates
 var colliding = false
 var holding = false  # true when drag start from  Uto,
@@ -109,3 +106,7 @@ func kill():
 	alive = false
 	set_physics_process(false)
 	emit_signal("killed")
+
+
+func cancel_movement():
+	target_position = global_position

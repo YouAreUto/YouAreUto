@@ -13,11 +13,6 @@
 [ext_resource path="res://objects/DragUtoHereToStart/DragUtoHereToStart.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=12]
 
-
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 62
 font_data = ExtResource( 7 )
@@ -78,8 +73,8 @@ margin_left = 290.0
 margin_top = 197.0
 margin_right = 473.0
 margin_bottom = 243.0
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "Challenge 2"
 align = 1
 
@@ -93,8 +88,8 @@ margin_top = 237.0
 margin_right = 690.0
 margin_bottom = 320.0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Standard Identities"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -106,8 +101,8 @@ margin_left = 123.819
 margin_top = 352.968
 margin_right = 665.819
 margin_bottom = 393.968
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "YOU ARE UTO, NOT A CASTLE SERVANT."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -122,8 +117,8 @@ margin_top = 610.0
 margin_right = 593.145
 margin_bottom = 651.0
 theme = ExtResource( 6 )
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "YOU MUST ENTER THE CASTLE."
 
 [node name="Castle" parent="IntroNodes" instance=ExtResource( 10 )]
@@ -135,8 +130,8 @@ margin_top = 808.242
 margin_right = 577.177
 margin_bottom = 937.242
 theme = ExtResource( 6 )
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "GUARDS KILL UTO.
 RED TEXT IS A BARRIER.
 BLUE TEXT CAN BE PUSHED."
@@ -163,5 +158,6 @@ __meta__ = {
 autoplay = "disappear"
 anims/appear = SubResource( 2 )
 anims/disappear = SubResource( 3 )
+
 [connection signal="uto_entered" from="IntroNodes/DragUtoHereToStart" to="." method="_on_DragUtoHereToStart_uto_entered"]
 [connection signal="animation_finished" from="Overlay/AnimationPlayer" to="IntroNodes" method="_on_AnimationPlayer_animation_finished"]

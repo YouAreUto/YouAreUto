@@ -6,7 +6,7 @@ onready var servant2 = $Servant2
 onready var servant3 = $Servant3
 
 onready var servants = [
-	servant, 
+	servant,
 	servant2,
 	servant3,
 	$ServantLeftPath/PathFollow2D/Servant4,
@@ -41,9 +41,6 @@ func setServantPaths():
 	servantCenterPath.curve = Curve2D.new()
 	servantCenterPath.curve.add_point(Vector2(vw_size.x / 2, vw_size.y + servantBounds.y))
 	servantCenterPath.curve.add_point(servant2.position)
-
-#	for point in range(servantLeftPath.curve.get_point_count()):
-#		print(point, servantLeftPath.curve.get_point_position(point))
 
 
 func _on_Definitely_UtoBecameACastleServant():

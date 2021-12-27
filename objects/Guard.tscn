@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/characters/char-outline-enemy1.png" type="Texture" id=1]
-[ext_resource path="res://assets/sprites/characters/char-guard.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/characters/char-guard-cut.png" type="Texture" id=2]
 [ext_resource path="res://objects/Guard.gd" type="Script" id=3]
 [ext_resource path="res://objects/Components/UtoGameoverArea/UtoGameoverArea.tscn" type="PackedScene" id=4]
 
-[node name="Guard" type="Node2D"]
+[sub_resource type="CircleShape2D" id=1]
+radius = 120.0
+
+[node name="Guard" type="Node2D" groups=["guards"]]
 script = ExtResource( 3 )
 
 [node name="Outline" type="Sprite" parent="."]
@@ -16,6 +19,17 @@ texture = ExtResource( 1 )
 scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 2 )
 
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
 [node name="UtoGameoverArea" parent="." instance=ExtResource( 4 )]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
 [editable path="UtoGameoverArea"]

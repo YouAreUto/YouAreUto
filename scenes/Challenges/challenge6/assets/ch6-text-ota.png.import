@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon120px.png-36feedfab3dcc34e7550001fc2221933.stex"
+path="res://.import/ch6-text-ota.png-4ef5ee26504efc51cee958669e650105.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon120px.png"
-dest_files=[ "res://.import/icon120px.png-36feedfab3dcc34e7550001fc2221933.stex" ]
+source_file="res://scenes/Challenges/challenge6/assets/ch6-text-ota.png"
+dest_files=[ "res://.import/ch6-text-ota.png-4ef5ee26504efc51cee958669e650105.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

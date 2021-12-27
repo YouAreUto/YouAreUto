@@ -1,11 +1,11 @@
-extends Node2D
+extends CanvasLayer
 
-# dependencies
-onready var soundBtn = $CanvasLayer/Container/VBoxContainer/Sound/ToggleButton
-onready var colorBtn = $CanvasLayer/Container/VBoxContainer/Color/Button2
-onready var grayScaleShader = $CanvasLayer/Container/GrayScaleShader
-onready var settingsActions = $CanvasLayer/Container/SettingsActions
-onready var speedControl = $CanvasLayer/Container/VBoxContainer/GuardSpeed/RangeControl/ColorRect/Label
+onready var soundBtn = $Container/VBoxContainer/Sound/ToggleButton
+onready var colorBtn = $Container/VBoxContainer/Color/Button2
+onready var grayScaleShader = $Container/GrayScaleShader
+onready var settingsActions = $Container/SettingsActions
+onready var speedControl = $Container/VBoxContainer/GuardSpeed/RangeControl/ColorRect/Label
+onready var container = $Container
 
 
 func _ready():
@@ -28,6 +28,13 @@ func guardSpeedCheck():
 		speedControl.text = str(Global.challengeData.get("guardSpeed"))
 	else:
 		speedControl.text = str(1.0)
+	if Global.data["currentChallenge"] == 6:
+		challenge6customization()
+
+
+func challenge6customization():
+#	$Container/VBoxContainer/GuardSpeed.hide()
+	$Container/VBoxContainer/GuardSpeed.disable()
 
 
 func soundCheck():
@@ -36,11 +43,10 @@ func soundCheck():
 
 
 func setPositions():
-	$CanvasLayer/Container.rect_position.x = get_viewport().get_visible_rect().size.x / 2 - $CanvasLayer/Container.rect_size.x / 2
+	container.rect_position.x = get_viewport().get_visible_rect().size.x / 2 - container.rect_size.x / 2
 	var vwSize = get_viewport().get_visible_rect().size
 	settingsActions.rect_position.x = vwSize.x / 2 - settingsActions.rect_size.x / 2
 
-# events subscriptions
 
 func _on_Quit_pressed():
 	Global.challengeData = {}
@@ -48,8 +54,8 @@ func _on_Quit_pressed():
 
 
 func _on_Confirm_pressed():
-	Global.challengeData["monochrome"] = !$CanvasLayer/Container/VBoxContainer/Color/Button2.on
-	Global.challengeData["guardSpeed"] = $CanvasLayer/Container/VBoxContainer/GuardSpeed.getSpeed()
+	Global.challengeData["monochrome"] = !$Container/VBoxContainer/Color/Button2.on
+	Global.challengeData["guardSpeed"] = $Container/VBoxContainer/GuardSpeed.getSpeed()
 	var scn = Global.getChallengePath(Global.data.currentChallenge).challenge
 	SceneManager.goto_scene(scn)
 
@@ -58,15 +64,14 @@ func _on_Restart_pressed():
 	Global.challengeData = {}
 	var scn = Global.getChallengePath(Global.data.currentChallenge).intro
 	SceneManager.goto_scene(scn)
-#	SceneManager.goto_scene("res://scenes/Challenges/challenge2-intro/Challenge2Intro.tscn")
 
 
-func _on_Button2_button_up():
+func _on_Button2_pressed():
 	if colorBtn.on:
 		grayScaleShader.hide()
 	else:
 		grayScaleShader.show()
 
 
-func _on_ToggleButton_button_up():
+func _on_ToggleButton_pressed():
 	Global.challengeData["soundEnabled"] = soundBtn.on

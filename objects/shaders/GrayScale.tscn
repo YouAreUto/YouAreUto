@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/sprites/vfx/white-circle.png" type="Texture" id=1]
+[ext_resource path="res://objects/shaders/gray-scale-shader.gd" type="Script" id=2]
+[ext_resource path="res://objects/shaders/GrayScaleShader.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 base : hint_color;
+
+void fragment() {
+  vec3 c = textureLod(SCREEN_TEXTURE,SCREEN_UV, 0.0).rgb;
+  
+  float v = dot(c, vec3(0.34, 0.34, 0.34));
+  v=sqrt(v);
+  if (c.r == c.g && c.g == c.b) { // if the color is already in a gray scale
+	 COLOR.rgb = c.rgb; // leave it as it is
+  } else { // otherwise
+	 COLOR.rgb= base.rgb * v; // apply gray scale (optionally with the specified tint)
+  }
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/base = Color( 1, 1, 1, 1 )
+
+[node name="GrayScale" type="CanvasLayer"]
+layer = 100
+script = ExtResource( 2 )
+
+[node name="GrayScaleShader" type="TextureRect" parent="." instance=ExtResource( 3 )]
+visible = false
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,6 +1,5 @@
 extends Node2D
 
-
 onready var uto := $BG/UTO
 onready var toWin := $BG/Control/ToWin
 onready var redText := $BG/Control/RedText

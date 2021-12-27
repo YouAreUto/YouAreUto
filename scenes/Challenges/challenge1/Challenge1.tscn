@@ -253,9 +253,6 @@ anims/hide_rule = SubResource( 1 )
 
 [node name="Overlay" parent="." instance=ExtResource( 4 )]
 
-[node name="ColorRect" parent="Overlay" index="0"]
-color = Color( 1, 1, 1, 0 )
-
 [node name="GrayScaleShader" parent="Overlay" instance=ExtResource( 5 )]
 visible = false
 
@@ -278,8 +275,7 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HeraldPath"]
-position = Vector2( 6, -50.0631 )
-offset = 49.0796
+position = Vector2( 6, -1 )
 rotate = false
 
 [node name="Herald" parent="HeraldPath/PathFollow2D" instance=ExtResource( 8 )]
@@ -293,8 +289,7 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SwordPath"]
-position = Vector2( -3, -46.0631 )
-offset = 47.0436
+position = Vector2( -3, 1 )
 rotate = false
 
 [node name="SwordIcon" parent="SwordPath/PathFollow2D" instance=ExtResource( 9 )]
@@ -308,8 +303,7 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SwordPath2"]
-position = Vector2( 10, -45.9081 )
-offset = 46.8896
+position = Vector2( 10, 1 )
 rotate = false
 
 [node name="SwordIcon" parent="SwordPath2/PathFollow2D" instance=ExtResource( 9 )]
@@ -323,8 +317,7 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SwordPath3"]
-position = Vector2( 6, -50.0631 )
-offset = 49.0796
+position = Vector2( 6, -1 )
 rotate = false
 
 [node name="SwordIcon" parent="SwordPath3/PathFollow2D" instance=ExtResource( 9 )]
@@ -338,8 +331,7 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SwordPath4"]
-position = Vector2( 6, -50.0631 )
-offset = 49.0796
+position = Vector2( 6, -1 )
 rotate = false
 
 [node name="SwordIcon" parent="SwordPath4/PathFollow2D" instance=ExtResource( 9 )]
@@ -361,9 +353,7 @@ rotate = false
 [node name="SwordIcon" parent="SwordPath5/PathFollow2D" instance=ExtResource( 9 )]
 scale = Vector2( 0.5, 0.5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SwordPath5" groups=[
-"enemyAnimationPlayers",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SwordPath5" groups=["enemyAnimationPlayers"]]
 autoplay = "patrol"
 playback_speed = 1.8
 anims/patrol = SubResource( 6 )
@@ -391,24 +381,20 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SwordPath7"]
-position = Vector2( -13.9917, 8 )
-offset = 40.0397
+position = Vector2( -18.0445, 8 )
+offset = 36.0033
 rotate = false
 
 [node name="SwordIcon" parent="SwordPath7/PathFollow2D" instance=ExtResource( 9 )]
 scale = Vector2( 0.5, 0.5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SwordPath7" groups=[
-"enemyAnimationPlayers",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SwordPath7" groups=["enemyAnimationPlayers"]]
 autoplay = "patrol"
 playback_speed = 1.8
 anims/patrol = SubResource( 9 )
 anims/patrol2 = SubResource( 10 )
 
-[node name="EnemiesMovement" type="AnimationPlayer" parent="." groups=[
-"enemyAnimationPlayers",
-]]
+[node name="EnemiesMovement" type="AnimationPlayer" parent="." groups=["enemyAnimationPlayers"]]
 autoplay = "New Anim"
 playback_speed = 1.8
 "anims/New Anim" = SubResource( 11 )
@@ -422,7 +408,7 @@ position = Vector2( 370, 590 )
 [connection signal="hit" from="UTO" to="Bg" method="_on_UTO_hit"]
 [connection signal="hit" from="UTO" to="SwordPath5" method="_on_UTO_hit"]
 [connection signal="hit" from="UTO" to="SwordPath7" method="_on_UTO_hit"]
-[connection signal="killed" from="UTO" to="Overlay" method="_on_UTO_killed"]
 [connection signal="killed" from="UTO" to="." method="_on_UTO_killed"]
+[connection signal="killed" from="UTO" to="Overlay" method="_on_UTO_killed"]
 
 [editable path="Overlay"]

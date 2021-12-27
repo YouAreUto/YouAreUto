@@ -235,9 +235,7 @@ loop = false
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ChallengeEntities/ServantLeftPath" groups=[
-"enemyAnimationPlayers",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChallengeEntities/ServantLeftPath" groups=["enemyAnimationPlayers"]]
 autoplay = "patrol"
 playback_speed = 0.4
 anims/patrol = SubResource( 8 )
@@ -255,9 +253,7 @@ loop = false
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ChallengeEntities/ServantRightPath" groups=[
-"enemyAnimationPlayers",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChallengeEntities/ServantRightPath" groups=["enemyAnimationPlayers"]]
 autoplay = "patrol"
 playback_speed = 0.4
 anims/patrol = SubResource( 9 )
@@ -275,9 +271,7 @@ loop = false
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ChallengeEntities/ServantCenterPath" groups=[
-"enemyAnimationPlayers",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChallengeEntities/ServantCenterPath" groups=["enemyAnimationPlayers"]]
 autoplay = "patrol"
 playback_speed = 0.4
 anims/patrol = SubResource( 10 )
@@ -296,7 +290,6 @@ anims/appear = SubResource( 11 )
 
 [node name="GrayScaleShader" parent="Overlay" instance=ExtResource( 15 )]
 visible = false
-mouse_filter = 2
 
 [node name="UtoBecomeServantSound" parent="." instance=ExtResource( 16 )]
 
