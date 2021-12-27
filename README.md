@@ -1,6 +1,6 @@
 # YouAreUto
 
-![Uto logo](assets/sprites/logo-in-game-black.png)
+![Uto logo](https://i.imgur.com/ifXSDKn.png)
 
 > _Let your name be traveler, first rains of spring._
 
