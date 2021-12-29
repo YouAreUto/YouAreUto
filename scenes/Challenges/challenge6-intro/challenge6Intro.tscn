@@ -12,7 +12,7 @@
 [ext_resource path="res://resources/DragUtoHereFont.tres" type="DynamicFont" id=19]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 202.465
+radius = 189.032
 
 [node name="Challenge6Intro" type="Node2D"]
 script = ExtResource( 5 )
@@ -84,11 +84,11 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -300.0
-margin_top = -672.0
-margin_right = 300.0
-margin_bottom = -72.0
-rect_min_size = Vector2( 600, 600 )
+margin_left = -290.0
+margin_top = -657.0
+margin_right = 290.0
+margin_bottom = -77.0
+rect_min_size = Vector2( 580, 580 )
 rect_pivot_offset = Vector2( -637, 223 )
 mouse_filter = 2
 texture = ExtResource( 6 )

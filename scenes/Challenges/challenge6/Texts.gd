@@ -1,34 +1,46 @@
 extends CanvasLayer
 
-signal uto_lost_and_text_is_a_barrier
 signal rules_changed(new_rule_key)
 
-var rule_top_y = 0
-var spacing = 30
+var rule_bottom_y = 0
+var spacing = 26
 
 onready var youareuto_label = $Control/YouAreUto
 onready var control = $Control
 
 
 func _ready() -> void:
-	var vw = get_viewport().get_visible_rect()
-	youareuto_label.rect_position.y = Global.vw.size.y / 2 - 250
-	rule_top_y = youareuto_label.rect_position.y + youareuto_label.rect_size.y * youareuto_label.rect_scale.y
+	rule_bottom_y = Global.vw.size.y - 1000
+	youareuto_label.rect_position.y = rule_bottom_y
+	_update_rule_bottom(youareuto_label)
+
+
+func calculate_positions():
+	_add_rule("guard", true)
+	_add_rule("captain", true)
+	_add_rule("ota", true)
+	_add_rule("poet", true)
 
 
 func add_rule(rule_key):
 	call_deferred("_add_rule", rule_key)
 
 
-func _add_rule(rule_key):
+func _add_rule(rule_key, silent = false):
 	var rule_label: Label = find_node(rule_key.capitalize())
 	if rule_label.visible:
 		return
 	rule_label.set_visible(true)
-	rule_label.rect_position.y = rule_top_y + spacing
+	rule_label.rect_position.y = rule_bottom_y + spacing
 	if rule_key != "servant":
-		rule_top_y = rule_label.rect_position.y + rule_label.rect_size.y * rule_label.rect_scale.y
-	emit_signal("rules_changed", rule_key)
+		_update_rule_bottom(rule_label)
+	if rule_key == "guard":
+		var guard2 = find_node("Guard2")
+		guard2.set_visible(true)
+		guard2.rect_position.y = rule_bottom_y + spacing
+		_update_rule_bottom(guard2)
+	if silent == false:
+		emit_signal("rules_changed", rule_key)
 	match rule_key:
 		"servant":
 			# "uto's definitely lost" text
@@ -38,6 +50,10 @@ func _add_rule(rule_key):
 			activate_collisions()
 		_:
 			pass
+
+
+func _update_rule_bottom(l: Label):
+	rule_bottom_y = l.rect_position.y + l.rect_size.y * l.rect_scale.y
 
 
 func activate_collisions():
@@ -52,6 +68,7 @@ func activate_collisions():
 				t.rect_position.x = Global.vw.size.x / 2 - t.rect_size.x / 2
 		collision_shape.position = t.rect_size / 2
 		collision_shape.disabled = !ct.visible
+		yield(get_tree(), "idle_frame")
 		rect_shape.extents = t.rect_size / 2
 		rect_shape.extents.x = Global.vw.size.x / 2 - 25
 		collision_shape.shape = rect_shape

@@ -9,9 +9,14 @@ onready var baloon: TextureRect = $WhiteCircle/DialogueBaloon
 onready var npc: Sprite = $WhiteCircle/NPC
 onready var overlay = get_node("../Overlay")
 
+var dialogue_baloons = {}
+
 
 func _ready():
 	layer = -2
+	for el in ["captain", "guard", "ota", "poet", "servant"]:
+		dialogue_baloons[el] = load("res://scenes/Challenges/challenge6/assets/balloon-ch6-%s.png" % [el])
+
 
 
 func hide():
@@ -24,15 +29,15 @@ func hide():
 
 func show(dialogue = ""):
 	dialogue_type = dialogue
-	baloon.texture = load("res://scenes/Challenges/challenge6/assets/balloon-ch6-%s.png" % [dialogue])
+	baloon.texture = dialogue_baloons[dialogue]
 	npc.texture = load("res://assets/sprites/characters/char-%s.png" % [dialogue])
 	layer = 1
 
 
 func on_release():
 	if layer == 1:
-		emit_signal("dialogue_ended", dialogue_type)
 		hide()
+		emit_signal("dialogue_ended", dialogue_type)
 
 
 func _input(event: InputEvent) -> void:

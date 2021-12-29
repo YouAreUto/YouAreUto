@@ -1,9 +1,9 @@
 extends Node
 
 var layouts = [
-	Vector2(), # placeholder, will be replaced by ProjectSettings window size
+	Vector2(375, 667), # placeholder, will be replaced by ProjectSettings window size
 	Vector2(375, 812),
-	Vector2(768, 1024)
+	Vector2(500, 667), #Vector2(768, 1024)
 ]
 
 

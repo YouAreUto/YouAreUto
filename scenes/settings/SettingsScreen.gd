@@ -33,7 +33,6 @@ func guardSpeedCheck():
 
 
 func challenge6customization():
-#	$Container/VBoxContainer/GuardSpeed.hide()
 	$Container/VBoxContainer/GuardSpeed.disable()
 
 

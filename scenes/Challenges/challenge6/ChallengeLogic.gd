@@ -19,7 +19,7 @@ func _ready():
 		g.get_node("Icon").texture = load("res://assets/sprites/characters/char-guard.png")
 
 
-func _on_Servant_uto_entered(uto):
+func _on_Servant_uto_entered(_uto):
 	if servant_rule.visible:
 		return
 	var appear_anim = start_dialogue("servant")
@@ -33,18 +33,14 @@ func _on_Guard_uto_overlapped():
 	var appear_anim = start_dialogue("guard")
 	yield(appear_anim, "completed")
 	add_rule("guard")
-	for g in get_tree().get_nodes_in_group("guards"):
-		g.get_node("Outline").show()
-		g.get_node("Icon").texture = load("res://assets/sprites/characters/char-guard-cut.png")
-		g.disconnect("uto_overlapped", self, "_on_Guard_uto_overlapped")
 
 
 # from guards
 func _on_OtaDetector_ota_entered(detector):
 	if !uto.alive:
 		return
-	var anims: AnimationPlayer = get_node("../AnimationPlayer")
-	anims.stop()
+	var ap: AnimationPlayer = get_node("../AnimationPlayer")
+	ap.stop()
 	uto.kill()
 	ota.set_process(false) # don't move
 	# animate guard
@@ -65,8 +61,8 @@ func _on_Ota_uto_entered() -> void:
 		return
 	var appear_anim = start_dialogue("ota")
 	yield(appear_anim, "completed")
-	add_rule("ota")
 	add_rule("guard")
+	add_rule("ota")
 	anims.remove_ota_animation()
 	call_deferred("ota_start_following_uto")
 
@@ -89,11 +85,13 @@ func _on_Captain_uto_entered() -> void:
 
 
 func start_dialogue(dialogue_key):
+	uto.cancel_movement()
 	get_tree().paused = true
 	overlay.fadeIn(2)
 	yield(overlay.get_node("AnimationPlayer"), "animation_finished")
-	overlay.fadeOut(2)
 	dialogue.show(dialogue_key)
+	yield(get_tree(), "idle_frame")
+	overlay.fadeOut(1.5)
 
 
 func add_rule(rule_key):
@@ -109,5 +107,7 @@ func ota_start_following_uto():
 	ota.follow_uto(uto)
 
 
-func _on_Dialogue_dialogue_ended(type):
+func _on_Dialogue_dialogue_ended(_type):
+	uto.cancel_movement()
+	yield(get_tree().create_timer(.4), "timeout")
 	get_tree().paused = false

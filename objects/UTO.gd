@@ -22,6 +22,8 @@ var holding = false  # true when drag start from  Uto,
 var heraldKilled = false
 var alive = true # true if UTO is alive
 
+var delta_movement = Vector2()
+
 const detectionRadiusForDrag = 100
 const dragThresholdForMovement = 3
 
@@ -31,16 +33,18 @@ func _ready():
 	$Outline.visible = showOutline
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not alive:
 		return
+	delta_movement = Vector2()
 	# if user is not giving input
 	if not holding:
 		# don't move UTO
 		target_position = global_position
 		return
 	if (target_position - position).length() > dragThresholdForMovement:
-		move_and_slide(speed * (target_position - position))
+		delta_movement = speed * (target_position - position)
+		move_and_slide(delta_movement)
 		clampPositionInsideTheScreen()
 
 

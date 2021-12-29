@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/Challenges/challenge6/challenge6.gd" type="Script" id=1]
 [ext_resource path="res://objects/WhiteBackground/BG.tscn" type="PackedScene" id=2]
@@ -147,7 +147,7 @@ tracks/3/path = NodePath("PoetPath/PoetPathFollow:unit_offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.9, 5, 6.1, 10 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
@@ -159,7 +159,7 @@ tracks/4/path = NodePath("ServantPath/ServantPathFollow:unit_offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0, 1.8, 5.1, 8.1, 10 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
@@ -173,7 +173,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1.8, 5.1, 8.1, 10 ),
+"times": PoolRealArray( 0, 1, 5.1, 8.9, 10 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 1.0, 0.0, 0.0 ]
@@ -225,7 +225,7 @@ tracks/3/path = NodePath("PoetPath/PoetPathFollow:unit_offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.9, 5, 6, 12, 16 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
@@ -237,12 +237,41 @@ tracks/4/path = NodePath("ServantPath/ServantPathFollow:unit_offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0, 5.75, 12, 16 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "main"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PoetPath/PoetPathFollow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9, 5, 6.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ServantPath/ServantPathFollow:unit_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.8, 5.1, 8.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 0.0, 0.0 ]
 }
 
 [sub_resource type="DynamicFont" id=11]
@@ -262,7 +291,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id=12]
-radius = 370.0
+radius = 345.0
 
 [sub_resource type="Curve2D" id=6]
 _data = {
@@ -298,6 +327,11 @@ anims/main = SubResource( 4 )
 anims/victory-paths = SubResource( 14 )
 script = ExtResource( 34 )
 
+[node name="TopPawnsAnimations" type="AnimationPlayer" parent="."]
+autoplay = "main"
+playback_speed = 0.7
+anims/main = SubResource( 15 )
+
 [node name="BG" parent="." instance=ExtResource( 2 )]
 
 [node name="Texts" type="CanvasLayer" parent="."]
@@ -316,9 +350,9 @@ __meta__ = {
 [node name="YouAreUto" type="Label" parent="Texts/Control"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -159.5
-margin_top = 570.0
-margin_right = 159.5
+margin_left = -159.0
+margin_top = 574.0
+margin_right = 160.0
 margin_bottom = 618.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 29 )
@@ -334,9 +368,9 @@ __meta__ = {
 
 [node name="Captain" type="Label" parent="Texts/Control"]
 visible = false
-margin_top = 622.0
+margin_top = 626.0
 margin_right = 670.0
-margin_bottom = 670.0
+margin_bottom = 672.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 29 )
 text = "THE  WHITE  CIRCLE  IS  READY."
@@ -353,12 +387,11 @@ __meta__ = {
 [node name="Guard" type="Label" parent="Texts/Control"]
 visible = false
 margin_top = 674.0
-margin_right = 574.0
-margin_bottom = 773.0
+margin_right = 396.0
+margin_bottom = 720.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 29 )
-text = "GUARDS KILL OTA.
-AND WHOEVER HELPS HIM."
+text = "GUARDS  KILL  OTA."
 align = 1
 script = ExtResource( 27 )
 __meta__ = {
@@ -368,6 +401,24 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Texts/Control/Guard"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Control/Guard/StaticBody2D"]
+
+[node name="Guard2" type="Label" parent="Texts/Control"]
+visible = false
+margin_top = 772.0
+margin_right = 574.0
+margin_bottom = 818.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 29 )
+text = "AND  WHOEVER  HELPS HIM."
+align = 1
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Texts/Control/Guard2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Control/Guard2/StaticBody2D"]
 
 [node name="Ota" type="Label" parent="Texts/Control"]
 visible = false

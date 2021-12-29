@@ -8,6 +8,7 @@ onready var sprite = $Sprite
 var state = "follow_path"
 var follow_target: Node2D
 var speed = 220
+var last_d = 0
 
 
 func _ready():
@@ -31,14 +32,14 @@ func follow_uto(uto):
 	state = "follow_target"
 
 
-func _process(delta):
+func _process(_delta):
 	if follow_target and state == "follow_target":
-		var target_distance = global_position.distance_to(follow_target.global_position)
-		if target_distance > 130:
-			var multiplier = target_distance / 80
-			multiplier = 1 if target_distance < 150 else multiplier
-			follow(delta * multiplier)
+		follow()
 
 
-func follow(delta):
-	position = lerp(position, follow_target.global_position, delta)
+func follow():
+	var target_distance = global_position.distance_to(follow_target.global_position)
+	var lerp_amount = log(.5 + target_distance / 250.0)
+	if lerp_amount < -0.02:
+		return
+	position = lerp(position, follow_target.global_position, lerp_amount)

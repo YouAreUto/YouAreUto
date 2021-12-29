@@ -54,25 +54,25 @@ func on_resize():
 
 func set_layout(_val = false):
 	var guard_bottom_y = vs.y - half_pawn_size - half_pawn_size * 2
-	poet_top_y = vs.y / 2 - 350
-	poet_bot_y = vs.y / 2 - 100
+	poet_top_y = 250
+	poet_bot_y = vs.y / 2 - 80
 	# left guard
 	var guard_left = half_pawn_size
 	var guard_right = vs.x - half_pawn_size
-	var guard_top = guard_bottom_y - 300
+	var guard_top = guard_bottom_y - 400
 	var captain_path_length = guard_right - guard_left
 	guard1_path.curve.clear_points()
 	guard1_path.curve.add_point(Vector2(
 		guard_left, guard_bottom_y
 	))
 	guard1_path.curve.add_point(Vector2(
-		vs.x / 2, guard_bottom_y
+		vs.x / 2 + 10, guard_bottom_y
 	))
 	guard1_path.curve.add_point(Vector2(
-		vs.x / 2, guard_top
+		vs.x / 2 + 10, guard_top
 	))
 	guard1_path.curve.add_point(Vector2(
-		guard_left, guard_top
+		guard_right, guard_top
 	))
 	# guard right
 	guard2_path.curve.clear_points()
@@ -80,13 +80,13 @@ func set_layout(_val = false):
 		guard_right, guard_bottom_y
 	))
 	guard2_path.curve.add_point(Vector2(
-		vs.x / 2, guard_bottom_y
+		vs.x / 2 - 10, guard_bottom_y
 	))
 	guard2_path.curve.add_point(Vector2(
-		vs.x / 2, guard_top
+		vs.x / 2 - 10, guard_top
 	))
 	guard2_path.curve.add_point(Vector2(
-		vs.x / 2 + 300, guard_top
+		guard_left, guard_top
 	))
 	# captain
 	var captain_path: Path2D = $CaptainPath
@@ -114,11 +114,11 @@ func set_layout(_val = false):
 		poet_top_y
 	))
 	poet_path.curve.add_point(Vector2(
-		vs.x - half_pawn_size - 150,
+		vs.x - half_pawn_size - 220,
 		poet_top_y
 	))
 	poet_path.curve.add_point(Vector2(
-		vs.x - half_pawn_size - 150,
+		vs.x - half_pawn_size - 220,
 		poet_bot_y
 	))
 	poet_path.curve.add_point(Vector2(
@@ -148,7 +148,8 @@ func set_layout(_val = false):
 	settings_icon.position.y = guard_top + (guard_bottom_y - guard_top) / 2
 	# uto
 	if !Global.challengeData.has("utoEnteredSettings"):
-		uto.position = Global.vw.size / 2
+		uto.position = $SettingsIcon.global_position
+		uto.position.x = 90
 	else:
 		uto.global_position = $SettingsIcon/UtoRespawnPosition.global_position
 
@@ -213,6 +214,20 @@ func correct_rules_order():
 
 func on_rules_changed(new_rule_key):
 	Global.challengeData.active_rules.append(new_rule_key)
+	if new_rule_key == "poet":
+		uto.position.y = get_lowest_rule_y_pos() + 65
+		var ota: Ota = get_node_or_null("Ota")
+		if ota:
+			ota.position = uto.position
+	if new_rule_key == "ota":
+		for g in get_tree().get_nodes_in_group("guards"):
+			var outline = g.get_node("Outline")
+			if outline.visible:
+				continue
+			outline.show()
+			g.get_node("Icon").texture = load("res://assets/sprites/characters/char-guard-cut.png")
+			if g.is_connected("uto_overlapped", self, "_on_Guard_uto_overlapped"):
+				g.disconnect("uto_overlapped", self, "_on_Guard_uto_overlapped")
 	if correct_rules_order():
 		puzzle_enable_victory()
 	# if words are barriers
@@ -225,7 +240,6 @@ func on_rules_changed(new_rule_key):
 
 
 func update_paths_to_not_cross_barriers():
-	uto.position.y = get_lowest_rule_y_pos()
 	if rule_servant.visible:
 		# update guard paths to barely touch the "you are definitely lost" text
 		var new_points = [guard1_path.curve.get_point_position(0), guard1_path.curve.get_point_position(1)]
@@ -260,16 +274,10 @@ func update_paths_to_not_cross_barriers():
 func update_guards_path_to_not_overlap_text():
 	yield(get_tree(), "idle_frame")
 	vs = get_viewport_rect().size
-	# captain
-	var captain_spr = $CaptainPath/CaptainPathFollow/Captain.get_node("Sprite")
-	var captain_half_size = captain_spr.texture.get_size().x * captain_spr.global_scale.x / 2
-	# left guard
-#	var guard1 = $Guard1Path/Guard1PathFollow/Guard
-#	var guard1_path: Path2D = $Guard1Path
 	var guard_half_size = guard1.get_size().x / 2
 	var guard_bottom_y = $Texts/Control/Servant.rect_position.y - guard_half_size
 	var guard_top_y = get_lowest_rule_y_pos() + guard_half_size
-	#
+	# paths
 	guard1_path.curve.clear_points()
 	guard1_path.curve.add_point(Vector2(
 		-100, guard_bottom_y
@@ -310,7 +318,6 @@ func get_lowest_rule_y_pos() -> int:
 	var lowest_y = 0
 	for el in $Texts/Control.get_children():
 		var rule_name = el.name
-		var rule_visible = el.visible
 		var rule_y = el.rect_global_position.y
 		var rule_height = el.rect_size.y
 		if rule_name == "Servant" or !el.visible:
@@ -335,7 +342,7 @@ func _on_VictoryArea_body_entered(body):
 
 
 func on_victory():
-	var anims: AnimationPlayer = get_node("AnimationPlayer")
-	anims.stop()
+	var ap: AnimationPlayer = get_node("AnimationPlayer")
+	ap.stop()
 	uto.set_physics_process(false)
 	self.completed()

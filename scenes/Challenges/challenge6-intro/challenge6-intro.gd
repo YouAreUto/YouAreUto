@@ -9,13 +9,14 @@ export(PackedScene) var next_scene
 
 func _ready():
 	get_viewport().connect("size_changed", self, "set_layout")
+	set_layout()
 
 
 func set_layout():
 	var challenge_title = get_node("BG/Control/YouAreUto")
 	uto.position = Vector2(
 		Global.vw.size.x / 2,
-		challenge_title.rect_position.y + challenge_title.rect_size.y + uto.getUtoSize().y + 16
+		challenge_title.rect_position.y + challenge_title.rect_size.y + uto.getUtoSize().y + 80
 	)
 
 
