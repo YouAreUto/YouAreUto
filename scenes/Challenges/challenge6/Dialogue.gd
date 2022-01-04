@@ -18,7 +18,6 @@ func _ready():
 		dialogue_baloons[el] = load("res://scenes/Challenges/challenge6/assets/balloon-ch6-%s.png" % [el])
 
 
-
 func hide():
 	var anims = overlay.get_node("AnimationPlayer")
 	overlay.fadeIn(2)
@@ -30,6 +29,8 @@ func hide():
 func show(dialogue = ""):
 	dialogue_type = dialogue
 	baloon.texture = dialogue_baloons[dialogue]
+	if dialogue == "poet":
+		dialogue = "poet06"
 	npc.texture = load("res://assets/sprites/characters/char-%s.png" % [dialogue])
 	layer = 1
 
@@ -50,3 +51,4 @@ func _input(event: InputEvent) -> void:
 			if was_pressed:
 				on_release()
 				was_pressed = false
+

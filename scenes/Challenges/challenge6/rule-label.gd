@@ -4,8 +4,7 @@ extends Label
 func _ready():
 	# align and fit horizontally
 	fit_horizontal_space()
-	yield(get_tree(), "idle_frame")
-	center_align()
+	call_deferred("center_align")
 
 
 func fit_horizontal_space():

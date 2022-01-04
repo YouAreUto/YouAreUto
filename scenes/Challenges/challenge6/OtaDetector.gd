@@ -16,8 +16,7 @@ func enable_collisions():
 func _on_OtaDetector_area_entered(area):
 	if area is Ota:
 		emit_signal("ota_entered", self)
-#		attack_ota(area)
 
 
 func shrink():
-	$CollisionShape2D.shape.radius = 190
+	$CollisionShape2D.shape.radius = 150

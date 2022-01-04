@@ -40,8 +40,14 @@ func _on_OtaDetector_ota_entered(detector):
 	if !uto.alive:
 		return
 	var ap: AnimationPlayer = get_node("../AnimationPlayer")
-	ap.stop()
+	# make sure ota and uto don't trigger any new dialogue or transition
+	uto.get_node("HitArea").set_deferred("monitorable", false)
+	ota.set_deferred("monitorable", false)
+	uto.get_node("HitArea").set_deferred("monitoring", false)
+	ota.set_deferred("monitoring", false)
 	uto.kill()
+	ap.stop()
+	get_node("../TopPawnsAnimations").stop()
 	ota.set_process(false) # don't move
 	# animate guard
 	var guard = detector.get_parent()
@@ -61,10 +67,7 @@ func _on_Ota_uto_entered() -> void:
 		return
 	var appear_anim = start_dialogue("ota")
 	yield(appear_anim, "completed")
-	add_rule("guard")
 	add_rule("ota")
-	anims.remove_ota_animation()
-	call_deferred("ota_start_following_uto")
 
 
 func _on_Poet_uto_entered() -> void:
@@ -99,6 +102,7 @@ func add_rule(rule_key):
 
 
 func ota_start_following_uto():
+	anims.remove_ota_animation()
 	var ota_path = ota.get_node("../..")
 	var ota_path_follow = ota.get_node("..")
 	ota_path_follow.remove_child(ota)
@@ -109,5 +113,5 @@ func ota_start_following_uto():
 
 func _on_Dialogue_dialogue_ended(_type):
 	uto.cancel_movement()
-	yield(get_tree().create_timer(.4), "timeout")
+	yield(get_tree().create_timer(.5), "timeout")
 	get_tree().paused = false

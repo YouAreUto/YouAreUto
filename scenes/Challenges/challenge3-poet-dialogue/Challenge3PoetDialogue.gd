@@ -11,7 +11,6 @@ func _ready() -> void:
 	uto.set_process_input(false)
 	set_process_input(false)
 	setLayout()
-#	$AnimationPlayer.seek(0)
 	$AnimationPlayer.play("Start")
 
 

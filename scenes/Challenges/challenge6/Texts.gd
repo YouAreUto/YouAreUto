@@ -10,47 +10,45 @@ onready var control = $Control
 
 
 func _ready() -> void:
-	rule_bottom_y = Global.vw.size.y - 1000
+	rule_bottom_y = Global.vw.size.y - 1050
 	youareuto_label.rect_position.y = rule_bottom_y
 	_update_rule_bottom(youareuto_label)
 
 
-func calculate_positions():
-	_add_rule("guard", true)
-	_add_rule("captain", true)
-	_add_rule("ota", true)
-	_add_rule("poet", true)
-
-
 func add_rule(rule_key):
-	call_deferred("_add_rule", rule_key)
-
-
-func _add_rule(rule_key, silent = false):
 	var rule_label: Label = find_node(rule_key.capitalize())
 	if rule_label.visible:
 		return
 	rule_label.set_visible(true)
-	rule_label.rect_position.y = rule_bottom_y + spacing
 	if rule_key != "servant":
-		_update_rule_bottom(rule_label)
-	if rule_key == "guard":
-		var guard2 = find_node("Guard2")
-		guard2.set_visible(true)
-		guard2.rect_position.y = rule_bottom_y + spacing
-		_update_rule_bottom(guard2)
-	if silent == false:
-		emit_signal("rules_changed", rule_key)
+		_align_text_bottom(rule_label)
+	emit_signal("rules_changed", rule_key)
 	match rule_key:
+		"ota":
+			var guard1 = find_node("Guard")
+			if not guard1.visible:
+				guard1.set_visible(true)
+				_align_text_bottom(guard1)
+				# swap ota and guard1
+				var tmp_y = rule_label.rect_position.y
+				rule_label.rect_position.y = guard1.rect_position.y
+				guard1.rect_position.y = tmp_y
 		"servant":
-			# "uto's definitely lost" text
 			rule_label.rect_position.y = get_viewport().get_visible_rect().size.y - 200
-			return
+		"guard":
+			var guard2 = find_node("Guard2")
+			var guard1 = find_node("Guard")
+			guard1.text = guard1.text.trim_suffix(".") # remove the point from the string
+			guard2.set_visible(true)
+			_align_text_bottom(guard2)
 		"poet":
 			activate_collisions()
 		_:
 			pass
 
+func _align_text_bottom(rule_label: Label):
+	rule_label.rect_position.y = rule_bottom_y + spacing
+	_update_rule_bottom(rule_label)
 
 func _update_rule_bottom(l: Label):
 	rule_bottom_y = l.rect_position.y + l.rect_size.y * l.rect_scale.y

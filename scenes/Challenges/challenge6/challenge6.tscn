@@ -1,7 +1,8 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://scenes/Challenges/challenge6/challenge6.gd" type="Script" id=1]
 [ext_resource path="res://objects/WhiteBackground/BG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Challenges/challenge6/debug.gd" type="Script" id=3]
 [ext_resource path="res://resources/ChallengeTitleFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://objects/SettingsIcon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=6]
@@ -27,7 +28,7 @@
 [ext_resource path="res://assets/sounds/C6.ogg" type="AudioStream" id=35]
 [ext_resource path="res://objects/shaders/GrayScale.tscn" type="PackedScene" id=36]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("CaptainPath/CaptainPathFollow:unit_offset")
@@ -102,7 +103,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "main"
 length = 10.0
 loop = true
@@ -173,13 +174,13 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1, 5.1, 8.9, 10 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 3.5, 6.8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0, 0.0, 0.0 ]
+"values": [ 0.0, 1.0, 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=3]
 resource_name = "victory-paths"
 length = 16.0
 loop = true
@@ -245,7 +246,7 @@ tracks/4/keys = {
 "values": [ 0.0, 1.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 resource_name = "main"
 length = 10.0
 loop = true
@@ -256,10 +257,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9, 5, 6.1, 10 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 4.6, 5.7, 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0, 1.0, 0.0 ]
+"values": [ 0.0, 0.0, 1.0, 1.0, 0.0, 0.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ServantPath/ServantPathFollow:unit_offset")
@@ -268,45 +269,48 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.8, 5.1, 8.1, 10 ),
+"times": PoolRealArray( 0, 0.4, 5.1, 9.5, 10 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 1.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=5]
 size = 58
 extra_spacing_bottom = -16
 extra_spacing_char = -2
 font_data = ExtResource( 30 )
 
-[sub_resource type="Curve2D" id=8]
+[sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 320, 0, 0, 0, 0, 320, 320, 0, 0, 0, 0, 320, 576, 0, 0, 0, 0, 0, 576 )
 }
 
-[sub_resource type="Curve2D" id=5]
+[sub_resource type="CircleShape2D" id=13]
+radius = 40.0
+
+[sub_resource type="Curve2D" id=7]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 65, -195, 0, 0, 0, 0, 0, -195, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -265, 0 )
 }
 
-[sub_resource type="CircleShape2D" id=12]
+[sub_resource type="CircleShape2D" id=8]
 radius = 345.0
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=9]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -65, -195, 0, 0, 0, 0, 0, -195, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 265, 0 )
 }
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=10]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 32, -65, 0, 0, 0, 0, -32, -65 )
 }
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=11]
 radius = 50.0
 
-[sub_resource type="Curve2D" id=7]
+[sub_resource type="Curve2D" id=12]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 704, 320, 0, 0, 0, 0, 512, 320, 0, 0, 0, 0, 512, 576, 0, 0, 0, 0, 704, 576 )
 }
@@ -316,21 +320,23 @@ pause_mode = 1
 script = ExtResource( 1 )
 challenge_title_sound = ExtResource( 35 )
 
+[node name="Debug" type="Node" parent="."]
+script = ExtResource( 3 )
+
 [node name="ChallengeLogic" type="Node" parent="."]
 script = ExtResource( 23 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "main"
 playback_process_mode = 0
-anims/RESET = SubResource( 3 )
-anims/main = SubResource( 4 )
-anims/victory-paths = SubResource( 14 )
+anims/RESET = SubResource( 1 )
+anims/main = SubResource( 2 )
+anims/victory-paths = SubResource( 3 )
 script = ExtResource( 34 )
 
 [node name="TopPawnsAnimations" type="AnimationPlayer" parent="."]
 autoplay = "main"
-playback_speed = 0.7
-anims/main = SubResource( 15 )
+anims/main = SubResource( 4 )
 
 [node name="BG" parent="." instance=ExtResource( 2 )]
 
@@ -444,7 +450,7 @@ margin_top = 829.0
 margin_right = 687.0
 margin_bottom = 891.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 5 )
 text = "ALL  TEXT  IS  A  BARRIER."
 align = 1
 script = ExtResource( 27 )
@@ -490,8 +496,11 @@ position = Vector2( -113.077, 3.07695 )
 
 [node name="OtaPath" parent="." instance=ExtResource( 12 )]
 
+[node name="OtaPathFollow" parent="OtaPath" index="0"]
+position = Vector2( -128, 112 )
+
 [node name="ServantPath" type="Path2D" parent="."]
-curve = SubResource( 8 )
+curve = SubResource( 6 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -505,8 +514,11 @@ loop = false
 [node name="Servant" parent="ServantPath/ServantPathFollow" instance=ExtResource( 11 )]
 scale = Vector2( 1.4, 1.4 )
 
+[node name="CollisionShape2D" parent="ServantPath/ServantPathFollow/Servant/Area2D" index="0"]
+shape = SubResource( 13 )
+
 [node name="Guard1Path" type="Path2D" parent="."]
-curve = SubResource( 5 )
+curve = SubResource( 7 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -529,10 +541,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Guard1Path/Guard1PathFollow/Guard/OtaDetector"]
-shape = SubResource( 12 )
+shape = SubResource( 8 )
 
 [node name="Guard2Path" type="Path2D" parent="."]
-curve = SubResource( 6 )
+curve = SubResource( 9 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -550,15 +562,16 @@ guard_kills_uto = false
 [node name="OtaDetector" type="Area2D" parent="Guard2Path/Guard2PathFollow/Guard"]
 script = ExtResource( 33 )
 __meta__ = {
+"_edit_bone_": true,
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Guard2Path/Guard2PathFollow/Guard/OtaDetector"]
-shape = SubResource( 12 )
+shape = SubResource( 8 )
 
 [node name="CaptainPath" type="Path2D" parent="."]
-curve = SubResource( 2 )
+curve = SubResource( 10 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -575,10 +588,10 @@ loop = false
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CaptainPath/CaptainPathFollow/Captain/VictoryArea"]
-shape = SubResource( 13 )
+shape = SubResource( 11 )
 
 [node name="PoetPath" type="Path2D" parent="."]
-curve = SubResource( 7 )
+curve = SubResource( 12 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
