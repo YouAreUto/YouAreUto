@@ -14,6 +14,7 @@ __meta__ = {
 }
 
 [node name="OtaPathFollow" type="PathFollow2D" parent="."]
+position = Vector2( 0, 112 )
 rotate = false
 loop = false
 

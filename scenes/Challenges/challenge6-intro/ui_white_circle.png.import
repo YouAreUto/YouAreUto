@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ch6-text-ota.png-4ef5ee26504efc51cee958669e650105.stex"
+path="res://.import/ui_white_circle.png-1a57fdb8db6048109a72080381a5ad86.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Challenges/challenge6/assets/ch6-text-ota.png"
-dest_files=[ "res://.import/ch6-text-ota.png-4ef5ee26504efc51cee958669e650105.stex" ]
+source_file="res://scenes/Challenges/challenge6-intro/ui_white_circle.png"
+dest_files=[ "res://.import/ui_white_circle.png-1a57fdb8db6048109a72080381a5ad86.stex" ]
 
 [params]
 
@@ -18,10 +18,10 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
+compress/normal_map=2
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
