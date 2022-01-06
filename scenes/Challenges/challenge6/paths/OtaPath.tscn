@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve2D" id=9]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -128, 112, 0, 0, 0, 0, 384, 112, 0, 0, 0, 0, 384, -128 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 112, 0, 0, 0, 0, 0, 80, 0, 0, 0, 0, 0, -384 )
 }
 
 [node name="OtaPath" type="Path2D"]
@@ -14,7 +14,6 @@ __meta__ = {
 }
 
 [node name="OtaPathFollow" type="PathFollow2D" parent="."]
-position = Vector2( -128, 96 )
 rotate = false
 loop = false
 

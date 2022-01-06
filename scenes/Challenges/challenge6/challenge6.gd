@@ -38,16 +38,21 @@ func _ready():
 	# activate saved rules
 	for rule in Global.challengeData.get("active_rules", []):
 		$ChallengeLogic.add_rule(rule)
-	# remove mockup node
-	if get_node_or_null("M1"):
-		$M1.queue_free()
 	call_deferred("deferred_set_uto_pos")
+	if Global.challengeData.has("utoEnteredSettings"):
+		get_tree().paused = true
+		var t = get_tree().create_timer(.15)
+		t.connect("timeout", self, "unpause")
+
+
+func unpause():
+	get_tree().paused = false
 
 
 func deferred_set_uto_pos():
 	if Global.challengeData.has("utoEnteredSettings"):
 		uto.global_position = $SettingsIcon/UtoRespawnPosition.global_position
-		uto.global_position.y -= 100
+		uto.global_position.y -= 20
 		Global.challengeData.erase("utoEnteredSettings")
 
 
@@ -57,13 +62,15 @@ func on_resize():
 
 func set_layout(_val = false):
 	var guard_bottom_y = vs.y - half_pawn_size - half_pawn_size * 2
-	poet_top_y = 280
-	poet_bot_y = poet_top_y + 320
-	# left guard
+	var guard_top = guard_bottom_y - 600
 	var guard_left = half_pawn_size
 	var guard_right = vs.x - half_pawn_size
-	var guard_top = guard_bottom_y - 500
 	var captain_path_length = guard_right - guard_left
+	poet_top_y = 210
+	poet_bot_y = poet_top_y + 320
+	# ota
+	$OtaPath.position.x = vs.x / 2
+	# guard left
 	guard1_path.curve.clear_points()
 	guard1_path.curve.add_point(Vector2(
 		guard_left, guard_bottom_y
@@ -147,12 +154,12 @@ func set_layout(_val = false):
 		poet_top_y
 	))
 	# settings icon
-	settings_icon.position.x = vs.x - 80
+	settings_icon.position.x = 90
 	settings_icon.position.y = guard_top + (guard_bottom_y - guard_top) / 2 + 50
 	# uto
 	if !Global.challengeData.has("utoEnteredSettings"):
 		uto.position = settings_icon.global_position
-		uto.position.x = 90
+		uto.position.x = vs.x - 80
 	else:
 		uto.global_position = $SettingsIcon/UtoRespawnPosition.global_position
 
@@ -205,25 +212,15 @@ func on_rules_changed(new_rule_key):
 	if not new_rule_key in Global.challengeData.active_rules:
 		Global.challengeData.active_rules.append(new_rule_key)
 	if new_rule_key == "ota":
+		update_guards_outline_graphic()
 		$ChallengeLogic.call_deferred("ota_start_following_uto")
 	if new_rule_key == "poet":
-		uto.position.x = vs.x - 140
 		uto.position.y = get_lowest_rule_y_pos() + 100
 		var ota: Ota = get_node_or_null("Ota")
 		if ota:
 			ota.position = uto.position
 			ota.position.x += 60
 			ota.position.y += 90
-	if Global.challengeData.active_rules.has('ota') and \
-	   Global.challengeData.active_rules.has('guard'):
-		for g in get_tree().get_nodes_in_group("guards"):
-			var outline = g.get_node("Outline")
-			if outline.visible:
-				continue
-			outline.show()
-			g.get_node("Icon").texture = load("res://assets/sprites/characters/char-guard-cut.png")
-			if g.is_connected("uto_overlapped", self, "_on_Guard_uto_overlapped"):
-				g.disconnect("uto_overlapped", self, "_on_Guard_uto_overlapped")
 	if correct_rules_order():
 		puzzle_enable_victory()
 	# if words are barriers
@@ -239,6 +236,17 @@ func on_rules_changed(new_rule_key):
 			g.get_node("OtaDetector").enable_collisions()
 
 
+func update_guards_outline_graphic():
+	for g in get_tree().get_nodes_in_group("guards"):
+		var outline = g.get_node("Outline")
+		if outline.visible:
+			continue
+		outline.show()
+		g.get_node("Icon").texture = load("res://assets/sprites/characters/char-guard-cut.png")
+		if g.is_connected("uto_overlapped", self, "_on_Guard_uto_overlapped"):
+			g.disconnect("uto_overlapped", self, "_on_Guard_uto_overlapped")
+
+
 func update_paths_to_not_cross_barriers():
 	if rule_servant.visible:
 		# update guard paths to barely touch the "you are definitely lost" text
@@ -252,22 +260,26 @@ func update_paths_to_not_cross_barriers():
 		new_points[1].y = rule_servant.rect_global_position.y - half_pawn_size
 		guard2_path.curve.set_point_position(0, new_points[0])
 		guard2_path.curve.set_point_position(1, new_points[1])
+	# local vars
 	var top_rule_y_pos = $Texts/Control/YouAreUto.rect_global_position.y
+	var new_points = []
 	# poet
-	var new_points = [poet_path.curve.get_point_position(2), poet_path.curve.get_point_position(3)]
-	new_points[0].y = top_rule_y_pos - half_pawn_size
-	new_points[1].y = top_rule_y_pos - half_pawn_size
-	poet_path.curve.set_point_position(2, new_points[0])
-	poet_path.curve.set_point_position(3, new_points[1])
+	for i in poet_path.curve.get_point_count():
+		new_points.append(poet_path.curve.get_point_position(i))
+		if new_points[i].y > top_rule_y_pos - half_pawn_size:
+			new_points[i].y = top_rule_y_pos - half_pawn_size
+	for i in poet_path.curve.get_point_count():
+		poet_path.curve.set_point_position(i, new_points[i])
 	# servant
-	new_points = [servant_path.curve.get_point_position(0), servant_path.curve.get_point_position(1)]
-	new_points[0].y = top_rule_y_pos - half_pawn_size
-	new_points[1].y = top_rule_y_pos - half_pawn_size
-	servant_path.curve.set_point_position(0, new_points[0])
-	servant_path.curve.set_point_position(1, new_points[1])
+	new_points = []
+	for i in servant_path.curve.get_point_count():
+		new_points.append(servant_path.curve.get_point_position(i))
+		if new_points[i].y > top_rule_y_pos - half_pawn_size:
+			new_points[i].y = top_rule_y_pos - half_pawn_size
+	for i in servant_path.curve.get_point_count():
+		servant_path.curve.set_point_position(i, new_points[i])
 	# guards
 	var last_rule_bottom_y = get_lowest_rule_y_pos()
-#	print(last_rule_bottom_y > guard1_path.curve.get_point_position(2).y - 50)
 	if last_rule_bottom_y > guard1_path.curve.get_point_position(2).y - 50:
 		# guard 1
 		new_points = []
@@ -275,7 +287,6 @@ func update_paths_to_not_cross_barriers():
 			new_points.append(guard1_path.curve.get_point_position(i))
 		new_points[2].y = last_rule_bottom_y + half_pawn_size
 		new_points[3].y = last_rule_bottom_y + half_pawn_size
-#		new_points[0].x -= 100
 		new_points[3].x -= 100
 		for i in guard1_path.curve.get_point_count():
 			guard1_path.curve.set_point_position(i, new_points[i])
@@ -285,9 +296,7 @@ func update_paths_to_not_cross_barriers():
 			new_points.append(guard2_path.curve.get_point_position(i))
 		new_points[2].y = last_rule_bottom_y + half_pawn_size
 		new_points[3].y = last_rule_bottom_y + half_pawn_size
-#		guard2_path.curve.get_point_position(0).x -= 300
 		new_points[3].x += 100
-#		new_points[0].x += 100
 		for i in guard2_path.curve.get_point_count():
 			guard2_path.curve.set_point_position(i, new_points[i])
 		if anims.is_playing():
@@ -355,16 +364,19 @@ func puzzle_enable_victory():
 	call_deferred("update_guards_path_to_not_overlap_text")
 	$AnimationPlayer.invert_first_guard_offset()
 	$CaptainPath/CaptainPathFollow/Captain/VictoryArea.monitoring = true
-	uto.position.x = vs.x / 2
 	uto.position.y = get_lowest_rule_y_pos() + half_pawn_size
 	uto.cancel_movement()
 
 
 func on_victory():
-	get_node("AnimationPlayer").stop()
-	get_node("TopPawnsAnimations").stop()
+	stop_animations()
 	uto.set_physics_process(false)
 	self.completed()
+
+
+func stop_animations():
+	get_node("AnimationPlayer").stop()
+	get_node("TopPawnsAnimations").stop()
 
 
 func _on_VictoryArea_body_entered(body):
@@ -374,6 +386,8 @@ func _on_VictoryArea_body_entered(body):
 
 func _on_SettingsIcon_body_entered(body):
 	if body is Uto:
+		stop_animations()
+		uto.set_physics_process(false)
 		Global.challengeData["utoEnteredSettings"] = true
 		var ota: Ota = get_node_or_null("Ota")
 		if ota and ota.follow_target:

@@ -109,6 +109,8 @@ func ota_start_following_uto():
 	get_parent().add_child(ota)
 	ota_path.queue_free()
 	ota.follow_uto(uto)
+	ota.global_position = uto.global_position
+	ota.position += Vector2(-120, -40)
 
 
 func _on_Dialogue_dialogue_ended(_type):

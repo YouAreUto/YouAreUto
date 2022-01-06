@@ -10,7 +10,7 @@ onready var control = $Control
 
 
 func _ready() -> void:
-	rule_bottom_y = Global.vw.size.y - 1050
+	rule_bottom_y = Global.vw.size.y - 1150
 	youareuto_label.rect_position.y = rule_bottom_y
 	_update_rule_bottom(youareuto_label)
 

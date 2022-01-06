@@ -174,10 +174,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 3.5, 6.8, 10 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.9, 4.9, 5.6, 9.3, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0, 1.0, 0.0 ]
+"values": [ 1.0, 1.0, 0.0, 0.0, 1.0, 1.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -492,12 +492,12 @@ z_index = 1
 position = Vector2( -80.1, 0 )
 
 [node name="UtoRespawnPosition" parent="SettingsIcon" index="3"]
-position = Vector2( -113.077, 3.07695 )
+position = Vector2( 104.615, 3.07695 )
 
 [node name="OtaPath" parent="." instance=ExtResource( 12 )]
 
 [node name="OtaPathFollow" parent="OtaPath" index="0"]
-position = Vector2( -128, 112 )
+position = Vector2( 0, 112 )
 
 [node name="ServantPath" type="Path2D" parent="."]
 curve = SubResource( 6 )
@@ -683,7 +683,7 @@ pause_mode = 2
 [connection signal="uto_entered" from="ServantPath/ServantPathFollow/Servant" to="ChallengeLogic" method="_on_Servant_uto_entered" flags=6]
 [connection signal="uto_overlapped" from="Guard1Path/Guard1PathFollow/Guard" to="ChallengeLogic" method="_on_Guard_uto_overlapped"]
 [connection signal="area_entered" from="Guard1Path/Guard1PathFollow/Guard/OtaDetector" to="Guard1Path/Guard1PathFollow/Guard/OtaDetector" method="_on_OtaDetector_area_entered"]
-[connection signal="ota_entered" from="Guard1Path/Guard1PathFollow/Guard/OtaDetector" to="ChallengeLogic" method="_on_OtaDetector_ota_entered"]
+[connection signal="ota_entered" from="Guard1Path/Guard1PathFollow/Guard/OtaDetector" to="ChallengeLogic" method="_on_OtaDetector_ota_entered" flags=3]
 [connection signal="uto_overlapped" from="Guard2Path/Guard2PathFollow/Guard" to="ChallengeLogic" method="_on_Guard_uto_overlapped"]
 [connection signal="area_entered" from="Guard2Path/Guard2PathFollow/Guard/OtaDetector" to="Guard2Path/Guard2PathFollow/Guard/OtaDetector" method="_on_OtaDetector_area_entered"]
 [connection signal="ota_entered" from="Guard2Path/Guard2PathFollow/Guard/OtaDetector" to="ChallengeLogic" method="_on_OtaDetector_ota_entered"]

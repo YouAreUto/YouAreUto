@@ -22,4 +22,4 @@ visible = false
 texture = ExtResource( 2 )
 
 [node name="UtoRespawnPosition" type="Position2D" parent="."]
-position = Vector2( -63.8461, 52.3077 )
+position = Vector2( 65.3847, 40 )
