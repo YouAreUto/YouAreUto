@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/sprites/characters/char-ch4-goal.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/challenges/5-black-path/char-chest.png" type="Texture" id=4]
 [ext_resource path="res://objects/ChallengeSelectionList/ChallengeSelectionList.gd" type="Script" id=5]
-[ext_resource path="res://assets/sprites/characters/char-poet.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/characters/char-captain-rule.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/characters/char-castle.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/characters/char-poet.png" type="Texture" id=8]
 
@@ -36,7 +36,7 @@ challengeNumber = 2
 margin_top = 298.0
 margin_right = 750.0
 margin_bottom = 415.0
-selectionTexture = ExtResource( 6 )
+selectionTexture = ExtResource( 8 )
 challengeName = "At All Times"
 challengeNumber = 3
 
@@ -60,6 +60,6 @@ challengeNumber = 5
 margin_top = 745.0
 margin_right = 750.0
 margin_bottom = 862.0
-selectionTexture = ExtResource( 8 )
+selectionTexture = ExtResource( 6 )
 challengeName = "White Circle"
 challengeNumber = 6
