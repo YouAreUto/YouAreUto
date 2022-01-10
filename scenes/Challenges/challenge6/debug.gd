@@ -10,15 +10,18 @@ func set_god_mode(val):
 	if Engine.editor_hint:
 		var uto: Uto = get_node("../UTO")
 		var ota: Ota = get_node("../OtaPath/OtaPathFollow/Ota")
-#		uto.get_node("HitArea").monitoring = !val
 		uto.get_node("HitArea").monitorable = !val
 		ota.monitorable = !val
-#		ota.monitoring = !val
 
 
 func _ready():
 	if !OS.is_debug_build():
 		queue_free()
+	else:
+		call_deferred("force_rule")
+
+
+func force_rule():
 	if forced_rules.size() > 0:
 		for rule in forced_rules:
 			get_node("../Texts").add_rule(rule)

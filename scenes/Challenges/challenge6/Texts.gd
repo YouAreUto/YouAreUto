@@ -10,7 +10,7 @@ onready var control = $Control
 
 
 func _ready() -> void:
-	rule_bottom_y = Global.vw.size.y - 1150
+	rule_bottom_y = Global.vw.size.y - 1175
 	youareuto_label.rect_position.y = rule_bottom_y
 	_update_rule_bottom(youareuto_label)
 
@@ -46,16 +46,18 @@ func add_rule(rule_key):
 		_:
 			pass
 
+
 func _align_text_bottom(rule_label: Label):
 	rule_label.rect_position.y = rule_bottom_y + spacing
 	_update_rule_bottom(rule_label)
+
 
 func _update_rule_bottom(l: Label):
 	rule_bottom_y = l.rect_position.y + l.rect_size.y * l.rect_scale.y
 
 
 func activate_collisions():
-	for ct in control.get_children():
+	for ct in get_node("Control").get_children():
 		var t: Label = ct
 		var collision_shape: CollisionShape2D = t.find_node("CollisionShape2D")
 		var rect_shape = RectangleShape2D.new()

@@ -62,7 +62,7 @@ func on_resize():
 
 func set_layout(_val = false):
 	var guard_bottom_y = vs.y - half_pawn_size - half_pawn_size * 2
-	var guard_top = guard_bottom_y - 600
+	var guard_top = guard_bottom_y - 580
 	var guard_left = half_pawn_size
 	var guard_right = vs.x - half_pawn_size
 	var captain_path_length = guard_right - guard_left
@@ -120,37 +120,37 @@ func set_layout(_val = false):
 	# poet path
 	poet_path.curve.clear_points()
 	poet_path.curve.add_point(Vector2(
-		vs.x + 150,
+		vs.x + 180,
 		poet_top_y
 	))
 	poet_path.curve.add_point(Vector2(
-		vs.x - half_pawn_size - 220,
+		vs.x - half_pawn_size - 80,
 		poet_top_y
 	))
 	poet_path.curve.add_point(Vector2(
-		vs.x - half_pawn_size - 220,
+		vs.x - half_pawn_size - 80,
 		poet_bot_y
 	))
 	poet_path.curve.add_point(Vector2(
-		vs.x + 150,
+		vs.x + 180,
 		poet_bot_y
 	))
 	# servant path
 	servant_path.curve.clear_points()
 	servant_path.curve.add_point(Vector2(
-		-150,
+		-180,
 		poet_bot_y
 	))
 	servant_path.curve.add_point(Vector2(
-		half_pawn_size + 250,
+		half_pawn_size + 80,
 		poet_bot_y
 	))
 	servant_path.curve.add_point(Vector2(
-		half_pawn_size + 250,
+		half_pawn_size + 80,
 		poet_top_y
 	))
 	servant_path.curve.add_point(Vector2(
-		-150,
+		-180,
 		poet_top_y
 	))
 	# settings icon
@@ -248,21 +248,33 @@ func update_guards_outline_graphic():
 
 
 func update_paths_to_not_cross_barriers():
+	var new_points = []
 	if rule_servant.visible:
 		# update guard paths to barely touch the "you are definitely lost" text
-		var new_points = [guard1_path.curve.get_point_position(0), guard1_path.curve.get_point_position(1)]
+		# guard 1
+		for i in guard1_path.curve.get_point_count():
+			new_points.append(guard1_path.curve.get_point_position(i))
 		new_points[0].y = rule_servant.rect_global_position.y - half_pawn_size
+		new_points[0].x -= 100
+		new_points[3].x -= 100
 		new_points[1].y = rule_servant.rect_global_position.y - half_pawn_size
 		guard1_path.curve.set_point_position(0, new_points[0])
 		guard1_path.curve.set_point_position(1, new_points[1])
-		new_points = [guard2_path.curve.get_point_position(0), guard2_path.curve.get_point_position(1)]
+		for i in guard1_path.curve.get_point_count():
+			guard1_path.curve.set_point_position(i, new_points[i])
+		new_points = []
+		# guard 2
+		for i in guard2_path.curve.get_point_count():
+			new_points.append(guard2_path.curve.get_point_position(i))
 		new_points[0].y = rule_servant.rect_global_position.y - half_pawn_size
 		new_points[1].y = rule_servant.rect_global_position.y - half_pawn_size
-		guard2_path.curve.set_point_position(0, new_points[0])
-		guard2_path.curve.set_point_position(1, new_points[1])
+		new_points[0].x += 100
+		new_points[3].x += 100
+		for i in guard2_path.curve.get_point_count():
+			guard2_path.curve.set_point_position(i, new_points[i])
 	# local vars
 	var top_rule_y_pos = $Texts/Control/YouAreUto.rect_global_position.y
-	var new_points = []
+	new_points = []
 	# poet
 	for i in poet_path.curve.get_point_count():
 		new_points.append(poet_path.curve.get_point_position(i))
@@ -396,5 +408,6 @@ func _on_SettingsIcon_body_entered(body):
 
 
 func _on_Texts_rules_changed(new_rule_key):
-	uto.cancel_movement()
+	if uto:
+		uto.cancel_movement()
 	call_deferred("on_rules_changed", new_rule_key)
