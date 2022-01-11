@@ -7,7 +7,10 @@ onready var nextChallengeBtn := $CanvasLayer/VBoxContainer/Next
 onready var quitButton := $CanvasLayer/VBoxContainer/Quit
 onready var restartButton := $CanvasLayer/VBoxContainer/Restart
 
+const last_challenge_id = 6
+
 var use_legacy_code = false
+var next_challenge_override = null
 
 
 func _ready():
@@ -15,10 +18,9 @@ func _ready():
 	setPositions()
 	if Global.data.currentChallenge == 4:
 		if OS.get_name() == "iOS":
-			nextChallengeBtn.hide()
-			# TODO: send to ch6
+			next_challenge_override = 6 # load challenge 6 and skip challenge 5 which is currently not implemented on iOS
 
-	if Global.data.get("currentChallenge", -1) == 6:
+	if Global.data.get("currentChallenge", -1) == last_challenge_id:
 		nextChallengeBtn.hide()
 
 
@@ -46,4 +48,7 @@ func _on_Quit_pressed() -> void:
 
 
 func _on_Next_pressed():
-	Global.goToNextChallenge(true)
+	if next_challenge_override:
+		Global.load_challenge(next_challenge_override)
+	else:
+		Global.goToNextChallenge(true)

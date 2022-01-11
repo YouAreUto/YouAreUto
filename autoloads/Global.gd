@@ -79,10 +79,10 @@ func getChallengePath(index: int) -> Dictionary:
 
 func goToNextChallenge(showIntro: bool):
 	data.currentChallenge += 1
-	var nextScene
-	if showIntro:
-		nextScene = getChallengePath(data.currentChallenge).intro
-	else:
-		nextScene = getChallengePath(data.currentChallenge).challenge
+	load_challenge(data.currentChallenge, showIntro)
+
+
+func load_challenge(challenge_number, show_intro = true):
 	challengeData = {}
-	SceneManager.goto_scene(nextScene)
+	var challenge_path = getChallengePath(challenge_number)
+	SceneManager.goto_scene(challenge_path.intro if show_intro else challenge_path.challenge)
