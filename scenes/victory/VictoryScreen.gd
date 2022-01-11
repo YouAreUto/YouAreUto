@@ -16,7 +16,10 @@ func _ready():
 	if Global.data.currentChallenge == 4:
 		if OS.get_name() == "iOS":
 			nextChallengeBtn.hide()
+			# TODO: send to ch6
 
+	if Global.data.get("currentChallenge", -1) == 6:
+		nextChallengeBtn.hide()
 
 
 func init(conf: Dictionary):
@@ -44,4 +47,3 @@ func _on_Quit_pressed() -> void:
 
 func _on_Next_pressed():
 	Global.goToNextChallenge(true)
-

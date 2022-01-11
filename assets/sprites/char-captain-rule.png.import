@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon76px.png-57397da1bbe7e934a1d2d3208729f1fb.stex"
+path="res://.import/char-captain-rule.png-0a0d8c5291ba489bf9d8ef7ebb881d78.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon76px.png"
-dest_files=[ "res://.import/icon76px.png-57397da1bbe7e934a1d2d3208729f1fb.stex" ]
+source_file="res://assets/sprites/char-captain-rule.png"
+dest_files=[ "res://.import/char-captain-rule.png-0a0d8c5291ba489bf9d8ef7ebb881d78.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

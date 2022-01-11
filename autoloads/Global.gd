@@ -16,6 +16,8 @@ It should be reset every time the player goes to a new challenge. """
 var challengeData = {
 }
 
+var vw: Rect2 # viewport
+
 const TEXTUES_PATHS = "res://assets/sprites/characters/"
 
 var Flashlight
@@ -24,6 +26,12 @@ var Flashlight
 func _ready():
 	if Engine.has_singleton("Flashlight"):
 		Flashlight = Engine.get_singleton("Flashlight")
+	vw = get_viewport().get_visible_rect()
+	get_viewport().connect("size_changed", self, "on_size_changed")
+
+
+func on_size_changed():
+	vw = get_viewport().get_visible_rect()
 
 
 func isFlashlightOn(mockFlashlight = false, mockedState = false):
@@ -34,17 +42,6 @@ func isFlashlightOn(mockFlashlight = false, mockedState = false):
 		return Flashlight.isFlashlightOn()
 	else:
 		return false
-
-
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		print(SceneManager.main_node.current_scene.name, SceneManager.main_node.current_scene)
-#		print(data)
-#		print(challengeData)
-
-
-func get_global_data() -> Dictionary:
-	return data
 
 
 func getChallengePath(index: int) -> Dictionary:
@@ -70,6 +67,10 @@ func getChallengePath(index: int) -> Dictionary:
 			"challenge": "res://scenes/Challenges/challenge5/Challenge5.tscn",
 		},
 		{
+			"intro": "res://scenes/Challenges/challenge6-intro/challenge6Intro.tscn",
+			"challenge": "res://scenes/Challenges/challenge6/challenge6.tscn",
+		},
+		{
 			"intro": "res://scenes/CTA/CTA.tscn",
 		},
 	]
@@ -83,6 +84,5 @@ func goToNextChallenge(showIntro: bool):
 		nextScene = getChallengePath(data.currentChallenge).intro
 	else:
 		nextScene = getChallengePath(data.currentChallenge).challenge
-#	print(nextScene)
 	challengeData = {}
 	SceneManager.goto_scene(nextScene)

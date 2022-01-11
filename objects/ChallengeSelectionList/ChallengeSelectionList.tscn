@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/ChallengeSelectionList/ChallengeItem/ChallengeItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/characters/char-emperor.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/characters/char-ch4-goal.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/challenges/5-black-path/char-chest.png" type="Texture" id=4]
 [ext_resource path="res://objects/ChallengeSelectionList/ChallengeSelectionList.gd" type="Script" id=5]
-[ext_resource path="res://assets/sprites/characters/char-poet.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/characters/char-captain-rule.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/characters/char-castle.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/characters/char-poet.png" type="Texture" id=8]
 
 [node name="ChallengeSelectionList" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 530, 0 )
 custom_constants/separation = 32
 script = ExtResource( 5 )
 __meta__ = {
@@ -34,7 +36,7 @@ challengeNumber = 2
 margin_top = 298.0
 margin_right = 750.0
 margin_bottom = 415.0
-selectionTexture = ExtResource( 6 )
+selectionTexture = ExtResource( 8 )
 challengeName = "At All Times"
 challengeNumber = 3
 
@@ -53,3 +55,11 @@ margin_bottom = 713.0
 selectionTexture = ExtResource( 4 )
 challengeName = "Black Path"
 challengeNumber = 5
+
+[node name="ChallengeItem6" parent="." instance=ExtResource( 1 )]
+margin_top = 745.0
+margin_right = 750.0
+margin_bottom = 862.0
+selectionTexture = ExtResource( 6 )
+challengeName = "White Circle"
+challengeNumber = 6

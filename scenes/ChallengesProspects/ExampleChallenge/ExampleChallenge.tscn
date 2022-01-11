@@ -31,8 +31,8 @@ margin_left = -223.074
 margin_top = -77.4774
 margin_right = 237.926
 margin_bottom = 91.5226
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "VICTORY 
 AREA"
 align = 1
@@ -48,8 +48,8 @@ margin_left = -172.399
 margin_top = -82.8425
 margin_right = 195.601
 margin_bottom = 86.1575
-custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
 text = "GAMEOVER 
 AREA"
 align = 1
@@ -61,5 +61,4 @@ __meta__ = {
 position = Vector2( 363.02, 684.815 )
 
 [editable path="UtoVictoryArea"]
-
 [editable path="UtoGameoverArea"]

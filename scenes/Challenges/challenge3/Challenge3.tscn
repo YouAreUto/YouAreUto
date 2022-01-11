@@ -446,9 +446,7 @@ texture = ExtResource( 30 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ServantPath/PathFollow2D/Servant/BottomPointCheckerArea"]
 shape = SubResource( 5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ServantPath" groups=[
-"enemyAnimationPlayers",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ServantPath" groups=["enemyAnimationPlayers"]]
 autoplay = "patrol"
 anims/patrol = SubResource( 6 )
 anims/patrol-puzzle-not-solved = SubResource( 7 )
@@ -484,9 +482,7 @@ texture = ExtResource( 30 )
 
 [node name="SafeArea2D" parent="Servant2Path/PathFollow2D/Servant2/Umbrella" instance=ExtResource( 31 )]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Servant2Path" groups=[
-"enemyAnimationPlayers",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Servant2Path" groups=["enemyAnimationPlayers"]]
 autoplay = "patrol"
 anims/patrol = SubResource( 9 )
 anims/patrol-puzzle-not-solved = SubResource( 10 )
@@ -515,9 +511,7 @@ texture = ExtResource( 30 )
 
 [node name="SafeArea2D2" parent="Servant3Path/PathFollow2D/Servant3/Umbrella" instance=ExtResource( 31 )]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Servant3Path" groups=[
-"enemyAnimationPlayers",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Servant3Path" groups=["enemyAnimationPlayers"]]
 autoplay = "patrol"
 anims/patrol = SubResource( 11 )
 "anims/patrol (copy)" = SubResource( 12 )
@@ -558,9 +552,7 @@ bus = "Challenges Femal Voice"
 
 [node name="SafeArea2D" parent="PoetPath2D/PathFollow2D/Poet/Umbrella" instance=ExtResource( 31 )]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PoetPath2D" groups=[
-"enemyAnimationPlayers",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PoetPath2D" groups=["enemyAnimationPlayers"]]
 autoplay = "patrol"
 anims/patrol = SubResource( 14 )
 
@@ -581,18 +573,13 @@ position = Vector2( 383, 224 )
 scale = Vector2( 1.14531, 1.14531 )
 texture = ExtResource( 37 )
 
-[node name="SafeArea2D" type="Area2D" parent="Roof" groups=[
-"umbrella",
-]]
+[node name="SafeArea2D" type="Area2D" parent="Roof" groups=["umbrella"]]
 scale = Vector2( 1.04775, 1.04775 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roof/SafeArea2D"]
 shape = SubResource( 15 )
 
 [node name="Overlay" parent="." instance=ExtResource( 38 )]
-
-[node name="ColorRect" parent="Overlay" index="0"]
-color = Color( 1, 1, 1, 0 )
 
 [node name="AnimationPlayer" parent="Overlay" index="1"]
 anims/forward_time = SubResource( 16 )

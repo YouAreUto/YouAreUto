@@ -4,8 +4,6 @@ extends KinematicBody2D
 signal killed
 signal hit
 
-#signal kingKilled
-
 onready var _bounds = $_bounds
 onready var vwSize = get_viewport_rect().size
 onready var utoSize := getUtoSize()
@@ -17,13 +15,14 @@ export var enemiesInteractionEnabled := true
 export var showOutline := true
 
 var speed = 20
-var velocity := Vector2()
 var target_position := Vector2()  # target position in global coordinates
 var colliding = false
 var holding = false  # true when drag start from  Uto,
 # false otherwise
 var heraldKilled = false
 var alive = true # true if UTO is alive
+
+var delta_movement = Vector2()
 
 const detectionRadiusForDrag = 100
 const dragThresholdForMovement = 3
@@ -34,16 +33,18 @@ func _ready():
 	$Outline.visible = showOutline
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not alive:
 		return
+	delta_movement = Vector2()
 	# if user is not giving input
 	if not holding:
 		# don't move UTO
 		target_position = global_position
 		return
 	if (target_position - position).length() > dragThresholdForMovement:
-		move_and_slide(speed * (target_position - position))
+		delta_movement = speed * (target_position - position)
+		move_and_slide(delta_movement)
 		clampPositionInsideTheScreen()
 
 
@@ -109,3 +110,7 @@ func kill():
 	alive = false
 	set_physics_process(false)
 	emit_signal("killed")
+
+
+func cancel_movement():
+	target_position = global_position

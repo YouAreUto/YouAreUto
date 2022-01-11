@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Captain",
+"language": "GDScript",
+"path": "res://objects/captain.gd"
+}, {
 "base": "Node2D",
 "class": "Challenge",
 "language": "GDScript",
@@ -29,16 +34,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/Main.gd"
 }, {
+"base": "Area2D",
+"class": "Ota",
+"language": "GDScript",
+"path": "res://objects/Ota.gd"
+}, {
+"base": "Area2D",
+"class": "Poet",
+"language": "GDScript",
+"path": "res://objects/Poet.gd"
+}, {
+"base": "Area2D",
+"class": "SettingsIcon",
+"language": "GDScript",
+"path": "res://objects/settings-icon.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Uto",
 "language": "GDScript",
 "path": "res://objects/UTO.gd"
 } ]
 _global_script_class_icons={
+"Captain": "",
 "Challenge": "",
 "Guard": "",
 "Key": "",
 "Main": "",
+"Ota": "",
+"Poet": "",
+"SettingsIcon": "",
 "Uto": ""
 }
 
@@ -58,6 +82,7 @@ config/icon="res://icon.png"
 
 Global="*res://autoloads/Global.gd"
 SceneManager="*res://autoloads/SceneManager.gd"
+Layout="*res://addons/layouts/layout_manager.gd"
 
 [debug]
 
@@ -73,6 +98,10 @@ window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/layouts/plugin.cfg" )
+
 [importer_defaults]
 
 ogg_vorbis={
@@ -84,7 +113,7 @@ ogg_vorbis={
 
 ui_select={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]

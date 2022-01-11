@@ -1,0 +1,695 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://scenes/Challenges/challenge6/challenge6.gd" type="Script" id=1]
+[ext_resource path="res://objects/WhiteBackground/BG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Challenges/challenge6/debug.gd" type="Script" id=3]
+[ext_resource path="res://resources/ChallengeTitleFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://objects/SettingsIcon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/Captain.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sprites/characters/char-poet06.png" type="Texture" id=8]
+[ext_resource path="res://objects/Guard.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/Poet.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/Servant.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Challenges/challenge6/paths/OtaPath.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Challenges/challenge6/Dialogue.gd" type="Script" id=13]
+[ext_resource path="res://objects/overlay/Overlay.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/Challenges/challenge6/ChallengeLogic.gd" type="Script" id=23]
+[ext_resource path="res://scenes/Challenges/challenge6/assets/balloon-ch6-captain.png" type="Texture" id=24]
+[ext_resource path="res://assets/sprites/vfx/white-circle.png" type="Texture" id=25]
+[ext_resource path="res://assets/sprites/characters/char-poet.png" type="Texture" id=26]
+[ext_resource path="res://scenes/Challenges/challenge6/rule-label.gd" type="Script" id=27]
+[ext_resource path="res://assets/sprites/characters/char-uto.png" type="Texture" id=28]
+[ext_resource path="res://resources/ChallengeStylizedRuleFont.tres" type="DynamicFont" id=29]
+[ext_resource path="res://resources/ChallengeTitleFontData.tres" type="DynamicFontData" id=30]
+[ext_resource path="res://scenes/Challenges/challenge6/Texts.gd" type="Script" id=31]
+[ext_resource path="res://scenes/Challenges/challenge6/OtaDetector.gd" type="Script" id=33]
+[ext_resource path="res://scenes/Challenges/challenge6/AnimationPlayer.gd" type="Script" id=34]
+[ext_resource path="res://assets/sounds/C6.ogg" type="AudioStream" id=35]
+[ext_resource path="res://objects/shaders/GrayScale.tscn" type="PackedScene" id=36]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CaptainPath/CaptainPathFollow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Guard1Path/Guard1PathFollow:unit_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Guard2Path/Guard2PathFollow:unit_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PoetPath/PoetPathFollow:unit_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ServantPath/ServantPathFollow:unit_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OtaPath/OtaPathFollow:unit_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "main"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CaptainPath/CaptainPathFollow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.9, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Guard1Path/Guard1PathFollow:unit_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5.9, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Guard2Path/Guard2PathFollow:unit_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5.9, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PoetPath/PoetPathFollow:unit_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.9, 5.3, 6.4, 11.1, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 1.0, 0.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ServantPath/ServantPathFollow:unit_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.8, 5.4, 8.1, 11.1, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 0.0, 0.0, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OtaPath/OtaPathFollow:unit_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.9, 5.2, 5.9, 9.3, 11.1, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "victory-paths"
+length = 16.0
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("CaptainPath/CaptainPathFollow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7, 14, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Guard1Path/Guard1PathFollow:unit_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.25, 8, 14.5, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Guard2Path/Guard2PathFollow:unit_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.25, 8, 9.75, 14.5, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0, 0.0, 1.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PoetPath/PoetPathFollow:unit_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.9, 5, 6, 12, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 1.0, 0.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ServantPath/ServantPathFollow:unit_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5.75, 12, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "main"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PoetPath/PoetPathFollow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 5.5, 6.8, 11.4, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 1.0, 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ServantPath/ServantPathFollow:unit_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 6.1, 11.2, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 58
+extra_spacing_bottom = -16
+extra_spacing_char = -2
+font_data = ExtResource( 30 )
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 320, 0, 0, 0, 0, 320, 320, 0, 0, 0, 0, 320, 576, 0, 0, 0, 0, 0, 576 )
+}
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 40.0
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 65, -195, 0, 0, 0, 0, 0, -195, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -265, 0 )
+}
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 345.0
+
+[sub_resource type="Curve2D" id=9]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -65, -195, 0, 0, 0, 0, 0, -195, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 265, 0 )
+}
+
+[sub_resource type="Curve2D" id=10]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 32, -65, 0, 0, 0, 0, -32, -65 )
+}
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 50.0
+
+[sub_resource type="Curve2D" id=12]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 704, 320, 0, 0, 0, 0, 512, 320, 0, 0, 0, 0, 512, 576, 0, 0, 0, 0, 704, 576 )
+}
+
+[node name="Challenge6" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 1 )
+challenge_title_sound = ExtResource( 35 )
+
+[node name="Debug" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="ChallengeLogic" type="Node" parent="."]
+script = ExtResource( 23 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "main"
+playback_process_mode = 0
+anims/RESET = SubResource( 1 )
+anims/main = SubResource( 2 )
+anims/victory-paths = SubResource( 3 )
+script = ExtResource( 34 )
+
+[node name="TopPawnsAnimations" type="AnimationPlayer" parent="."]
+autoplay = "main"
+anims/main = SubResource( 4 )
+
+[node name="BG" parent="." instance=ExtResource( 2 )]
+
+[node name="Texts" type="CanvasLayer" parent="."]
+layer = -1
+script = ExtResource( 31 )
+
+[node name="Control" type="Control" parent="Texts"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="YouAreUto" type="Label" parent="Texts/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -159.0
+margin_top = 574.0
+margin_right = 160.0
+margin_bottom = 618.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 29 )
+text = "YOU  ARE  UTO."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Texts/Control/YouAreUto"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Control/YouAreUto/StaticBody2D"]
+
+[node name="Captain" type="Label" parent="Texts/Control"]
+visible = false
+margin_top = 626.0
+margin_right = 670.0
+margin_bottom = 672.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 29 )
+text = "THE  WHITE  CIRCLE  IS  READY."
+align = 1
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Texts/Control/Captain"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Control/Captain/StaticBody2D"]
+
+[node name="Guard" type="Label" parent="Texts/Control"]
+visible = false
+margin_top = 674.0
+margin_right = 396.0
+margin_bottom = 720.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 29 )
+text = "GUARDS  KILL  OTA."
+align = 1
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Texts/Control/Guard"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Control/Guard/StaticBody2D"]
+
+[node name="Guard2" type="Label" parent="Texts/Control"]
+visible = false
+margin_top = 772.0
+margin_right = 574.0
+margin_bottom = 818.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 29 )
+text = "AND  WHOEVER  HELPS HIM."
+align = 1
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Texts/Control/Guard2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Control/Guard2/StaticBody2D"]
+
+[node name="Ota" type="Label" parent="Texts/Control"]
+visible = false
+margin_top = 777.0
+margin_right = 802.0
+margin_bottom = 825.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 29 )
+text = "UTO  MUST  HELP  OTA  LEAVE  TOWN."
+align = 1
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Texts/Control/Ota"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Control/Ota/StaticBody2D"]
+
+[node name="Poet" type="Label" parent="Texts/Control"]
+visible = false
+margin_top = 829.0
+margin_right = 687.0
+margin_bottom = 891.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "ALL  TEXT  IS  A  BARRIER."
+align = 1
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Texts/Control/Poet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Control/Poet/StaticBody2D"]
+
+[node name="Servant" type="Label" parent="Texts/Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -375.0
+margin_top = -123.0
+margin_right = 387.0
+margin_bottom = -40.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "UTO'S DEFINITELY LOST."
+align = 1
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Texts/Control/Servant"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Texts/Control/Servant/StaticBody2D"]
+
+[node name="UTO" parent="." instance=ExtResource( 6 )]
+z_index = 1
+
+[node name="SettingsIcon" parent="." instance=ExtResource( 5 )]
+position = Vector2( -80.1, 0 )
+
+[node name="UtoRespawnPosition" parent="SettingsIcon" index="3"]
+position = Vector2( 104.615, 3.07695 )
+
+[node name="OtaPath" parent="." instance=ExtResource( 12 )]
+
+[node name="ServantPath" type="Path2D" parent="."]
+curve = SubResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="ServantPathFollow" type="PathFollow2D" parent="ServantPath"]
+position = Vector2( 0, 320 )
+rotate = false
+loop = false
+
+[node name="Servant" parent="ServantPath/ServantPathFollow" instance=ExtResource( 11 )]
+scale = Vector2( 1.4, 1.4 )
+
+[node name="CollisionShape2D" parent="ServantPath/ServantPathFollow/Servant/Area2D" index="0"]
+shape = SubResource( 13 )
+
+[node name="Guard1Path" type="Path2D" parent="."]
+curve = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Guard1PathFollow" type="PathFollow2D" parent="Guard1Path"]
+position = Vector2( 65, -195 )
+rotate = false
+loop = false
+
+[node name="Guard" parent="Guard1Path/Guard1PathFollow" instance=ExtResource( 9 )]
+scale = Vector2( 0.5, 0.5 )
+guard_kills_uto = false
+
+[node name="OtaDetector" type="Area2D" parent="Guard1Path/Guard1PathFollow/Guard"]
+script = ExtResource( 33 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guard1Path/Guard1PathFollow/Guard/OtaDetector"]
+shape = SubResource( 8 )
+
+[node name="Guard2Path" type="Path2D" parent="."]
+curve = SubResource( 9 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Guard2PathFollow" type="PathFollow2D" parent="Guard2Path"]
+position = Vector2( -65, -195 )
+rotate = false
+loop = false
+
+[node name="Guard" parent="Guard2Path/Guard2PathFollow" instance=ExtResource( 9 )]
+scale = Vector2( 0.5, 0.5 )
+guard_kills_uto = false
+
+[node name="OtaDetector" type="Area2D" parent="Guard2Path/Guard2PathFollow/Guard"]
+script = ExtResource( 33 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guard2Path/Guard2PathFollow/Guard/OtaDetector"]
+shape = SubResource( 8 )
+
+[node name="CaptainPath" type="Path2D" parent="."]
+curve = SubResource( 10 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CaptainPathFollow" type="PathFollow2D" parent="CaptainPath"]
+position = Vector2( 32, -65 )
+rotate = false
+loop = false
+
+[node name="Captain" parent="CaptainPath/CaptainPathFollow" instance=ExtResource( 7 )]
+
+[node name="VictoryArea" type="Area2D" parent="CaptainPath/CaptainPathFollow/Captain"]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaptainPath/CaptainPathFollow/Captain/VictoryArea"]
+shape = SubResource( 11 )
+
+[node name="PoetPath" type="Path2D" parent="."]
+curve = SubResource( 12 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="PoetPathFollow" type="PathFollow2D" parent="PoetPath"]
+position = Vector2( 704, 320 )
+rotate = false
+loop = false
+
+[node name="Poet" parent="PoetPath/PoetPathFollow" instance=ExtResource( 10 )]
+
+[node name="Sprite" parent="PoetPath/PoetPathFollow/Poet" index="0"]
+texture = ExtResource( 8 )
+
+[node name="Dialogue" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = -2
+script = ExtResource( 13 )
+
+[node name="ColorRect" type="ColorRect" parent="Dialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.172549, 0.164706, 0.168627, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="WhiteCircle" type="TextureRect" parent="Dialogue"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -231.5
+margin_top = -55.5
+margin_right = 231.5
+margin_bottom = 407.5
+mouse_filter = 2
+texture = ExtResource( 25 )
+stretch_mode = 5
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueBaloon" type="TextureRect" parent="Dialogue/WhiteCircle"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -297.0
+margin_top = -570.5
+margin_right = 297.0
+margin_bottom = -81.5
+mouse_filter = 2
+texture = ExtResource( 24 )
+stretch_mode = 4
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NPC" type="Sprite" parent="Dialogue/WhiteCircle"]
+position = Vector2( 302.5, 256.5 )
+scale = Vector2( 1.35, 1.35 )
+texture = ExtResource( 26 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Uto" type="Sprite" parent="Dialogue/WhiteCircle"]
+position = Vector2( 132.5, 258.5 )
+scale = Vector2( 1.35, 1.35 )
+texture = ExtResource( 28 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Overlay" parent="." instance=ExtResource( 14 )]
+pause_mode = 2
+
+[node name="GrayScale" parent="." instance=ExtResource( 36 )]
+
+[connection signal="rules_changed" from="Texts" to="." method="_on_Texts_rules_changed"]
+[connection signal="body_entered" from="SettingsIcon" to="." method="_on_SettingsIcon_body_entered"]
+[connection signal="uto_entered" from="OtaPath/OtaPathFollow/Ota" to="ChallengeLogic" method="_on_Ota_uto_entered"]
+[connection signal="uto_entered" from="ServantPath/ServantPathFollow/Servant" to="ChallengeLogic" method="_on_Servant_uto_entered" flags=6]
+[connection signal="uto_overlapped" from="Guard1Path/Guard1PathFollow/Guard" to="ChallengeLogic" method="_on_Guard_uto_overlapped"]
+[connection signal="area_entered" from="Guard1Path/Guard1PathFollow/Guard/OtaDetector" to="Guard1Path/Guard1PathFollow/Guard/OtaDetector" method="_on_OtaDetector_area_entered"]
+[connection signal="ota_entered" from="Guard1Path/Guard1PathFollow/Guard/OtaDetector" to="ChallengeLogic" method="_on_OtaDetector_ota_entered" flags=3]
+[connection signal="uto_overlapped" from="Guard2Path/Guard2PathFollow/Guard" to="ChallengeLogic" method="_on_Guard_uto_overlapped"]
+[connection signal="area_entered" from="Guard2Path/Guard2PathFollow/Guard/OtaDetector" to="Guard2Path/Guard2PathFollow/Guard/OtaDetector" method="_on_OtaDetector_area_entered"]
+[connection signal="ota_entered" from="Guard2Path/Guard2PathFollow/Guard/OtaDetector" to="ChallengeLogic" method="_on_OtaDetector_ota_entered"]
+[connection signal="uto_entered" from="CaptainPath/CaptainPathFollow/Captain" to="ChallengeLogic" method="_on_Captain_uto_entered" flags=6]
+[connection signal="body_entered" from="CaptainPath/CaptainPathFollow/Captain/VictoryArea" to="." method="_on_VictoryArea_body_entered"]
+[connection signal="uto_entered" from="PoetPath/PoetPathFollow/Poet" to="ChallengeLogic" method="_on_Poet_uto_entered" flags=6]
+[connection signal="dialogue_ended" from="Dialogue" to="ChallengeLogic" method="_on_Dialogue_dialogue_ended"]
+
+[editable path="SettingsIcon"]
+[editable path="OtaPath"]
+[editable path="ServantPath/ServantPathFollow/Servant"]
+[editable path="PoetPath/PoetPathFollow/Poet"]

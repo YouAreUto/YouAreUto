@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Challenges/challenge3-poet-dialogue/Challenge3PoetDialogue.gd" type="Script" id=1]
+[ext_resource path="res://objects/DialogueBackground/DialogueBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/ChallengeRuleFont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://assets/sprites/vfx/white-circle.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/characters/char-poet.png" type="Texture" id=9]
@@ -11,8 +12,6 @@
 [ext_resource path="res://assets/fonts/Gyosho.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://objects/overlay/Overlay.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/sounds/RainSound.tscn" type="PackedScene" id=16]
-
-
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -45,6 +44,71 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BalloonUto:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BalloonPoet:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "animation"
+tracks/0/path = NodePath("WhiteCircle/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "RESET", "RESET" ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ToBeContinued:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -90,13 +154,7 @@ tracks/2/keys = {
 [node name="Challenge3PoetDialogue" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.172549, 0.164706, 0.168627, 1 )
+[node name="DialogueBackground" parent="." instance=ExtResource( 2 )]
 
 [node name="WhiteCircle" type="Sprite" parent="."]
 position = Vector2( 320, 832 )
@@ -126,11 +184,14 @@ margin_left = -28.0
 margin_top = -88.0
 margin_right = 36.0
 margin_bottom = 72.0
-custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 12 )
 text = "Who
 am
 I?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BalloonPoet" type="Sprite" parent="WhiteCircle"]
 modulate = Color( 1, 1, 1, 0 )
@@ -143,8 +204,8 @@ margin_left = -68.3333
 margin_top = -168.333
 margin_right = 80.6667
 margin_bottom = 171.667
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Let 
 your
 name be
@@ -156,8 +217,10 @@ align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WhiteCircle"]
 anims/Dialogue = SubResource( 2 )
+anims/RESET = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
 anims/Start = SubResource( 3 )
 
 [node name="ToBeContinued" type="Label" parent="."]
@@ -172,11 +235,11 @@ margin_right = 504.0
 margin_bottom = 1225.0
 custom_fonts/font = ExtResource( 7 )
 text = "TO BE CONTINUED..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Overlay" parent="." instance=ExtResource( 15 )]
-
-[node name="ColorRect" parent="Overlay" index="0"]
-color = Color( 1, 1, 1, 1 )
 
 [node name="RainSound" parent="." instance=ExtResource( 16 )]
 

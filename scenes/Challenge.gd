@@ -16,9 +16,6 @@ var conf := {
 	}
 }
 
-func _init():
-	pass
-
 
 func _ready():
 	# required info
@@ -37,17 +34,17 @@ func _ready():
 
 func completed():
 	emit_signal("victory")
-	if audio_player:
+	if audio_player and Global.challengeData.get("soundEnabled", true):
 		audio_player.play()
 		yield(audio_player, "finished")
-	SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn", { 
+	SceneManager.goto_scene("res://scenes/victory/VictoryScreen.tscn", {
 		"use_legacy_code": conf.get("victory_and_gameover_screen").get("use_legacy_behaviour")
 	})
 
 
 func failed():
 	emit_signal("game_over")
-	SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn", { 
+	SceneManager.goto_scene("res://scenes/gameover/GameOverScreen.tscn", {
 		"use_legacy_code": conf.get("victory_and_gameover_screen").get("use_legacy_behaviour")
 	})
 

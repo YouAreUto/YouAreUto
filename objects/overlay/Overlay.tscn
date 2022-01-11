@@ -2,7 +2,6 @@
 
 [ext_resource path="res://scenes/Challenges/challenge1/Overlay.gd" type="Script" id=1]
 
-
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -83,7 +82,7 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0, 0, 0, 0 )
+color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
