@@ -1,8 +1,12 @@
 extends Node
 
 onready var uto: Uto = get_parent()
-
 export(Texture) var servant_texture
+var collisions = []
+
+
+func _ready():
+	disable_collisions()
 
 
 func becomeAServant():
@@ -10,6 +14,16 @@ func becomeAServant():
 	changeTrailColor()
 #	uto.enemiesInteractionEnabled = false
 
+
+func disable_collisions():
+	collisions = [uto.collision_layer, uto.collision_mask]
+	uto.collision_layer = 0
+	uto.collision_mask = 0
+
+
+func activate_collisions():
+	uto.collision_layer = collisions[0]
+	uto.collision_mask = collisions[1]
 
 func changeTrailColor():
 	var trail: Particles2D = uto.get_node("Trail")
@@ -20,3 +34,7 @@ func changeTrailColor():
 
 func _on_Definitely_UtoBecameACastleServant():
 	becomeAServant()
+
+
+func _on_Timer_timeout():
+	activate_collisions()

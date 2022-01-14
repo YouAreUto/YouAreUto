@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/Challenges/challenge2/Challenge2.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/C2.ogg" type="AudioStream" id=2]
@@ -25,9 +25,6 @@ extents = Vector2( 2620, 30 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 105, 22 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 44, 2000 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 107, 25.9569 )
@@ -93,6 +90,9 @@ tracks/0/keys = {
 
 [node name="Challenge2" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BG" parent="." instance=ExtResource( 8 )]
 
@@ -121,11 +121,12 @@ scale = Vector2( 1.175, 1.175 )
 texture = ExtResource( 5 )
 
 [node name="Collisions" type="Node2D" parent="BG/Sprite"]
-position = Vector2( -376.727, -613.038 )
-scale = Vector2( 0.999999, 0.999999 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TextBarrier" type="StaticBody2D" parent="BG/Sprite/Collisions"]
-position = Vector2( 360, 280 )
+position = Vector2( -16, -333 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -134,7 +135,7 @@ __meta__ = {
 shape = SubResource( 2 )
 
 [node name="YouText" type="StaticBody2D" parent="BG/Sprite/Collisions"]
-position = Vector2( 204.731, 795.045 )
+position = Vector2( -172, 182 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -142,28 +143,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Collisions/YouText"]
 position = Vector2( -22, 27 )
 shape = SubResource( 3 )
-
-[node name="LeftLimit" type="StaticBody2D" parent="BG/Sprite/Collisions"]
-visible = false
-position = Vector2( -43, 620 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Collisions/LeftLimit"]
-shape = SubResource( 4 )
-disabled = true
-
-[node name="RightLimit" type="StaticBody2D" parent="BG/Sprite/Collisions"]
-visible = false
-position = Vector2( 793.001, 620 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Sprite/Collisions/RightLimit"]
-shape = SubResource( 4 )
-disabled = true
 
 [node name="Definitely" type="StaticBody2D" parent="BG/Sprite"]
 position = Vector2( -190.996, 327.006 )
@@ -277,11 +256,16 @@ playback_speed = 0.4
 anims/patrol = SubResource( 10 )
 
 [node name="UTO" parent="ChallengeEntities" instance=ExtResource( 12 )]
-position = Vector2( 393.773, 648.107 )
+position = Vector2( 401.357, 783.592 )
 
 [node name="Challenge2Behaviour" type="Node" parent="ChallengeEntities/UTO"]
 script = ExtResource( 13 )
 servant_texture = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="ChallengeEntities/UTO/Challenge2Behaviour"]
+wait_time = 0.1
+one_shot = true
+autostart = true
 
 [node name="Overlay" parent="." instance=ExtResource( 14 )]
 
@@ -303,6 +287,7 @@ visible = false
 [connection signal="body_entered" from="BG/ui-settings" to="." method="_on_uisettings_body_entered"]
 [connection signal="killed" from="ChallengeEntities/UTO" to="." method="_on_UTO_killed"]
 [connection signal="killed" from="ChallengeEntities/UTO" to="Overlay" method="_on_UTO_killed"]
+[connection signal="timeout" from="ChallengeEntities/UTO/Challenge2Behaviour/Timer" to="ChallengeEntities/UTO/Challenge2Behaviour" method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="Overlay/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Overlay"]

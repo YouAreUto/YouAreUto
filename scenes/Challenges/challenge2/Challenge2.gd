@@ -1,7 +1,6 @@
 extends Node2D
 
 # dependencies
-
 onready var uto: Uto = $ChallengeEntities/UTO
 onready var utoBehaviour = $ChallengeEntities/UTO/Challenge2Behaviour
 onready var definitely := $BG/Sprite/Definitely
@@ -75,8 +74,6 @@ func setPositions():
 
 func applyMonochrome():
 	$Overlay/GrayScaleShader.show()
-#	$BG/Sprite.hide()
-#	$BG/Definitely/blue.hide()
 
 
 func _on_Definitely_UtoBecameACastleServant():
