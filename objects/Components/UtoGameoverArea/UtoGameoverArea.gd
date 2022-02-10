@@ -1,4 +1,5 @@
 extends Area2D
+class_name GameOverArea
 
 signal uto_touched_gameover_area
 

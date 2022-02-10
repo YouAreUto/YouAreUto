@@ -72,7 +72,7 @@ func _loadChallengeData():
 		toWin.rect_position = Global.challengeData["toWinPosition"]
 		dragUtoHere.rect_position = Global.challengeData["DragUtoHere"]
 		toStart.rect_position = Global.challengeData["ToStart"]
-		uto.position = Vector2(uto.getUtoSize().x + 10, get_viewport_rect().size.y - 200)
+		uto.position = Vector2(uto.size.x + 10, get_viewport_rect().size.y - 200)
 
 
 
@@ -123,9 +123,9 @@ func updateTextPosition(movableLabel: Label):
 	if movableLabel.rect_position.y < 5:
 		return
 
-	if movableLabel.utoIsUp and uto.target_position.y + uto.utoSize.y / 2 > movableLabel.rect_position.y:
+	if movableLabel.utoIsUp and uto.target_position.y + uto.size.y / 2 > movableLabel.rect_position.y:
 		movableLabel.rect_position.y += textMovementSpeed
-	if movableLabel.utoIsDown and uto.target_position.y - uto.utoSize.y / 2  < movableLabel.rect_position.y + toWin.rect_size.y:
+	if movableLabel.utoIsDown and uto.target_position.y - uto.size.y / 2  < movableLabel.rect_position.y + toWin.rect_size.y:
 		movableLabel.rect_position.y -= textMovementSpeed
 
 

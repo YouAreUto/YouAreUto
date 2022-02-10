@@ -2,16 +2,19 @@ extends Node2D
 class_name Guard
 tool
 
-export var guard_kills_uto = true
+export var guard_kills_uto = true setget set_guard_kills_uto
 signal uto_overlapped
 
 
 func _ready():
 	if Engine.editor_hint:
 		return
-	if guard_kills_uto == false:
-		$UtoGameoverArea.queue_free()
-		$Area2D.monitoring = true
+
+
+func set_guard_kills_uto(val):
+	guard_kills_uto = val
+	$UtoGameoverArea.monitoring = val
+	$Area2D.monitoring = val
 
 
 func get_size():

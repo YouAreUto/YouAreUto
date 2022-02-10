@@ -9,7 +9,7 @@ func _ready():
 
 func setPositions():
 	uto.position.x = get_viewport_rect().size.x / 2
-	uto.position.y = $BlackArea.rect_position.y + uto.getUtoSize().y + 75
+	uto.position.y = $BlackArea.rect_position.y + uto.size.y / 2 + 75
 
 	# center the text block between "BlackPath" and the black box at the bottom
 	var spaceAvailable = $BlackArea.rect_position.y - $BlackPath.rect_position.y + $BlackPath.rect_size.y

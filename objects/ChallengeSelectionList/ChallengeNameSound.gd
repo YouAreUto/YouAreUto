@@ -8,6 +8,7 @@ var challenge_sounds = [
 	"res://assets/sounds/C4.ogg",
 	"res://assets/sounds/C5.ogg",
 	"res://assets/sounds/C6.ogg",
+	"res://assets/sounds/C7.ogg",
 ]
 
 func play_audio_for_challenge(challenge_id: int):

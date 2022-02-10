@@ -20,6 +20,11 @@ func monochromeCheck():
 	if Global.challengeData.get("monochrome"):
 		grayScaleShader.show()
 		colorBtn.setStatus(false)
+	match Global.data["currentChallenge"]:
+		7:
+			grayScaleShader.queue_free()
+			colorBtn.disconnect("pressed", self, "_on_Button2_pressed")
+			colorBtn.disconnect("button_down", colorBtn, "_on_ToggleButton_button_down")
 
 
 func guardSpeedCheck():
@@ -28,8 +33,10 @@ func guardSpeedCheck():
 		speedControl.text = str(Global.challengeData.get("guardSpeed"))
 	else:
 		speedControl.text = str(1.0)
-	if Global.data["currentChallenge"] == 6:
-		challenge6customization()
+
+	match Global.data["currentChallenge"]:
+		6, 7:
+			challenge6customization()
 
 
 func challenge6customization():

@@ -4,9 +4,8 @@ extends KinematicBody2D
 signal killed
 signal hit
 
-onready var _bounds = $_bounds
 onready var vwSize = get_viewport_rect().size
-onready var utoSize := getUtoSize()
+onready var size: Vector2 = Vector2() setget ,getUtoSize
 
 # NOTE: this should be removed. Kill/victory logic should not be handled by Uto. Look at UtoGameoverArea.gd
 # set it to false when Uto is
@@ -16,7 +15,7 @@ export var showOutline := true
 
 var speed = 20
 var target_position := Vector2()  # target position in global coordinates
-var colliding = false
+var is_moving = false setget ,get_is_moving
 var holding = false  # true when drag start from  Uto,
 # false otherwise
 var heraldKilled = false
@@ -48,6 +47,10 @@ func _physics_process(_delta):
 		clampPositionInsideTheScreen()
 
 
+func get_is_moving():
+	return delta_movement != Vector2()
+
+
 func _unhandled_input(event):
 	if not alive:
 		return
@@ -69,22 +72,22 @@ func handle_touch(event: InputEventScreenTouch):
 
 
 func getUtoSize() -> Vector2:
-	return Vector2(
-		_bounds.shape.extents.x * scale.x,
-		_bounds.shape.extents.y * scale.y
-	)
+	return $Sprite.texture.get_size() * $Sprite.scale * scale
 
 
 func clampPositionInsideTheScreen():
+	# half uto size
+	var hs = self.size / 2
+	vwSize = Global.vw.size
 	# clamp Uto inside the viewport
-	if position.x < utoSize.x:
-		position.x = utoSize.x
-	if position.x > vwSize.x - utoSize.x:
-		position.x = vwSize.x - utoSize.x
-	if position.y < utoSize.y:
-		position.y = utoSize.y
-	if position.y > vwSize.y - utoSize.y:
-		position.y = vwSize.y - utoSize.y
+	if global_position.x < hs.x:
+		global_position.x = hs.x
+	if global_position.x > vwSize.x - hs.x:
+		global_position.x = vwSize.x - hs.x
+	if global_position.y < hs.y:
+		global_position.y = hs.y
+	if global_position.y > vwSize.y - hs.y:
+		global_position.y = vwSize.y - hs.y
 
 # signal bindings
 

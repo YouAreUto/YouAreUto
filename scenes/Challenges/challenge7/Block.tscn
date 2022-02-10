@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Challenges/challenge7/Block.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Challenges/challenge7/PushBehaviour.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_black.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Challenges/challenge7/Debug.gd" type="Script" id=4]
+[ext_resource path="res://assets/sprites/misc/point.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 60, 60 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 70, 70 )
+
+[node name="Block" type="KinematicBody2D" groups=["blocks"]]
+z_index = -1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+texture = ExtResource( 3 )
+
+[node name="Debug" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Point" type="Sprite" parent="Debug"]
+visible = false
+modulate = Color( 1, 0.501961, 0.501961, 1 )
+position = Vector2( -56, -47 )
+z_index = 4096
+texture = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1.02041, 1.02041 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="PushBehaviour" type="Node2D" parent="." groups=["push_behaviours"]]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Ray1" type="RayCast2D" parent="PushBehaviour"]
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 0, 0 )
+
+[node name="Ray2" type="RayCast2D" parent="PushBehaviour"]
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 0, 0 )
+
+[node name="Ray3" type="RayCast2D" parent="PushBehaviour"]
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 0, 0 )
+
+[connection signal="body_entered" from="Area2D" to="PushBehaviour" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="PushBehaviour" method="_on_Area2D_body_exited"]

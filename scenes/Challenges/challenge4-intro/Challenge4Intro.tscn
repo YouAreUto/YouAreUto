@@ -180,7 +180,6 @@ position = Vector2( 92, 9 )
 shape = SubResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BG/Control/RedText"]
-visible = false
 position = Vector2( 7, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BG/Control/RedText/StaticBody2D"]
@@ -427,7 +426,6 @@ __meta__ = {
 
 [node name="GrayScaleShader" parent="BG" instance=ExtResource( 19 )]
 visible = false
-mouse_filter = 2
 
 [node name="Overlay" parent="." instance=ExtResource( 20 )]
 

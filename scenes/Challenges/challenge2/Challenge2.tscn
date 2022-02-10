@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/Challenges/challenge2/Challenge2.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/C2.ogg" type="AudioStream" id=2]
@@ -35,6 +35,11 @@ extents = Vector2( 95.0001, 20.0001 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 100, 7.95691 )
 
+[sub_resource type="Curve2D" id=12]
+_data = {
+"points": PoolVector2Array(  )
+}
+
 [sub_resource type="Animation" id=8]
 length = 6.5
 loop = true
@@ -50,6 +55,11 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 0.461, 1.0, 1.0, 0.461, 0.0 ]
+}
+
+[sub_resource type="Curve2D" id=13]
+_data = {
+"points": PoolVector2Array(  )
 }
 
 [sub_resource type="Animation" id=9]
@@ -203,7 +213,7 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="ServantLeftPath" type="Path2D" parent="ChallengeEntities"]
 position = Vector2( -110, 810 )
-curve = null
+curve = SubResource( 12 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="ChallengeEntities/ServantLeftPath"]
 rotation = -1.5708
@@ -221,7 +231,7 @@ anims/patrol = SubResource( 8 )
 
 [node name="ServantRightPath" type="Path2D" parent="ChallengeEntities"]
 position = Vector2( 790, 820 )
-curve = null
+curve = SubResource( 13 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="ChallengeEntities/ServantRightPath"]
 rotation = -1.5708

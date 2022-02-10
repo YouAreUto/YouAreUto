@@ -44,36 +44,41 @@ func isFlashlightOn(mockFlashlight = false, mockedState = false):
 		return false
 
 
+var challengesOrder := [
+	{
+		"intro": "res://scenes/Challenges/challenge1-intro/Challenge1Intro.tscn",
+		"challenge": "res://scenes/Challenges/challenge1/Challenge1.tscn",
+	},
+	{
+		"intro": "res://scenes/Challenges/challenge2-intro/Challenge2Intro.tscn",
+		"challenge": "res://scenes/Challenges/challenge2/Challenge2.tscn",
+	},
+	{
+		"intro": "res://scenes/Challenges/challenge3-intro/Challenge3Intro.tscn",
+		"challenge": "res://scenes/Challenges/challenge3/Challenge3.tscn",
+	},
+	{
+		"intro": "res://scenes/Challenges/challenge4-intro/Challenge4Intro.tscn",
+		"challenge": "res://scenes/Challenges/challenge4-intro/Challenge4Intro.tscn", # this is the same, but it's correct
+	},
+	{
+		"intro": "res://scenes/Challenges/challenge5-intro/Challenge5Intro.tscn",
+		"challenge": "res://scenes/Challenges/challenge5/Challenge5.tscn",
+	},
+	{
+		"intro": "res://scenes/Challenges/challenge6-intro/challenge6Intro.tscn",
+		"challenge": "res://scenes/Challenges/challenge6/challenge6.tscn",
+	},
+	{
+		"intro": "res://scenes/Challenges/challenge7-intro/Challenge7Intro.tscn",
+		"challenge": "res://scenes/Challenges/challenge7/Challenge7.tscn",
+	},
+	{
+		"intro": "res://scenes/CTA/CTA.tscn",
+	},
+]
+
 func getChallengePath(index: int) -> Dictionary:
-	var challengesOrder := [
-		{
-			"intro": "res://scenes/Challenges/challenge1-intro/Challenge1Intro.tscn",
-			"challenge": "res://scenes/Challenges/challenge1/Challenge1.tscn",
-		},
-		{
-			"intro": "res://scenes/Challenges/challenge2-intro/Challenge2Intro.tscn",
-			"challenge": "res://scenes/Challenges/challenge2/Challenge2.tscn",
-		},
-		{
-			"intro": "res://scenes/Challenges/challenge3-intro/Challenge3Intro.tscn",
-			"challenge": "res://scenes/Challenges/challenge3/Challenge3.tscn",
-		},
-		{
-			"intro": "res://scenes/Challenges/challenge4-intro/Challenge4Intro.tscn",
-			"challenge": "res://scenes/Challenges/challenge4-intro/Challenge4Intro.tscn", # this is the same, but it's correct
-		},
-		{
-			"intro": "res://scenes/Challenges/challenge5-intro/Challenge5Intro.tscn",
-			"challenge": "res://scenes/Challenges/challenge5/Challenge5.tscn",
-		},
-		{
-			"intro": "res://scenes/Challenges/challenge6-intro/challenge6Intro.tscn",
-			"challenge": "res://scenes/Challenges/challenge6/challenge6.tscn",
-		},
-		{
-			"intro": "res://scenes/CTA/CTA.tscn",
-		},
-	]
 	return challengesOrder[index - 1]
 
 

@@ -76,7 +76,7 @@ func handleTorchEnabled():
 			$Bg/Chest.show()
 	else:
 		# uto to the bottom right corner
-		uto.position.x = vs.x - uto.getUtoSize().x - 30
+		uto.position.x = vs.x - uto.size.x - 30
 		uto.global_position.y = $Bg/Background1/Position2D.global_position.y
 		call_deferred("switchToFirstBackground")
 
@@ -149,7 +149,7 @@ func switchToSecondBackground():
 
 
 func _setPositions():
-	var vs = get_viewport_rect().size
+	var vs = Global.vw.size
 	# force the sprite to fit vertically
 	var bgSize = bgSprite.texture.get_size()
 	var scaleToFitVertically = vs.y / bgSize.y
@@ -169,7 +169,7 @@ func _setPositions():
 	settingsIcon.position.y = 80
 
 	# position uto to the bottom right corner
-	uto.position.x = vs.x - uto.getUtoSize().x - 30
+	uto.position.x = vs.x - uto.size.x / 2 - 30
 	uto.global_position.y = $Bg/Background1/Position2D.global_position.y
 
 	if $Bg.find_node("Key"):
@@ -186,14 +186,14 @@ func _setPositions():
 			# position uto to the top left corner
 			uto.position = settingsIcon.position + Vector2(
 				0,
-				(settingsIcon.get_node("Sprite").texture.get_size() * settingsIcon.scale).y + uto.getUtoSize().y / 2
+				(settingsIcon.get_node("Sprite").texture.get_size() * settingsIcon.scale).y + uto.size.y / 2
 			)
 		else: # room was not lit
 			if keyTaken:
 				# position uto to the top left corner
 				uto.position = settingsIcon.position + Vector2(
 					0,
-					(settingsIcon.get_node("Sprite").texture.get_size() * settingsIcon.scale).y + uto.getUtoSize().y / 2
+					(settingsIcon.get_node("Sprite").texture.get_size() * settingsIcon.scale).y + uto.size.y / 2
 				)
 	$Bg/GuardsWhenSpeedIsZero.position.x = vs.x - 250
 	$Bg/GuardsWhenSpeedIsZero.position.y = guardSpawner.position.y

@@ -46,7 +46,6 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 
 [node name="flash" type="CheckButton" parent="."]
-visible = false
 margin_left = 331.0
 margin_top = 41.0
 margin_right = 441.0

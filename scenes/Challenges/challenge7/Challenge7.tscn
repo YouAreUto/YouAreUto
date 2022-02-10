@@ -1,0 +1,286 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://scenes/Challenges/challenge7/Challenge7.gd" type="Script" id=1]
+[ext_resource path="res://objects/WhiteBackground/BG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Challenges/challenge7/mockup.png" type="Texture" id=3]
+[ext_resource path="res://objects/SettingsIcon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/Gate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Challenges/challenge7/Layout.gd" type="Script" id=7]
+[ext_resource path="res://assets/sounds/C7.ogg" type="AudioStream" id=8]
+[ext_resource path="res://scenes/Challenges/challenge7/Block.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_bg.png" type="Texture" id=10]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_poison.png" type="Texture" id=11]
+[ext_resource path="res://objects/Guard.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_is.png" type="Texture" id=13]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_uto.png" type="Texture" id=14]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_you.png" type="Texture" id=15]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_bridge.png" type="Texture" id=16]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_win.png" type="Texture" id=17]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_gate.png" type="Texture" id=18]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_push.png" type="Texture" id=19]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_text.png" type="Texture" id=20]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_guard.png" type="Texture" id=21]
+[ext_resource path="res://scenes/Challenges/challenge7/blocks/ch7_block_death.png" type="Texture" id=22]
+[ext_resource path="res://objects/Components/UtoGameoverArea/UtoGameoverArea.gd" type="Script" id=23]
+[ext_resource path="res://scenes/Challenges/challenge7/GuardCh7.gd" type="Script" id=24]
+[ext_resource path="res://scenes/Challenges/challenge7/RuleGaurdIsDeath.gd" type="Script" id=25]
+[ext_resource path="res://scenes/Challenges/challenge7/RuleGateIsWin.gd" type="Script" id=26]
+[ext_resource path="res://scenes/Challenges/challenge7/RulePushIsText.gd" type="Script" id=27]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 60, 100 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 300, 100 )
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.222951 )
+colors = PoolColorArray( 0.145098, 0.137255, 0.141176, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[node name="Challenge7" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+challenge_title_sound = ExtResource( 8 )
+
+[node name="Layout" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="Mockup" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1099.11, 672.875 )
+scale = Vector2( 1.61769, 1.61769 )
+texture = ExtResource( 3 )
+
+[node name="BG" parent="." instance=ExtResource( 2 )]
+
+[node name="GateGameOverArea" type="Area2D" parent="BG"]
+position = Vector2( 65, 234 )
+collision_layer = 9
+collision_mask = 9
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/GateGameOverArea"]
+z_index = 1
+shape = SubResource( 6 )
+
+[node name="GameOverArea" type="Area2D" parent="BG"]
+position = Vector2( 441, 111 )
+collision_layer = 9
+collision_mask = 9
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/GameOverArea"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Ch7Bg" type="TextureRect" parent="BG"]
+anchor_right = 1.0
+margin_bottom = 356.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="BG"]
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 300 )
+mouse_filter = 2
+texture = SubResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gate" parent="." instance=ExtResource( 6 )]
+position = Vector2( 64, 64 )
+monitoring = false
+
+[node name="InvisibleBlock" parent="Gate" instance=ExtResource( 9 )]
+texture = null
+size = 120
+pushable = false
+
+[node name="SettingsIcon" parent="." instance=ExtResource( 4 )]
+position = Vector2( 696.875, 1281.97 )
+collision_layer = 9
+collision_mask = 9
+uto_path = NodePath("../UTO")
+
+[node name="UtoIsYou" type="Node2D" parent="."]
+position = Vector2( 360, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Block4" parent="UtoIsYou" instance=ExtResource( 9 )]
+position = Vector2( 60, 60 )
+texture = ExtResource( 14 )
+size = 120
+
+[node name="Block5" parent="UtoIsYou" instance=ExtResource( 9 )]
+position = Vector2( 180, 60 )
+texture = ExtResource( 13 )
+size = 120
+
+[node name="Block6" parent="UtoIsYou" instance=ExtResource( 9 )]
+position = Vector2( 300, 60 )
+texture = ExtResource( 15 )
+size = 120
+
+[node name="BlackIsPoison" type="Node2D" parent="."]
+position = Vector2( 360, 120 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Block" parent="BlackIsPoison" instance=ExtResource( 9 )]
+position = Vector2( 60, 60 )
+size = 120
+
+[node name="Block2" parent="BlackIsPoison" instance=ExtResource( 9 )]
+position = Vector2( 180, 60 )
+texture = ExtResource( 13 )
+size = 120
+
+[node name="Block3" parent="BlackIsPoison" instance=ExtResource( 9 )]
+position = Vector2( 300, 60 )
+texture = ExtResource( 11 )
+size = 120
+
+[node name="CenterBlocks" type="Node2D" parent="."]
+position = Vector2( 480, 360 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Gate1" parent="CenterBlocks" instance=ExtResource( 9 )]
+position = Vector2( 60, 300 )
+texture = ExtResource( 18 )
+size = 120
+
+[node name="RuleGateIsWin" type="RayCast2D" parent="CenterBlocks/Gate1"]
+cast_to = Vector2( 140, 0 )
+script = ExtResource( 26 )
+
+[node name="Timer" type="Timer" parent="CenterBlocks/Gate1/RuleGateIsWin"]
+wait_time = 0.55
+autostart = true
+
+[node name="Gate2" parent="CenterBlocks" instance=ExtResource( 9 )]
+position = Vector2( 60, 60 )
+texture = ExtResource( 13 )
+size = 120
+
+[node name="Gate3" parent="CenterBlocks" instance=ExtResource( 9 )]
+position = Vector2( 180, 60 )
+texture = ExtResource( 17 )
+size = 120
+
+[node name="Bridge" parent="CenterBlocks" instance=ExtResource( 9 )]
+position = Vector2( 180, 300 )
+texture = ExtResource( 16 )
+size = 120
+
+[node name="GuardPawn" parent="CenterBlocks" instance=ExtResource( 12 )]
+position = Vector2( 61, 180 )
+scale = Vector2( 0.45, 0.45 )
+
+[node name="GuardCh7" type="RayCast2D" parent="CenterBlocks/GuardPawn"]
+script = ExtResource( 24 )
+
+[node name="GuardPawn2" parent="CenterBlocks" instance=ExtResource( 12 )]
+position = Vector2( -260, 180 )
+scale = Vector2( 0.45, 0.45 )
+
+[node name="GuardCh7" type="RayCast2D" parent="CenterBlocks/GuardPawn2"]
+script = ExtResource( 24 )
+
+[node name="TextIsPush" type="Node2D" parent="."]
+position = Vector2( 120, 840 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Text" parent="TextIsPush" instance=ExtResource( 9 )]
+position = Vector2( 60, 60 )
+texture = ExtResource( 20 )
+size = 120
+
+[node name="RuleTextIsPush" type="RayCast2D" parent="TextIsPush/Text"]
+cast_to = Vector2( 140, 0 )
+script = ExtResource( 27 )
+
+[node name="Timer" type="Timer" parent="TextIsPush/Text/RuleTextIsPush"]
+wait_time = 0.55
+autostart = true
+
+[node name="Text2" parent="TextIsPush" instance=ExtResource( 9 )]
+position = Vector2( 180, 60 )
+texture = ExtResource( 13 )
+size = 120
+
+[node name="Text3" parent="TextIsPush" instance=ExtResource( 9 )]
+position = Vector2( 300, 60 )
+texture = ExtResource( 19 )
+size = 120
+
+[node name="GuardIsDeath" type="Node2D" parent="."]
+position = Vector2( 120, 960 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Guard1" parent="GuardIsDeath" instance=ExtResource( 9 )]
+position = Vector2( 60, 60 )
+texture = ExtResource( 21 )
+size = 120
+
+[node name="RuleGaurdIsDeath" type="RayCast2D" parent="GuardIsDeath/Guard1"]
+cast_to = Vector2( 140, 0 )
+script = ExtResource( 25 )
+
+[node name="Timer" type="Timer" parent="GuardIsDeath/Guard1/RuleGaurdIsDeath"]
+wait_time = 0.55
+autostart = true
+
+[node name="Guard2" parent="GuardIsDeath" instance=ExtResource( 9 )]
+position = Vector2( 180, 60 )
+texture = ExtResource( 13 )
+size = 120
+
+[node name="Guard3" parent="GuardIsDeath" instance=ExtResource( 9 )]
+position = Vector2( 300, 60 )
+texture = ExtResource( 22 )
+size = 120
+
+[node name="UTO" parent="." instance=ExtResource( 5 )]
+position = Vector2( 677.083, 1108.28 )
+scale = Vector2( 0.45, 0.45 )
+collision_layer = 11
+collision_mask = 9
+
+[connection signal="body_entered" from="BG/GateGameOverArea" to="." method="_on_GateGameOverArea_body_entered"]
+[connection signal="body_entered" from="Gate" to="." method="_on_Gate_body_entered"]
+[connection signal="body_entered" from="SettingsIcon" to="SettingsIcon" method="_on_SettingsIcon_body_entered"]
+[connection signal="entering_settings" from="SettingsIcon" to="." method="_on_SettingsIcon_entering_settings"]
+[connection signal="rule_gate_is_win_toggled" from="CenterBlocks/Gate1/RuleGateIsWin" to="." method="_on_RuleGateIsWin_rule_gate_is_win_toggled"]
+[connection signal="timeout" from="CenterBlocks/Gate1/RuleGateIsWin/Timer" to="CenterBlocks/Gate1/RuleGateIsWin" method="_on_Timer_timeout"]
+[connection signal="rule_text_is_bridge_toggled" from="TextIsPush/Text/RuleTextIsPush" to="." method="_on_RuleTextIsPush_rule_text_is_bridge_toggled"]
+[connection signal="rule_text_is_push_toggled" from="TextIsPush/Text/RuleTextIsPush" to="." method="_on_RuleTextIsPush_rule_text_is_push_toggled"]
+[connection signal="timeout" from="TextIsPush/Text/RuleTextIsPush/Timer" to="TextIsPush/Text/RuleTextIsPush" method="_on_Timer_timeout"]
+[connection signal="rule_guard_is_death_toggled" from="GuardIsDeath/Guard1/RuleGaurdIsDeath" to="." method="_on_RuleGaurdIsDeath_rule_guard_is_death_toggled"]
+[connection signal="timeout" from="GuardIsDeath/Guard1/RuleGaurdIsDeath/Timer" to="GuardIsDeath/Guard1/RuleGaurdIsDeath" method="_on_Timer_timeout"]

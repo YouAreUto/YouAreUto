@@ -7,7 +7,7 @@ onready var nextChallengeBtn := $CanvasLayer/VBoxContainer/Next
 onready var quitButton := $CanvasLayer/VBoxContainer/Quit
 onready var restartButton := $CanvasLayer/VBoxContainer/Restart
 
-const last_challenge_id = 6
+var last_challenge_id = Global.challengesOrder.size() - 1
 
 var use_legacy_code = false
 var next_challenge_override = null

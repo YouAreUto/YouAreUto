@@ -1,4 +1,5 @@
 extends Node2D
+tool
 
 signal uto_entered
 
@@ -6,9 +7,11 @@ onready var redLine = $RedLine
 onready var label = $Label
 onready var triggerArea = $Label/Area2D
 
+
 func _ready():
-	get_viewport().connect("size_changed", self, "onScreenResized")
 	setLayout()
+	if not Engine.editor_hint:
+		get_viewport().connect("size_changed", self, "onScreenResized")
 
 
 func onScreenResized():
@@ -29,7 +32,7 @@ func setLayout():
 	triggerArea.position.x = label.rect_size.x / 2
 	triggerArea.position.y = label.rect_size.y / 2
 
-	triggerArea.get_node("CollisionShape2D").shape.extents.x = newSize.x
+	triggerArea.get_node("CollisionShape2D").shape.extents.x = newSize.x / 2
 
 
 func _on_Area2D_body_entered(body):

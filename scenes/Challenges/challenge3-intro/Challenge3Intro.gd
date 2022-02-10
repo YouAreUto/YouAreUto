@@ -15,7 +15,7 @@ func _ready() -> void:
 func setLayout():
 	uto.position = Vector2(
 		ruleText.rect_position.x + ruleText.rect_size.x / 2,
-		ruleText.rect_position.y + ruleText.rect_size.y + uto.getUtoSize().y + 16
+		ruleText.rect_position.y + ruleText.rect_size.y + uto.size.y / 2 + 16
 	)
 	poet.position = Vector2(
 		uto.position.x,

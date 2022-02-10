@@ -17,8 +17,8 @@ onready var servants = [
 
 func setServantPaths():
 	var servantBounds = Vector2(100, 100) # TODO: this is an approximation!
-	var vw_size = get_viewport().get_visible_rect().size
-
+	var vw_size = Global.vw.size
+	print(servantBounds, vw_size)
 	# left servant path
 	var servantLeftPath: Path2D = $ServantLeftPath
 	servantLeftPath.position = Vector2()
@@ -41,6 +41,8 @@ func setServantPaths():
 	servantCenterPath.curve = Curve2D.new()
 	servantCenterPath.curve.add_point(Vector2(vw_size.x / 2, vw_size.y + servantBounds.y))
 	servantCenterPath.curve.add_point(servant2.position)
+
+#	breakpoint
 
 
 func _on_Definitely_UtoBecameACastleServant():

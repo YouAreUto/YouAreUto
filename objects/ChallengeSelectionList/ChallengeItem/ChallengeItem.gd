@@ -5,7 +5,7 @@ export(Texture) var selectionTexture
 
 # parameters
 export var challengeName: String
-export var challengeNumber: int
+var challengeNumber: int
 export var textureScale = 1.3
 export var disabled = false
 
@@ -21,6 +21,9 @@ signal challengeItemPressed
 
 func _ready() -> void:
 	setSelected(false)
+	label.text = challengeName
+	var split = name.split("ChallengeItem")
+	challengeNumber = int(split[1])
 	if challengeNumber == 5 and OS.get_name() == "iOS":
 		disabled = true
 	# scale the texture rect up
@@ -28,7 +31,6 @@ func _ready() -> void:
 	textureRect.rect_min_size = textureScale * textureRect.texture.get_size()
 
 	selectedSprite.texture = selectionTexture
-	label.text = challengeName
 	numberLabel.text = str(challengeNumber)
 
 	if disabled:

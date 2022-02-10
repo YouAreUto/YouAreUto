@@ -49,23 +49,22 @@ func positionObjects():
 	title_label.rect_position.y = (challenge.rect_position.y + challenge.rect_size.y)
 
 	# uto
-	var utoSize = uto.get_node("Sprite").texture.get_size()
 	uto.position.x = vwCenterX
 	uto.position.y = newSize.y * 0.25
 	utoText.rect_position.x = vwCenterX - utoText.rect_size.x / 2
-	utoText.rect_position.y = uto.position.y + utoSize.y / 2 + verticalTextOffset
+	utoText.rect_position.y = uto.position.y + uto.size.y / 2 + verticalTextOffset
 
 	# herald
 	herald.position.x = vwCenterX
 	herald.position.y = newSize.y * 0.45
 	heraldText.rect_position.x = vwCenterX - heraldText.rect_size.x / 2
-	heraldText.rect_position.y = herald.position.y + utoSize.y / 2 + verticalTextOffset
+	heraldText.rect_position.y = herald.position.y + uto.size.y / 2 + verticalTextOffset
 
 	# king
 	king.position.x = vwCenterX
 	king.position.y = newSize.y * 0.63
 	kingText.rect_position.x = vwCenterX - kingText.rect_size.x / 2
-	kingText.rect_position.y = king.position.y + utoSize.y / 2 + verticalTextOffset
+	kingText.rect_position.y = king.position.y + uto.size.y / 2 + verticalTextOffset
 
 
 func appear():

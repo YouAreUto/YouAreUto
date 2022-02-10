@@ -86,5 +86,5 @@ func _instance_scene_by_path(path) -> Node:
 	return s.instance()
 
 
-func reload_current_scene():
-	goto_scene(last_goto_scene.path, last_goto_scene.params)
+func reload_current_scene(override_params = null):
+	goto_scene(last_goto_scene.path, override_params if override_params else last_goto_scene.params)

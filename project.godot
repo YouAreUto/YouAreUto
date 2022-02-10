@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Block",
+"language": "GDScript",
+"path": "res://scenes/Challenges/challenge7/Block.gd"
+}, {
 "base": "Area2D",
 "class": "Captain",
 "language": "GDScript",
@@ -18,6 +23,16 @@ _global_script_classes=[ {
 "class": "Challenge",
 "language": "GDScript",
 "path": "res://scenes/Challenge.gd"
+}, {
+"base": "Area2D",
+"class": "GameOverArea",
+"language": "GDScript",
+"path": "res://objects/Components/UtoGameoverArea/UtoGameoverArea.gd"
+}, {
+"base": "Pawn",
+"class": "Gate",
+"language": "GDScript",
+"path": "res://objects/Gate.gd"
 }, {
 "base": "Node2D",
 "class": "Guard",
@@ -40,9 +55,19 @@ _global_script_classes=[ {
 "path": "res://objects/Ota.gd"
 }, {
 "base": "Area2D",
+"class": "Pawn",
+"language": "GDScript",
+"path": "res://objects/pawn/Pawn.gd"
+}, {
+"base": "Area2D",
 "class": "Poet",
 "language": "GDScript",
 "path": "res://objects/Poet.gd"
+}, {
+"base": "Node",
+"class": "PushBehaviour",
+"language": "GDScript",
+"path": "res://scenes/Challenges/challenge7/PushBehaviour.gd"
 }, {
 "base": "Area2D",
 "class": "SettingsIcon",
@@ -55,13 +80,18 @@ _global_script_classes=[ {
 "path": "res://objects/UTO.gd"
 } ]
 _global_script_class_icons={
+"Block": "",
 "Captain": "",
 "Challenge": "",
+"GameOverArea": "",
+"Gate": "",
 "Guard": "",
 "Key": "",
 "Main": "",
 "Ota": "",
+"Pawn": "",
 "Poet": "",
+"PushBehaviour": "",
 "SettingsIcon": "",
 "Uto": ""
 }
@@ -76,7 +106,7 @@ config/name="YouAreUto"
 run/main_scene="res://scenes/Main.tscn"
 boot_splash/image="res://assets/sprites/splash-img.png"
 boot_splash/bg_color=Color( 0.941176, 0.941176, 0.941176, 1 )
-config/icon="res://icon.png"
+config/icon="res://icon-512px.png"
 
 [autoload]
 
@@ -92,10 +122,9 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=750
 window/size/height=1334
-window/size/test_width=375
-window/size/test_height=667
+window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
 [editor_plugins]
@@ -125,4 +154,5 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-quality/dynamic_fonts/use_oversampling=false
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0

@@ -1,0 +1,229 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/Challenges/challenge7-intro/Challenge7Intro.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Challenges/challenge7-intro/char-gate.png" type="Texture" id=2]
+[ext_resource path="res://objects/WhiteBackground/BG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/DragUtoHereToStart/DragUtoHereToStart.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/ChallengeNumberFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://resources/ChallengeTitleFontData.tres" type="DynamicFontData" id=6]
+[ext_resource path="res://resources/ChallengeRuleFont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://scenes/Challenges/challenge7-intro/char-baba-uto.png" type="Texture" id=8]
+[ext_resource path="res://objects/UTO.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 62
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=2]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Challenge7Intro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" parent="." instance=ExtResource( 3 )]
+
+[node name="ChallengeNumber" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -119.0
+margin_top = 72.0
+margin_right = 119.0
+margin_bottom = 118.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Challenge 7"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -203.5
+margin_top = 128.0
+margin_right = 203.5
+margin_bottom = 211.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Uto Is Tribute"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gate" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -225.0
+margin_top = 151.0
+margin_right = -127.0
+margin_bottom = 249.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = -333.5
+margin_right = 248.0
+margin_bottom = -22.5
+mouse_filter = 2
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RuleText" type="Label" parent="VBoxContainer"]
+margin_right = 496.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "424c41434b20495320504f49534f4e"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RuleText2" type="Label" parent="VBoxContainer"]
+margin_top = 57.0
+margin_right = 496.0
+margin_bottom = 98.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "4755415244204953204445415448"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RuleText3" type="Label" parent="VBoxContainer"]
+margin_top = 114.0
+margin_right = 496.0
+margin_bottom = 155.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "544558542049532050555348"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RuleText4" type="Label" parent="VBoxContainer"]
+margin_top = 171.0
+margin_right = 496.0
+margin_bottom = 212.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "55544f20495320594f55"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RuleText5" type="Label" parent="VBoxContainer"]
+margin_top = 228.0
+margin_right = 496.0
+margin_bottom = 269.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "49532057494e"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RuleText6" type="Label" parent="VBoxContainer"]
+margin_top = 285.0
+margin_right = 496.0
+margin_bottom = 326.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "425249444745"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RuleText7" type="Label" parent="VBoxContainer"]
+margin_top = 342.0
+margin_right = 496.0
+margin_bottom = 383.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "47415445"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UTO" parent="." instance=ExtResource( 9 )]
+position = Vector2( 577.063, 874.536 )
+z_index = 1
+enemiesInteractionEnabled = false
+
+[node name="Sprite" parent="UTO" index="2"]
+texture = ExtResource( 8 )
+
+[node name="StartArea" parent="." instance=ExtResource( 4 )]
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Overlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Overlay"]
+autoplay = "disappear"
+anims/appear = SubResource( 2 )
+anims/disappear = SubResource( 3 )
+
+[connection signal="uto_entered" from="StartArea" to="." method="_on_StartArea_uto_entered"]
+[connection signal="animation_finished" from="Overlay/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="UTO"]

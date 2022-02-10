@@ -16,7 +16,7 @@ func set_layout():
 	var yau = get_node("BG/Control/YouAreUto")
 	uto.position = Vector2(
 		Global.vw.size.x / 2,
-		yau.rect_position.y + yau.rect_size.y + uto.getUtoSize().y + 60
+		yau.rect_position.y + yau.rect_size.y + uto.size.y + 60
 	)
 
 

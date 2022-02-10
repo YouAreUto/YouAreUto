@@ -52,7 +52,7 @@ func _ready():
 
 
 func setPositions():
-	var vw_size = get_viewport().get_visible_rect().size
+	var vw_size = Global.vw.size
 	$BG/Sprite.position.x = vw_size.x / 2
 	$BG/Sprite.position.y = vw_size.y * 0.5
 	settingsIcon.position = Vector2(vw_size.x - 100, vw_size.y - 100)
@@ -61,8 +61,8 @@ func setPositions():
 	castle.global_position.y = textBarrier.global_position.y - 120
 
 	servant2.position.x = vw_size.x / 2 # center
-	servant.position.x = servant2.position.x - 3.75 * uto.getUtoSize().x # left
-	servant3.position.x = servant2.position.x + 3.75 * uto.getUtoSize().x # right
+	servant.position.x = servant2.position.x - 2 * uto.size.x # left
+	servant3.position.x = servant2.position.x + 2 * uto.size.x # right
 
 	servant.global_position.y = textBarrier.global_position.y + 100
 	servant2.position.y = servant.position.y
