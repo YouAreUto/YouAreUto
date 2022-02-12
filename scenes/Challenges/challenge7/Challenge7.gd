@@ -69,18 +69,18 @@ func _on_Gate_body_entered(body):
 
 
 func _on_RuleGaurdIsDeath_rule_guard_is_death_toggled(rule_is_active):
-	print("Guard is death: ", rule_is_active)
+	print_debug("Guard is death: ", rule_is_active)
 	for guard in get_tree().get_nodes_in_group("guards"):
 		guard.guard_kills_uto = rule_is_active
 
 
 func _on_RuleGateIsWin_rule_gate_is_win_toggled(val):
-	print("Gate is win: ", val)
+	print_debug("Gate is win: ", val)
 	set_gate_is_win(val)
 
 
 func _on_RuleTextIsPush_rule_text_is_bridge_toggled(is_bridge):
-	print("Text is bridge: ", is_bridge)
+	print_debug("Text is bridge: ", is_bridge)
 	# enable collision detection for uto
 	$Gate.set_collision_mask_bit(3, true)
 	uto.set_collision_layer_bit(3, true)
@@ -89,7 +89,7 @@ func _on_RuleTextIsPush_rule_text_is_bridge_toggled(is_bridge):
 func _on_RuleTextIsPush_rule_text_is_push_toggled(is_push):
 	if is_push == false:
 		disable_uto_collisions()
-	print("Text is push: ", is_push)
+	print_debug("Text is push: ", is_push)
 	for guard in get_tree().get_nodes_in_group("guards"):
 		guard.get_node("GuardCh7").collide_with_blocks = false
 	for block in get_tree().get_nodes_in_group("blocks"):

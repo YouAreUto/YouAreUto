@@ -225,7 +225,7 @@ cast_to = Vector2( 140, 0 )
 script = ExtResource( 27 )
 
 [node name="Timer" type="Timer" parent="TextIsPush/Text/RuleTextIsPush"]
-wait_time = 0.55
+wait_time = 0.2
 autostart = true
 
 [node name="Text2" parent="TextIsPush" instance=ExtResource( 9 )]
