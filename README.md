@@ -12,7 +12,6 @@ The game is developed with [Godot Engine v3.4](https://godotengine.org/download/
 
 ## Principles
 
-- Free as in freedom
 - No ads
 - Foster creativity
 - Bring enjoyment
