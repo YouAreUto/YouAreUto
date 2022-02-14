@@ -14,7 +14,6 @@ func _ready():
 func set_guard_kills_uto(val):
 	guard_kills_uto = val
 	$UtoGameoverArea.monitoring = val
-	$Area2D.monitoring = val
 
 
 func get_size():

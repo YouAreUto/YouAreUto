@@ -1,7 +1,7 @@
 extends Node2D
 
 var debug = {
-	"enabled":  false,
+	"enabled": false,
 	"flashlightOn": false
 }
 var roomIsLit = false
@@ -22,13 +22,16 @@ func _ready():
 	Global.data["currentChallenge"] = 5
 	hideBackgrounds()
 	applyChallengeData()
-	# update debug button
-	if debug.get("enabled"):
-		$flash.show()
-		if Global.challengeData.get("debug_flash"):
-			$flash.pressed = true
+	if OS.is_debug_build():
+		if debug.get("enabled"):
+			$flash.show()
+			if Global.challengeData.get("debug_flash"):
+				$flash.pressed = true
+	else:
+		debug.enabled = false
+		$flash.queue_free()
 	# if starting the challenge with the flashlight on
-	if Global.isFlashlightOn(debug.enabled, $flash.pressed):
+	if Global.isFlashlightOn():
 		handleTorchEnabled()
 	_setPositions()
 

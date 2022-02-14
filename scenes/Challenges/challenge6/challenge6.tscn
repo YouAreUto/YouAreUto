@@ -318,6 +318,9 @@ _data = {
 [node name="Challenge6" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 challenge_title_sound = ExtResource( 35 )
 
 [node name="Debug" type="Node" parent="."]

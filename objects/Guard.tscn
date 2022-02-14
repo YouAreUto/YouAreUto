@@ -20,7 +20,6 @@ scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
-monitoring = false
 __meta__ = {
 "_edit_group_": true
 }
