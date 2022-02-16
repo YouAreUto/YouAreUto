@@ -2,6 +2,7 @@ extends Challenge
 
 
 onready var uto: Uto = $UTO
+var blocks_on_game_over_area = []
 
 
 func _init():
@@ -12,10 +13,6 @@ func _init():
 func _ready():
 	if Global.challengeData.get("utoEnteredSettings"):
 		restore_challenge_state()
-
-
-func init(params: Dictionary):
-	pass
 
 
 func failed():
@@ -56,6 +53,15 @@ func restore_challenge_state():
 			block.global_position = Global.challengeData[block.name]
 
 
+func blocks_on_gameover_area_make_a_path():
+	if blocks_on_game_over_area.size() < 2:
+		return false
+	if blocks_on_game_over_area[0].name == "Guard1" and blocks_on_game_over_area[1].name == "Guard2" or blocks_on_game_over_area[0].name == "Guard2" and blocks_on_game_over_area[1].name == "Guard1":
+		return true
+	else:
+		return false
+
+
 func _on_SettingsIcon_entering_settings():
 	stop_animations()
 	save_challenge_state()
@@ -84,6 +90,9 @@ func _on_RuleTextIsPush_rule_text_is_bridge_toggled(is_bridge):
 	# enable collision detection for uto
 	$Gate.set_collision_mask_bit(3, true)
 	uto.set_collision_layer_bit(3, true)
+	if blocks_on_gameover_area_make_a_path():
+		print_debug("Removing GateGameOverArea")
+		$BG/GateGameOverArea.queue_free()
 
 
 func _on_RuleTextIsPush_rule_text_is_push_toggled(is_push):
@@ -96,12 +105,6 @@ func _on_RuleTextIsPush_rule_text_is_push_toggled(is_push):
 		block.set_pushable(is_push)
 
 
-var blocks_on_game_over_area = []
 func _on_GateGameOverArea_body_entered(body):
 	if body is Block and body.name != "InvisibleBlock":
 		blocks_on_game_over_area.append(body)
-	if blocks_on_game_over_area.size() < 2:
-		return
-	if blocks_on_game_over_area[0].name == "Guard1" and blocks_on_game_over_area[1].name == "Guard2" or blocks_on_game_over_area[0].name == "Guard2" and blocks_on_game_over_area[1].name == "Guard1":
-		print("Disabling gate gameover area")
-		$BG/GateGameOverArea.queue_free()

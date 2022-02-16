@@ -8,11 +8,7 @@ var layouts = [
 
 
 func _ready():
-	# disable addon if binary is in "release" mode
-	if OS.is_debug_build() == false:
-		return queue_free()
-	else:
-		update_layout_0()
+	update_layout_0()
 
 
 func update_layout_0():
