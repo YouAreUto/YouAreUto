@@ -64,6 +64,7 @@ func _deferred_goto_scene(path: String, params = null):
 	# free all nodes in the current scene
 	for node in main_node.current_scene.get_children():
 		node.queue_free()
+		yield(node, "tree_exited")
 	# instance the new scene
 	var new_scene = _instance_scene_by_path(path)
 	if new_scene is Challenge:
