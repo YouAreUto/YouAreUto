@@ -60,16 +60,55 @@ func setPositions():
 	castle.position.x = vw_size.x / 2
 	castle.global_position.y = textBarrier.global_position.y - 120
 
+	var servants_gap = 1.7 * uto.size.x
 	servant2.position.x = vw_size.x / 2 # center
-	servant.position.x = servant2.position.x - 2 * uto.size.x # left
-	servant3.position.x = servant2.position.x + 2 * uto.size.x # right
+	servant.position.x = servant2.position.x - servants_gap # left
+	servant3.position.x = servant2.position.x + servants_gap # right
 
 	servant.global_position.y = textBarrier.global_position.y + 100
 	servant2.position.y = servant.position.y
 	servant3.position.y = servant.position.y
 
+	# make guards cover the entire width
+	var guards_needed_to_fill_width = int(ceil(vw_size.x / servants_gap))
+	if guards_needed_to_fill_width % 2 == 0:
+		guards_needed_to_fill_width += 1
+	if guards_needed_to_fill_width > 3 :
+		var guards = get_tree().get_nodes_in_group("guards")
+		var guards_count = len(guards) - 3
+		var j = 0
+		while guards_count < guards_needed_to_fill_width:
+			var new_servant_l = servant2.duplicate()
+			var new_servant_r = servant2.duplicate()
+			servant2.get_parent().add_child(new_servant_l)
+			servant2.get_parent().add_child(new_servant_r)
+			new_servant_l.position.x = servant2.position.x - servants_gap * (2 + j)
+			new_servant_r.position.x = servant2.position.x + servants_gap * (2 + j)
+			guards = get_tree().get_nodes_in_group("guards")
+			guards_count = len(guards) - 3
+			j += 1
+
+	make_barrier_text_cover_the_entire_width()
+
+
 	uto.position.x = vw_size.x / 2
 	uto.position.y = vw_size.y * 0.45
+
+
+
+
+func make_barrier_text_cover_the_entire_width():
+	var barrier_text: Label = $BG/Sprite/RedTextIsABarrierText
+	var its = 0
+	if not barrier_text.has_meta("start_pos"):
+		barrier_text.set_meta("start_pos", barrier_text.rect_position)
+	while barrier_text.rect_size.x < Global.vw.size.x:
+		barrier_text.text = " - " + barrier_text.text + " - "
+		barrier_text.set_anchors_and_margins_preset(Control.PRESET_CENTER_TOP)
+		barrier_text.rect_position.y = barrier_text.get_meta("start_pos").y
+		if its > 20:
+			break
+		its += 1
 
 
 func applyMonochrome():

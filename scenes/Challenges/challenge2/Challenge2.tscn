@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Challenges/challenge2/Challenge2.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/C2.ogg" type="AudioStream" id=2]
@@ -16,9 +16,18 @@
 [ext_resource path="res://objects/overlay/Overlay.tscn" type="PackedScene" id=14]
 [ext_resource path="res://objects/shaders/GrayScaleShader.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/sounds/BellSound.tscn" type="PackedScene" id=16]
+[ext_resource path="res://resources/ChallengeTitleFontData.tres" type="DynamicFontData" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 30 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 54
+use_filter = true
+extra_spacing_top = -8
+extra_spacing_bottom = -10
+extra_spacing_char = -2
+font_data = ExtResource( 17 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 2620, 30 )
@@ -130,7 +139,28 @@ position = Vector2( 380, 630 )
 scale = Vector2( 1.175, 1.175 )
 texture = ExtResource( 5 )
 
+[node name="ColorRect" type="ColorRect" parent="BG/Sprite"]
+anchor_right = 1.0
+margin_left = -320.0
+margin_top = -354.894
+margin_right = -320.0
+margin_bottom = -284.894
+rect_min_size = Vector2( 0, 70 )
+color = Color( 0.976471, 0.968627, 0.972549, 1 )
+
+[node name="RedTextIsABarrierText" type="Label" parent="BG/Sprite"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -627.0
+margin_top = -358.298
+margin_right = -13.0
+margin_bottom = -304.298
+custom_colors/font_color = Color( 0.721569, 0.0313726, 0.0470588, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "RED TEXT IS A BARRIER."
+
 [node name="Collisions" type="Node2D" parent="BG/Sprite"]
+visible = false
 __meta__ = {
 "_edit_lock_": true
 }
@@ -267,6 +297,7 @@ anims/patrol = SubResource( 10 )
 
 [node name="UTO" parent="ChallengeEntities" instance=ExtResource( 12 )]
 position = Vector2( 401.357, 783.592 )
+z_index = 1
 
 [node name="Challenge2Behaviour" type="Node" parent="ChallengeEntities/UTO"]
 script = ExtResource( 13 )

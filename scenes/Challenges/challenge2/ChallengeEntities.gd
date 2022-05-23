@@ -5,20 +5,10 @@ onready var servant = $Servant
 onready var servant2 = $Servant2
 onready var servant3 = $Servant3
 
-onready var servants = [
-	servant,
-	servant2,
-	servant3,
-	$ServantLeftPath/PathFollow2D/Servant4,
-	$ServantCenterPath/PathFollow2D/Servant4,
-	$ServantRightPath/PathFollow2D/Servant4
-]
-
 
 func setServantPaths():
 	var servantBounds = Vector2(100, 100) # TODO: this is an approximation!
 	var vw_size = Global.vw.size
-	print(servantBounds, vw_size)
 	# left servant path
 	var servantLeftPath: Path2D = $ServantLeftPath
 	servantLeftPath.position = Vector2()
@@ -42,9 +32,7 @@ func setServantPaths():
 	servantCenterPath.curve.add_point(Vector2(vw_size.x / 2, vw_size.y + servantBounds.y))
 	servantCenterPath.curve.add_point(servant2.position)
 
-#	breakpoint
-
 
 func _on_Definitely_UtoBecameACastleServant():
-	for servant in servants:
+	for servant in get_tree().get_nodes_in_group("guards"):
 		servant.get_node("UtoGameoverArea").monitoring = false
