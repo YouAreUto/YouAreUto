@@ -78,6 +78,7 @@ var challengesOrder := [
 	},
 ]
 
+
 func getChallengePath(index: int) -> Dictionary:
 	return challengesOrder[index - 1]
 
