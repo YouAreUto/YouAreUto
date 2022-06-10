@@ -2,14 +2,35 @@
 # https://github.com/godotengine/godot-google-play-billing/blob/master/godot-google-play-billing/src/main/java/org/godotengine/godot/plugin/googleplaybilling/GodotGooglePlayBilling.java
 extends Node
 
+signal product_acquired(sku)
+
+
+# https://developer.android.com/reference/com/android/billingclient/api/Purchase.PurchaseState?hl=en#summary
+enum PurchaseState {
+	USPECIFIED_STATE,
+	PURCHASED,
+	PENDING
+}
+
+#class Purchase:
+#	var sku: String
+#	var is_acknowledged: bool
+#	var is_auto_renewing: bool
+#	var order_id: String
+#	var package_name: String
+#	var purchase_state: int
+#	var purchase_time: int
+#	var signature: String
+
 
 var payment
+var state = "disabled"
+var owned_products = [] # Purchase[]
 
 
 func _ready():
 	if Engine.has_singleton("GodotGooglePlayBilling"):
 		payment = Engine.get_singleton("GodotGooglePlayBilling")
-		print("GodotGooglePlayBilling plugin setup")
 		payment.connect("connected", self, "_on_connected") # No params
 		payment.connect("connect_error", self, "_on_connect_error") # Response ID (int), Debug message (string)
 		payment.connect("disconnected", self, "_on_disconnected") # No params
@@ -24,41 +45,54 @@ func _ready():
 		payment.connect("purchase_consumption_error", self, "_on_purchase_consumption_error") # Response ID (int), Debug message (string), Purchase token (string)
 		payment.startConnection()
 	else:
-		print("No GooglePlayBilling singleton")
 		push_warning("Android IAP support is not enabled. Make sure you have enabled 'Custom Build' and the GodotGooglePlayBilling plugin in your Android export settings! IAP will not work.")
+
+
+func active():
+	return state == "connected"
+
+
+func check_purchase():
+	var query = payment.queryPurchases("inapp")
+	if query.status == OK:
+		for purchase in query.purchases:
+			print(purchase.sku, "purchased: ", purchase.purchase_state == PurchaseState.PURCHASED, " is_acknowledged: ", purchase.is_acknowledged)
+			if purchase.purchase_state == PurchaseState.PURCHASED:
+				owned_products.append(purchase)
 
 
 func _on_sku_details_query_error(token_str):
 	print("sku_details_query_error", token_str)
 
 
+func _on_connected():
+	state = "connected"
+	print("Payment connected")
+	check_purchase()
+
+
 func _on_connect_error(err_id, dbg_msg):
-	print(err_id, dbg_msg)
+	push_error("{0} {1}".format([err_id, dbg_msg]))
 
 
-func unlock_hint():
-	print("unlocking hint")
-	var product_id_sku = "test_hint_ch3"
-	payment.purchase(product_id_sku)
+func _on_disconnected():
+	state = "disconnected"
+	push_warning("Payment disconnected")
 
 
 func _on_purchases_updated(purchases):
 	print("purchases updated")
-	# TODO: this is just a reference implementation
 	for purchase in purchases:
-		print("purchase:", purchase)
-		if purchase.purchase_state == 1: # 1 means "purchased", see https://developer.android.com/reference/com/android/billingclient/api/Purchase.PurchaseState#constants_1
-			# enable_premium(purchase.sku) # unlock paid content, add coins, save token on server, etc. (you have to implement enable_premium yourself)
+		if purchase.purchase_state == PurchaseState.PURCHASED:
+			if not owned_products_contain(purchase.sku):
+				owned_products.append(purchase)
+			emit_signal("product_acquired", purchase)
 			if not purchase.is_acknowledged:
-				payment.acknowledgePurchase(purchase.purchase_token) # call if non-consumable product
-#				var list_of_consumable_products = []
-#				if purchase.sku in list_of_consumable_products:
-#					payment.consumePurchase(purchase.purchase_token) # call if consumable product
+				payment.acknowledgePurchase(purchase.purchase_token) # call for non-consumable products
 
 
 func _on_purchase_error(id, msg):
-	print("Purchase error")
-	print(id, msg)
+	push_error("Purchase error {0} {1}".format([id, msg]))
 
 
 func _on_purchase_consumed(token):
@@ -66,31 +100,25 @@ func _on_purchase_consumed(token):
 
 
 func _on_purchase_acknowledged(purchase_token):
-	print(purchase_token)
+	print("purchase acnowledged ", purchase_token)
 
 
 func _on_purchase_acknowledgement_error(purchase_token):
-	print(purchase_token)
-
-
-func _on_connected():
-	print("Payment connected")
-	payment.querySkuDetails(["test_hint_ch3"], "inapp") # "subs" for subscriptions
-
-	yield(get_tree().create_timer(4), "timeout")
-	unlock_hint()
-
-
-func _on_disconnected():
-	print("Payment disconnected")
+	push_error("purchase acknowledgement error {0}".format([purchase_token]))
 
 
 func _on_sku_details_query_completed(sku_details):
-	print("available skus")
-	print(sku_details)
-	for available_sku in sku_details:
-		print(available_sku)
+	for sku in sku_details:
+		print("sku details: {0} {1}".format([sku.title, sku.description]))
 
 
 func _on_purchase_consumption_error(id, msg, token):
-	print("purchase consumption error", id, msg, token)
+	push_error("purchase consumption error {0} {1} {2}".format([id, msg, token]))
+
+
+func owned_products_contain(sku):
+	for p in owned_products:
+		if p.sku == sku:
+			return true
+	return false
+
