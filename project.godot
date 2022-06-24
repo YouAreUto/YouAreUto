@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://objects/Guard.gd"
 }, {
+"base": "Resource",
+"class": "HintResource",
+"language": "GDScript",
+"path": "res://autoloads/hints/hint_resource.gd"
+}, {
 "base": "Node2D",
 "class": "Key",
 "language": "GDScript",
@@ -86,6 +91,7 @@ _global_script_class_icons={
 "GameOverArea": "",
 "Gate": "",
 "Guard": "",
+"HintResource": "",
 "Key": "",
 "Main": "",
 "Ota": "",
