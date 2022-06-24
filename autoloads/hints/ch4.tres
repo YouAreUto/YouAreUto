@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://autoloads/hints/hint_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+hint_sku = ""
+full_solution_sku = "ch4_full_solution"
+hint = ""
+full_solution = "You are just a number. Drag the number 4 and push the blue text “to win” between the two red lines. Now push the blue text “red text” over the words “blue text.” The rule changes and now is the red text can be pushed. Push “drag Uto here” and align it to “to win.” This is it! Uto is where it needs to be to win this challenge."
+full_solution_images = [  ]

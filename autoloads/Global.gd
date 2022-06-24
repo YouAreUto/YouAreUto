@@ -1,5 +1,7 @@
 extends Node
 
+const TEXTUES_PATHS = "res://assets/sprites/characters/"
+
 """ Contains global data useful for all the game duration.
 It should never be reset."""
 var data = {
@@ -15,34 +17,6 @@ var data = {
 It should be reset every time the player goes to a new challenge. """
 var challengeData = {
 }
-
-var vw: Rect2 # viewport
-
-const TEXTUES_PATHS = "res://assets/sprites/characters/"
-
-var Flashlight
-
-
-func _ready():
-	if Engine.has_singleton("Flashlight"):
-		Flashlight = Engine.get_singleton("Flashlight")
-	vw = get_viewport().get_visible_rect()
-	get_viewport().connect("size_changed", self, "on_size_changed")
-
-
-func on_size_changed():
-	vw = get_viewport().get_visible_rect()
-
-
-func isFlashlightOn(mockFlashlight = false, mockedState = false):
-	if mockFlashlight:
-		return mockedState
-
-	if Flashlight:
-		return Flashlight.isFlashlightOn()
-	else:
-		return false
-
 
 var challengesOrder := [
 	{
@@ -77,6 +51,32 @@ var challengesOrder := [
 		"intro": "res://scenes/CTA/CTA.tscn",
 	},
 ]
+
+var vw: Rect2 # viewport
+var challenges_count = 0
+var Flashlight
+
+
+func _ready():
+	if Engine.has_singleton("Flashlight"):
+		Flashlight = Engine.get_singleton("Flashlight")
+	vw = get_viewport().get_visible_rect()
+	get_viewport().connect("size_changed", self, "on_size_changed")
+	challenges_count = len(challengesOrder) - 1
+
+
+func on_size_changed():
+	vw = get_viewport().get_visible_rect()
+
+
+func isFlashlightOn(mockFlashlight = false, mockedState = false):
+	if mockFlashlight:
+		return mockedState
+
+	if Flashlight:
+		return Flashlight.isFlashlightOn()
+	else:
+		return false
 
 
 func getChallengePath(index: int) -> Dictionary:

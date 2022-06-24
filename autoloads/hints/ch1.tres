@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://autoloads/hints/hint_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+hint_sku = ""
+full_solution_sku = "ch1_full_solution"
+hint = ""
+full_solution = "The herald says that guards protect the king at all times. Kill the herald (just drag Uto against him) and this rule disappears. The king is no longer well-protected. Wait for an opening and kill him."
+full_solution_images = [  ]

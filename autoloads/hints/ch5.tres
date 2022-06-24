@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://autoloads/hints/hint_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+hint_sku = "ch5_hint"
+full_solution_sku = "ch5_full_solution"
+hint = "It’s dark. You need light to see."
+full_solution = "It’s dark, turn your phone’s flashlight on! Uto walks on black, so drag Uto over “black” and get the key. Now you need to slow the guards down as their movement prevent you from reaching the chest. Go to Settings, set the guard speed to 0.5 and go back. Wait for a good moment, drag Uto over “black” again and open the chest!"
+full_solution_images = [  ]

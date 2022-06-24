@@ -14,6 +14,8 @@
 
 [resource]
 script = ExtResource( 1 )
+hint_sku = "ch7_hint"
+full_solution_sku = "ch7_full_solution"
 hint = "The numbers and letters are the rules written in hexadecimal form. You need to convert them to regular text to see how to win."
 full_solution = ""
 full_solution_images = [ ExtResource( 7 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 11 ) ]
