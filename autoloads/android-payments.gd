@@ -4,13 +4,16 @@ extends Node
 
 signal product_acquired(sku)
 
-
 # https://developer.android.com/reference/com/android/billingclient/api/Purchase.PurchaseState?hl=en#summary
 enum PurchaseState {
 	USPECIFIED_STATE,
 	PURCHASED,
 	PENDING
 }
+
+var payment
+var state = "disabled"
+var owned_products = [] # Purchase[]
 
 #class Purchase:
 #	var sku: String
@@ -21,11 +24,6 @@ enum PurchaseState {
 #	var purchase_state: int
 #	var purchase_time: int
 #	var signature: String
-
-
-var payment
-var state = "disabled"
-var owned_products = [] # Purchase[]
 
 
 func _ready():
@@ -56,13 +54,13 @@ func check_purchase():
 	var query = payment.queryPurchases("inapp")
 	if query.status == OK:
 		for purchase in query.purchases:
-			print(purchase.sku, "purchased: ", purchase.purchase_state == PurchaseState.PURCHASED, " is_acknowledged: ", purchase.is_acknowledged)
+			# print(purchase.sku, "purchased: ", purchase.purchase_state == PurchaseState.PURCHASED, " is_acknowledged: ", purchase.is_acknowledged)
 			if purchase.purchase_state == PurchaseState.PURCHASED:
 				owned_products.append(purchase)
 
 
-func _on_sku_details_query_error(token_str):
-	print("sku_details_query_error", token_str)
+func _on_sku_details_query_error(response_id, message, queried_skus):
+	print("sku_details_query_error", response_id, message, queried_skus)
 
 
 func _on_connected():

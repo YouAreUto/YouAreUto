@@ -1,7 +1,6 @@
 extends Node
 
 
-
 var challenges_hints: Array = [
 	preload("res://autoloads/hints/ch1.tres"),
 	preload("res://autoloads/hints/ch2.tres"),
@@ -51,19 +50,3 @@ func get_full_solution(ch_num: int):
 	var h = get_hint_resource(ch_num)
 	assert(h.has_full_solution())
 	return h.full_solution
-
-
-func get_hint_sku_or_null(ch_num):
-	ch_num = str(ch_num)
-	if challenges_sku.has(ch_num) and challenges_sku[ch_num].has("hint"):
-		return challenges_sku[ch_num]["hint"]
-	push_warning("challenge {0} does not have a hint sku".format([ch_num]))
-	return null
-
-
-func get_full_solution_sku_or_null(ch_num):
-	ch_num = str(ch_num)
-	if challenges_sku.has(ch_num) and challenges_sku[ch_num].has("full_solution"):
-		return challenges_sku[ch_num]["full_solution"]
-	push_warning("challenge {0} does not have a full solution sku".format([ch_num]))
-	return null

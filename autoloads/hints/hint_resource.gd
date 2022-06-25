@@ -37,4 +37,4 @@ func _to_string():
 
 
 func has_full_solution_images() -> bool:
-	return full_solution_images is Array and len(full_solution_images) > 0
+	return typeof(full_solution_images) == TYPE_ARRAY and len(full_solution_images) > 0

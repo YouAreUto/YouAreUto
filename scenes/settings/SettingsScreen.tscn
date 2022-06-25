@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/settings/SettingsScreen.gd" type="Script" id=1]
+[ext_resource path="res://resources/RedButtonCornerStyle.tres" type="StyleBox" id=2]
 [ext_resource path="res://resources/VictoryScreen/VictoryTextFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://resources/ChallengeRuleFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://objects/ui/ToggleButton.tscn" type="PackedScene" id=5]
@@ -17,6 +18,15 @@
 [ext_resource path="res://assets/ui/right-btn-icon-pressed.png" type="Texture" id=16]
 [ext_resource path="res://objects/ui/Button.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/shaders/GrayScaleShader.tscn" type="PackedScene" id=18]
+[ext_resource path="res://resources/Button/Pressed.tres" type="StyleBox" id=19]
+[ext_resource path="res://assets/fonts/Dosis/Dosis-Medium.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://scenes/hints/HintsLayer.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/hints/HintButtonsManager.tscn" type="PackedScene" id=22]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+use_filter = true
+font_data = ExtResource( 20 )
 
 [node name="SettingsScreen" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -260,8 +270,43 @@ margin_right = 640.0
 margin_bottom = 274.0
 text = "QUIT"
 
+[node name="GetHintButton" type="Button" parent="Container/SettingsActions"]
+visible = false
+margin_top = 294.0
+margin_right = 640.0
+margin_bottom = 376.0
+custom_colors/font_color = Color( 0.717647, 0.141176, 0.141176, 1 )
+custom_colors/font_color_hover = Color( 0.717647, 0.141176, 0.141176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 19 )
+custom_styles/normal = ExtResource( 2 )
+text = "GET A HINT $"
+
+[node name="GetFullSolutionButton" type="Button" parent="Container/SettingsActions"]
+visible = false
+margin_top = 396.0
+margin_right = 640.0
+margin_bottom = 478.0
+custom_colors/font_color = Color( 0.717647, 0.141176, 0.141176, 1 )
+custom_colors/font_color_hover = Color( 0.717647, 0.141176, 0.141176, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 19 )
+custom_styles/normal = ExtResource( 2 )
+text = "GET THE FULL SOLUTION $"
+
 [node name="GrayScaleShader" parent="Container" instance=ExtResource( 18 )]
 visible = false
+
+[node name="HintsLayer" parent="Container" instance=ExtResource( 21 )]
+
+[node name="HintButtonsManager" parent="Container" instance=ExtResource( 22 )]
+hint_button = NodePath("../SettingsActions/GetHintButton")
+full_solution_button = NodePath("../SettingsActions/GetFullSolutionButton")
+hints_layer = NodePath("../HintsLayer")
 
 [connection signal="pressed" from="Container/VBoxContainer/Sound/ToggleButton" to="." method="_on_ToggleButton_pressed"]
 [connection signal="pressed" from="Container/VBoxContainer/Color/Button2" to="." method="_on_Button2_pressed"]
@@ -274,3 +319,5 @@ visible = false
 [connection signal="pressed" from="Container/SettingsActions/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Container/SettingsActions/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Container/SettingsActions/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Container/SettingsActions/GetHintButton" to="Container/HintButtonsManager" method="_on_GetHintButton_pressed"]
+[connection signal="pressed" from="Container/SettingsActions/GetFullSolutionButton" to="Container/HintButtonsManager" method="_on_GetFullSolutionButton_pressed"]
