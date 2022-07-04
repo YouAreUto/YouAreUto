@@ -4,11 +4,12 @@ onready var hint_label := $CenterContainer/VBoxContainer/ScrollContainer/CenterC
 onready var texture_viewer = $CenterContainer/VBoxContainer/ScrollContainer/CenterContainer/TextureViewer
 
 
-func _ready():
-	show_full_solution(preload("res://autoloads/hints/ch7.tres"))
+
 
 
 func show_hint(hint_res: HintResource):
+	print_debug("show_hint")
+	print(hint_res)
 	hint_label.text = hint_res.hint
 	show()
 	hint_label.show()
@@ -16,6 +17,7 @@ func show_hint(hint_res: HintResource):
 
 
 func show_full_solution(hint_res: HintResource):
+	print_debug("full")
 	hint_label.show()
 	texture_viewer.hide()
 	if hint_res.has_full_solution():
@@ -30,6 +32,7 @@ func show_full_solution(hint_res: HintResource):
 
 
 func show_solution_images(images: Array):
+	print_debug("image")
 	texture_viewer.show()
 	hint_label.hide()
 	for image in images:

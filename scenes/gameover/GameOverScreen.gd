@@ -7,8 +7,7 @@ var use_legacy_code = true
 func _ready():
 	setPositions()
 	Global.challengeData = {}
-
-
+	
 func init(conf: Dictionary):
 	if conf.has("text"):
 		text.text = conf.text

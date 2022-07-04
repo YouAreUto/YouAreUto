@@ -6,6 +6,7 @@ onready var anims = $Logo/AnimationPlayer
 
 
 func _ready() -> void:
+	
 	var view_size = get_viewport().get_visible_rect().size
 	logo.position.x = view_size.x / 2
 	logo.position.y = view_size.y / 2

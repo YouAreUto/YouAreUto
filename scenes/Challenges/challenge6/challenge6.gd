@@ -24,7 +24,7 @@ var half_pawn_size = pawn_size / 2
 func _init():
 	title = "White Circle"
 	Global.data["currentChallenge"] = 6
-
+	AndroidPayments.get_challenge_iap_data(Global.data["currentChallenge"])
 
 func _ready():
 	# if we are starting the challenge

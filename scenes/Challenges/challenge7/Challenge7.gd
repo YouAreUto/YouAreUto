@@ -8,7 +8,7 @@ var blocks_on_game_over_area = []
 func _init():
 	title = "Uto Is Tribute"
 	Global.data["currentChallenge"] = 7
-
+	AndroidPayments.get_challenge_iap_data(Global.data["currentChallenge"])
 
 func _ready():
 	if Global.challengeData.get("utoEnteredSettings"):

@@ -14,13 +14,16 @@ onready var label = $Label
 onready var numberLabel = $TextureRect/ChallengeNumber
 onready var textureRect = $TextureRect
 onready var selectedSprite = $TextureRect/SelectedSprite
+onready var completedSprite = preload("res://assets/ui/lvl-selection-exagon_completed.png")
+onready var uncompletedSprite = preload("res://assets/ui/lvl-selection-exagon.png")
 onready var challengeSelectionList = get_parent()
 
 signal challengeItemPressed
 
 
 func _ready() -> void:
-	setSelected(false)
+	
+
 	label.text = challengeName
 	var split = name.split("ChallengeItem")
 	challengeNumber = int(split[1])
@@ -35,7 +38,7 @@ func _ready() -> void:
 
 	if disabled:
 		modulate.a = 0.5
-
+	setSelected(false)
 
 func _on_HBoxContainer_gui_input(event: InputEvent) -> void:
 	if disabled:
@@ -50,9 +53,18 @@ func setSelected(selected):
 		textureRect.self_modulate.a = 0
 		selectedSprite.modulate.a = 1
 	else:
+		print("NUmber: ", challengeNumber)
+		set_completed(challengeNumber in Global.save_data.completed_challenges)
 		textureRect.self_modulate.a = 1
 		selectedSprite.modulate.a = 0
 
-
+func set_completed(is_completed):
+	if is_completed:
+		$TextureRect.texture = completedSprite
+		$TextureRect/ChallengeNumber.self_modulate = "#ffffff"
+	else:
+		$TextureRect.texture = uncompletedSprite
+		$TextureRect/ChallengeNumber.self_modulate = "#a21016"
+	
 func isSelected():
 	return selectedSprite.modulate.a == 1

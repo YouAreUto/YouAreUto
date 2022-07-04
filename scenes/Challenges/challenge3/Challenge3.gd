@@ -26,6 +26,7 @@ var debug_time = { # solution: 3:33
 
 func _ready() -> void:
 	Global.data["currentChallenge"] = 3
+	AndroidPayments.get_challenge_iap_data(Global.data["currentChallenge"])
 	get_viewport().connect("size_changed", self, "setLayout")
 	setLayout()
 	setPatrolPaths()
@@ -202,7 +203,7 @@ func _on_WinArea_body_entered(body: PhysicsBody2D) -> void:
 		for c in get_tree().get_nodes_in_group("enemyAnimationPlayers"):
 			c.stop()
 		yield(sound, "finished")
-		Global.data.solved.challenge3 = true
+	
 		$Overlay/AnimationPlayer.play("gloria")
 
 

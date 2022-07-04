@@ -25,6 +25,7 @@ func _ready():
 		$ChallengeVictorySound.bus = "MUTED"
 
 	Global.data["currentChallenge"] = 4
+	AndroidPayments.get_challenge_iap_data(Global.data["currentChallenge"])
 	_setPositions()
 	_loadChallengeData()
 	$Overlay/AnimationPlayer.connect("animation_finished", self, "_onAnimationFinished")

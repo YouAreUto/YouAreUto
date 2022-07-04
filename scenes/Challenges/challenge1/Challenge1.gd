@@ -24,6 +24,7 @@ func _init():
 
 func _ready():
 	Global.data["currentChallenge"] = 1
+	AndroidPayments.get_challenge_iap_data(Global.data["currentChallenge"])
 	# set_guard_speed()
 	$Overlay/GrayScaleShader.visible = Global.challengeData.get("monochrome", false)
 	viewport_size = get_viewport_rect().size

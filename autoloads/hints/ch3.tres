@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource( 1 )
-hint_sku = "test_ch3_hint"
-full_solution_sku = "test_ch3_full_solution"
+hint_sku = "chl3_hint"
+full_solution_sku = "chl3_full_solution"
 hint = "The 2 rows of numbers represent hours and minutes."
-full_solution = "The 2 rows of numbers represent hours and minutes. The first row moves every hour, the second row moves every 10 minutes. The numbers in the center (below “is”) show the current time. Set your phone clock to 3:33 and start again. Now you no logner face a barrier! To avoid the rain, get a lift from the servants with umbrellas and talk to the poet.\\nFind out what he has to tell you."
+full_solution = "The 2 rows of numbers represent hours and minutes. The first row moves every hour, the second row moves every 10 minutes. The numbers in the center (below “is”) show the current time. Set your phone clock to 3:33 and start again. Now you no longer face a barrier! To avoid the rain, get a lift from the servants with umbrellas and talk to the poet. Find out what he has to tell you."
 full_solution_images = [  ]

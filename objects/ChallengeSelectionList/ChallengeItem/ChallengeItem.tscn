@@ -17,7 +17,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 challengeName = "Royal Rules"
-challengeNumber = 1
 textureScale = 1.2
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -30,13 +29,16 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="ChallengeNumber" type="Label" parent="TextureRect"]
+self_modulate = Color( 0.635294, 0.0627451, 0.0862745, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.631373, 0.101961, 0.101961, 1 )
 text = "1"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SelectedSprite" type="Sprite" parent="TextureRect"]
 modulate = Color( 1, 1, 1, 0 )
@@ -56,8 +58,9 @@ margin_right = 352.0
 margin_bottom = 117.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Royal Rules"
 valign = 1
+
 [connection signal="gui_input" from="." to="." method="_on_HBoxContainer_gui_input"]

@@ -7,5 +7,5 @@ script = ExtResource( 1 )
 hint_sku = ""
 full_solution_sku = "ch2_full_solution"
 hint = ""
-full_solution = "Push the blue text up. The rule changes and now you are (definitely) a castle servant. Guards don’t kill you anymore (guards kill Uto…). Go to Settings, switch the color off, and go back. There is no red text (barrier) anymore and you can enter the castle."
+full_solution = "Push the blue text up. The rule changes and now you are (definitely) a castle servant. Guards don’t kill you anymore (guards kill Uto…). Go to Settings, switch the color off, and go back. There is no red text (barrier) anymore and you can enter the castle.   "
 full_solution_images = [  ]

@@ -20,6 +20,7 @@ signal torch_disabled
 
 func _ready():
 	Global.data["currentChallenge"] = 5
+	AndroidPayments.get_challenge_iap_data(Global.data["currentChallenge"])
 	hideBackgrounds()
 	applyChallengeData()
 	if OS.is_debug_build():

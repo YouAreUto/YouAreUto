@@ -16,6 +16,9 @@ var next_challenge_override = null
 func _ready():
 	Global.challengeData = {}
 	setPositions()
+	if not (Global.data.currentChallenge in Global.save_data.completed_challenges):
+		Global.save_data.completed_challenges.append(Global.data.currentChallenge)
+		Global.save_game()
 	if Global.data.currentChallenge == 4:
 		if OS.get_name() == "iOS":
 			next_challenge_override = 6 # load challenge 6 and skip challenge 5 which is currently not implemented on iOS

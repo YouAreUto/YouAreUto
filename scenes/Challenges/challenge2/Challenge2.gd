@@ -15,6 +15,7 @@ onready var settingsIcon = $"BG/ui-settings"
 
 func _ready():
 	Global.data["currentChallenge"] = 2
+	AndroidPayments.get_challenge_iap_data(Global.data["currentChallenge"])
 	# if sound enabled is not specified
 	if !Global.challengeData.has("soundEnabled"):
 		# default it to enabled
@@ -129,7 +130,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_ObjectiveArea_body_entered(body):
 	if body is Uto:
-		Global.data.solved.challenge2 = true
 		for c in get_tree().get_nodes_in_group("enemyAnimationPlayers"):
 			c.stop()
 

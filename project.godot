@@ -118,9 +118,9 @@ config/icon="res://icon-512px.png"
 
 Global="*res://autoloads/Global.gd"
 SceneManager="*res://autoloads/SceneManager.gd"
-Layout="*res://addons/layouts/layout_manager.gd"
 AndroidPayments="*res://autoloads/android-payments.gd"
 Hints="*res://autoloads/hints.gd"
+Layout="*res://addons/layouts/layout_manager.gd"
 
 [debug]
 

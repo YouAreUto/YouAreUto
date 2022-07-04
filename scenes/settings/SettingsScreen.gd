@@ -13,7 +13,7 @@ func _ready():
 	guardSpeedCheck()
 	soundCheck()
 	setPositions()
-
+	
 
 func monochromeCheck():
 	# init monochrome control

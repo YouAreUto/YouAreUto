@@ -113,6 +113,8 @@ func kill():
 	alive = false
 	set_physics_process(false)
 	emit_signal("killed")
+	
+	
 
 
 func cancel_movement():

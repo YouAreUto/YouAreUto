@@ -1,18 +1,18 @@
 extends Node
 
+
+
 const TEXTUES_PATHS = "res://assets/sprites/characters/"
 
 """ Contains global data useful for all the game duration.
 It should never be reset."""
 var data = {
-	"currentChallenge": 1,
-	"solved": { # NOTE: this data is not used for persistency yet
-		"challenge1": false,
-		"challenge2": false,
-		"challenge3": false
-	}
+	"currentChallenge": 3,
+
 }
 
+var save_data = {"completed_challenges":[]}
+var file_pass = "YouArePassword1234"
 """ Contains data for the current challenge.
 It should be reset every time the player goes to a new challenge. """
 var challengeData = {
@@ -58,6 +58,7 @@ var Flashlight
 
 
 func _ready():
+	load_game()
 	if Engine.has_singleton("Flashlight"):
 		Flashlight = Engine.get_singleton("Flashlight")
 	vw = get_viewport().get_visible_rect()
@@ -78,7 +79,7 @@ func isFlashlightOn(mockFlashlight = false, mockedState = false):
 	else:
 		return false
 
-
+	
 func getChallengePath(index: int) -> Dictionary:
 	return challengesOrder[index - 1]
 
@@ -92,3 +93,31 @@ func load_challenge(challenge_number, show_intro = true):
 	challengeData = {}
 	var challenge_path = getChallengePath(challenge_number)
 	SceneManager.goto_scene(challenge_path.intro if show_intro else challenge_path.challenge)
+
+func isnull(obj):
+	return obj == null
+
+func save_game():
+
+	
+	var file = File.new()
+	if file.open_encrypted_with_pass("user://gamesave.save", File.WRITE, file_pass) != 0:
+		return
+	
+	if save_data != null:
+		file.store_var(save_data)
+	file.close()
+	print("STORED")
+	
+func load_game():
+	var file = File.new()
+	if not file.file_exists("user://gamesave.save"):
+		save_game()
+
+	if file.open_encrypted_with_pass("user://gamesave.save", File.READ, file_pass) != 0:
+		return
+
+	var data = file.get_var()
+	if data != null:
+		save_data = data
+

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ui-speed-bg-right.png-70af5908ac930e92d2780d7e4b17d032.stex"
+path="res://.import/lvl-selection-exagon_completed.png-dd8c1ed38e290e6760fab9659fac7bda.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/ui-speed-bg-right.png"
-dest_files=[ "res://.import/ui-speed-bg-right.png-70af5908ac930e92d2780d7e4b17d032.stex" ]
+source_file="res://assets/ui/lvl-selection-exagon_completed.png"
+dest_files=[ "res://.import/lvl-selection-exagon_completed.png-dd8c1ed38e290e6760fab9659fac7bda.stex" ]
 
 [params]
 
