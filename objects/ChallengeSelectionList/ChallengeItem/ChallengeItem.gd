@@ -59,12 +59,13 @@ func setSelected(selected):
 		selectedSprite.modulate.a = 0
 
 func set_completed(is_completed):
-	if is_completed:
-		$TextureRect.texture = completedSprite
-		$TextureRect/ChallengeNumber.self_modulate = "#ffffff"
-	else:
-		$TextureRect.texture = uncompletedSprite
-		$TextureRect/ChallengeNumber.self_modulate = "#a21016"
+	pass
+#	if is_completed:
+#		$TextureRect.texture = completedSprite
+#		$TextureRect/ChallengeNumber.self_modulate = "#ffffff"
+#	else:
+#		$TextureRect.texture = uncompletedSprite
+#		$TextureRect/ChallengeNumber.self_modulate = "#a21016"
 	
 func isSelected():
 	return selectedSprite.modulate.a == 1

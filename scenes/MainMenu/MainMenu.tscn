@@ -8,7 +8,7 @@
 [ext_resource path="res://objects/ChallengeSelectionList/ChallengeSelectionList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/MainMenu/PlayButton.gd" type="Script" id=7]
 [ext_resource path="res://objects/ChallengeSelectionList/ChallengeNameSound.gd" type="Script" id=8]
-[ext_resource path="res://resources/RedButtonCornerStyle.tres" type="StyleBox" id=9]
+[ext_resource path="res://scenes/themes/main_theme.theme" type="Theme" id=9]
 [ext_resource path="res://assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://scenes/MainMenu/ExitButton.gd" type="Script" id=11]
 [ext_resource path="res://scenes/MainMenu/ScrollContainer.tres" type="Theme" id=12]
@@ -160,14 +160,14 @@ __meta__ = {
 }
 
 [node name="ChallengesCenterContainer" type="CenterContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -260.0
-margin_top = -407.0
-margin_right = 272.0
-margin_bottom = 333.0
+anchor_left = 0.516
+anchor_top = 0.472
+anchor_right = 0.516
+anchor_bottom = 0.472
+margin_left = -314.0
+margin_top = -369.648
+margin_right = 314.0
+margin_bottom = 370.352
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -177,9 +177,10 @@ __meta__ = {
 script = ExtResource( 8 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ChallengesCenterContainer"]
-margin_right = 534.0
+margin_left = 29.0
+margin_right = 599.0
 margin_bottom = 740.0
-rect_min_size = Vector2( 0, 740 )
+rect_min_size = Vector2( 570, 740 )
 size_flags_vertical = 3
 theme = ExtResource( 12 )
 follow_focus = true
@@ -213,8 +214,7 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0.501961 )
 margin_right = 694.0
 margin_bottom = 78.0
-custom_colors/font_color_disabled = Color( 0.717647, 0.141176, 0.141176, 1 )
-custom_styles/disabled = ExtResource( 9 )
+theme = ExtResource( 9 )
 disabled = true
 text = "PLAY THIS CHALLENGE"
 script = ExtResource( 7 )
@@ -225,6 +225,7 @@ challengeSoundPlayerPath = NodePath("../../ChallengesCenterContainer/ChallengeNa
 margin_top = 94.0
 margin_right = 694.0
 margin_bottom = 172.0
+theme = ExtResource( 9 )
 text = "EXTRA"
 script = ExtResource( 2 )
 
@@ -232,6 +233,7 @@ script = ExtResource( 2 )
 margin_top = 188.0
 margin_right = 694.0
 margin_bottom = 266.0
+theme = ExtResource( 9 )
 text = "EXIT"
 script = ExtResource( 11 )
 

@@ -3,8 +3,9 @@ extends ColorRect
 onready var hint_label := $CenterContainer/VBoxContainer/ScrollContainer/CenterContainer/Label
 onready var texture_viewer = $CenterContainer/VBoxContainer/ScrollContainer/CenterContainer/TextureViewer
 
-
-
+#
+#func _ready():
+#	show_full_solution(Hints.challenges_hints[6])
 
 
 func show_hint(hint_res: HintResource):
@@ -33,6 +34,8 @@ func show_full_solution(hint_res: HintResource):
 
 func show_solution_images(images: Array):
 	print_debug("image")
+	for i in texture_viewer.get_children():
+		i.queue_free()
 	texture_viewer.show()
 	hint_label.hide()
 	for image in images:

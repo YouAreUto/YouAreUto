@@ -14,6 +14,7 @@ var next_challenge_override = null
 
 
 func _ready():
+	Global.connect("set_buttons_disabled", self, "disable_all_buttons")
 	Global.challengeData = {}
 	setPositions()
 	if not (Global.data.currentChallenge in Global.save_data.completed_challenges):
@@ -40,6 +41,7 @@ func setPositions():
 
 
 func _on_Restart_pressed() -> void:
+	Global.emit_signal("set_buttons_disabled", true)
 	if use_legacy_code:
 		SceneManager.goto_scene(Global.getChallengePath(Global.data.currentChallenge).intro)
 	else:
@@ -47,11 +49,18 @@ func _on_Restart_pressed() -> void:
 
 
 func _on_Quit_pressed() -> void:
+	Global.emit_signal("set_buttons_disabled", true)
 	SceneManager.goto_scene("res://scenes/MainMenu/MainMenu.tscn")
-
+	
 
 func _on_Next_pressed():
+	Global.emit_signal("set_buttons_disabled", true)
 	if next_challenge_override:
 		Global.load_challenge(next_challenge_override)
 	else:
 		Global.goToNextChallenge(true)
+
+func disable_all_buttons(is_disabled):
+	$CanvasLayer/VBoxContainer/Next.disabled = is_disabled
+	$CanvasLayer/VBoxContainer/Restart.disabled = is_disabled
+	$CanvasLayer/VBoxContainer/Quit.disabled = is_disabled

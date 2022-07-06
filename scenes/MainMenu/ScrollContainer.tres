@@ -1,29 +1,18 @@
 [gd_resource type="Theme" load_steps=3 format=2]
 
-[sub_resource type="StyleBoxLine" id=6]
-content_margin_bottom = 2.0
-color = Color( 0.635294, 0.0627451, 0.0862745, 1 )
-grow_begin = 2.0
-grow_end = 3.0
-thickness = 6
-vertical = true
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.631373, 0.101961, 0.101961, 1 )
 
 [sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 6.0
+content_margin_right = 6.0
 bg_color = Color( 0.803922, 0.533333, 0.533333, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
 border_color = Color( 0.803922, 0.533333, 0.533333, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 corner_detail = 4
 
 [resource]
-VScrollBar/styles/grabber = SubResource( 6 )
-VScrollBar/styles/grabber_highlight = SubResource( 6 )
-VScrollBar/styles/grabber_pressed = SubResource( 6 )
+VScrollBar/styles/grabber = SubResource( 8 )
+VScrollBar/styles/grabber_highlight = SubResource( 8 )
+VScrollBar/styles/grabber_pressed = SubResource( 8 )
 VScrollBar/styles/scroll = SubResource( 7 )
 VScrollBar/styles/scroll_focus = SubResource( 7 )

@@ -7,4 +7,5 @@ func _ready():
 
 
 func resize():
-	rect_min_size.y = Global.vw.size.y - 120
+	rect_min_size.y = Global.vw.size.y - 150
+

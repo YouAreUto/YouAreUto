@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/victory/VictoryScreen.gd" type="Script" id=1]
 [ext_resource path="res://objects/ui/Button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/themes/main_theme.theme" type="Theme" id=3]
 [ext_resource path="res://resources/VictoryScreen/VictoryTextFont.tres" type="DynamicFont" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -65,6 +66,7 @@ __meta__ = {
 [node name="Next" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 2 )]
 margin_right = 631.0
 margin_bottom = 78.0
+theme = ExtResource( 3 )
 text = "NEXT CHALLENGE"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/Next"]
@@ -76,12 +78,14 @@ margin_bottom = 40.0
 margin_top = 94.0
 margin_right = 631.0
 margin_bottom = 172.0
+theme = ExtResource( 3 )
 text = "RESTART"
 
 [node name="Quit" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 188.0
 margin_right = 631.0
 margin_bottom = 266.0
+theme = ExtResource( 3 )
 text = "QUIT"
 
 [node name="Node2D" type="Node2D" parent="."]

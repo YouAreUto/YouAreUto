@@ -7,5 +7,5 @@ script = ExtResource( 1 )
 hint_sku = ""
 full_solution_sku = "ch6_full_solution"
 hint = ""
-full_solution = "Interacting with the other characters creates the rules necessary to win. But it needs to be done in the right order while avoiding the castle servant and the guards (only when you are with Ota). Talk to a guard, then to the captain, then to Ota, and finally to the poet. After you talk to the poet, the “all text is a barrier” rule is created in the right position. This affects the guards’ movement and gives you the opportunity to reach the captain (with Ota) without being killed. You just helped Ota leave town won this challenge!    "
+full_solution = "Interacting with the other characters creates the rules necessary to win. But it needs to be done in the right order while avoiding the castle servant and the guards (only when you are with Ota). Talk to a guard, then to the captain, then to Ota, and finally to the poet. After you talk to the poet, the “all text is a barrier” rule is created in the right position. This affects the guards’ movement and gives you the opportunity to reach the captain (with Ota) without being killed. You just helped Ota leave town and won this challenge!    "
 full_solution_images = [  ]

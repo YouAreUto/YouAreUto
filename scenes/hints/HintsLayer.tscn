@@ -31,9 +31,6 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 45.0
@@ -41,12 +38,18 @@ margin_top = 117.0
 margin_right = 705.0
 margin_bottom = 1217.0
 rect_min_size = Vector2( 0, 1100 )
-custom_constants/separation = 24
+size_flags_vertical = 3
+custom_constants/separation = 120
+alignment = 1
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer"]
 margin_right = 660.0
-margin_bottom = 994.0
+margin_bottom = 898.0
+size_flags_horizontal = 6
 size_flags_vertical = 3
 theme = ExtResource( 4 )
 scroll_horizontal_enabled = false
@@ -56,21 +59,21 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/ScrollContainer"]
 margin_right = 660.0
-margin_bottom = 994.0
+margin_bottom = 898.0
 mouse_filter = 1
 size_flags_vertical = 3
 
 [node name="TextureViewer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/ScrollContainer/CenterContainer"]
 margin_left = 330.0
-margin_top = 497.0
+margin_top = 449.0
 margin_right = 330.0
-margin_bottom = 497.0
+margin_bottom = 449.0
 custom_constants/separation = 60
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/ScrollContainer/CenterContainer"]
-margin_top = 472.0
+margin_top = 424.0
 margin_right = 660.0
-margin_bottom = 522.0
+margin_bottom = 474.0
 rect_min_size = Vector2( 660, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )

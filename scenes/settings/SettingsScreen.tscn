@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/settings/SettingsScreen.gd" type="Script" id=1]
 [ext_resource path="res://resources/RedButtonCornerStyle.tres" type="StyleBox" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/fonts/Dosis/Dosis-Medium.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://scenes/hints/HintsLayer.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/hints/HintButtonsManager.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/themes/main_theme.theme" type="Theme" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 42
@@ -256,18 +257,21 @@ __meta__ = {
 [node name="Confirm" parent="Container/SettingsActions" instance=ExtResource( 17 )]
 margin_right = 640.0
 margin_bottom = 78.0
+theme = ExtResource( 23 )
 text = "GO BACK"
 
 [node name="Restart" parent="Container/SettingsActions" instance=ExtResource( 17 )]
 margin_top = 98.0
 margin_right = 640.0
 margin_bottom = 176.0
+theme = ExtResource( 23 )
 text = "RESTART"
 
 [node name="Quit" parent="Container/SettingsActions" instance=ExtResource( 17 )]
 margin_top = 196.0
 margin_right = 640.0
 margin_bottom = 274.0
+theme = ExtResource( 23 )
 text = "QUIT"
 
 [node name="GetHintButton" type="Button" parent="Container/SettingsActions"]

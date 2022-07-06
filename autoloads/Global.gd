@@ -1,6 +1,6 @@
 extends Node
 
-
+signal set_buttons_disabled(is_disabled)
 
 const TEXTUES_PATHS = "res://assets/sprites/characters/"
 
@@ -98,26 +98,27 @@ func isnull(obj):
 	return obj == null
 
 func save_game():
-
+	pass
 	
-	var file = File.new()
-	if file.open_encrypted_with_pass("user://gamesave.save", File.WRITE, file_pass) != 0:
-		return
-	
-	if save_data != null:
-		file.store_var(save_data)
-	file.close()
-	print("STORED")
+#	var file = File.new()
+#	if file.open_encrypted_with_pass("user://gamesave.save", File.WRITE, file_pass) != 0:
+#		return
+#
+#	if save_data != null:
+#		file.store_var(save_data)
+#	file.close()
+#	print("STORED")
 	
 func load_game():
-	var file = File.new()
-	if not file.file_exists("user://gamesave.save"):
-		save_game()
-
-	if file.open_encrypted_with_pass("user://gamesave.save", File.READ, file_pass) != 0:
-		return
-
-	var data = file.get_var()
-	if data != null:
-		save_data = data
+	pass
+#	var file = File.new()
+#	if not file.file_exists("user://gamesave.save"):
+#		save_game()
+#
+#	if file.open_encrypted_with_pass("user://gamesave.save", File.READ, file_pass) != 0:
+#		return
+#
+#	var data = file.get_var()
+#	if data != null:
+#		save_data = data
 

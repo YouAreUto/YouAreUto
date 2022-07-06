@@ -9,6 +9,7 @@ onready var container = $Container
 
 
 func _ready():
+	Global.connect("set_buttons_disabled", self, "disable_all_buttons")
 	monochromeCheck()
 	guardSpeedCheck()
 	soundCheck()
@@ -55,11 +56,13 @@ func setPositions():
 
 
 func _on_Quit_pressed():
+	Global.emit_signal("set_buttons_disabled", true)
 	Global.challengeData = {}
 	SceneManager.goto_scene("res://scenes/MainMenu/MainMenu.tscn")
 
 
 func _on_Confirm_pressed():
+	Global.emit_signal("set_buttons_disabled", true)
 	Global.challengeData["monochrome"] = !$Container/VBoxContainer/Color/Button2.on
 	Global.challengeData["guardSpeed"] = $Container/VBoxContainer/GuardSpeed.getSpeed()
 	var scn = Global.getChallengePath(Global.data.currentChallenge).challenge
@@ -67,6 +70,7 @@ func _on_Confirm_pressed():
 
 
 func _on_Restart_pressed():
+	Global.emit_signal("set_buttons_disabled", true)
 	Global.challengeData = {}
 	var scn = Global.getChallengePath(Global.data.currentChallenge).intro
 	SceneManager.goto_scene(scn)
@@ -81,3 +85,8 @@ func _on_Button2_pressed():
 
 func _on_ToggleButton_pressed():
 	Global.challengeData["soundEnabled"] = soundBtn.on
+
+func disable_all_buttons(is_disabled):
+	$Container/SettingsActions/Restart.disabled = is_disabled
+	$Container/SettingsActions/Quit.disabled = is_disabled
+	$Container/SettingsActions/Confirm.disabled = is_disabled
